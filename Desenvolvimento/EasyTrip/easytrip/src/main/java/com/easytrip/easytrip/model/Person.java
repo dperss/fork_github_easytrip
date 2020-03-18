@@ -5,8 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "person")
-public class Person {
+@Table(name = "persons")
+public class Person extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "question_generator")
@@ -22,19 +22,15 @@ public class Person {
     private String password;//check securitys hash of srping
 
     @NotBlank
+    @Column(unique = true)
     private String email;
 
-    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "question_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Question question;*/
+    @Size(min= 0,max = 1000)
+    private String nome;
 
-    public Person(){
-        this.id = id;
-        this.password = password;
-        this.email = email;
-    }
+    @Column(columnDefinition="VARCHAR(100)")
+    private String description;
+
     public void setId(Long id){
         this.id = id;
     }
@@ -53,6 +49,22 @@ public class Person {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public void setNome(String nome){
+        this.nome=nome;
+    }
+
+    public void setDescription(String description){
+        this.description=description;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 

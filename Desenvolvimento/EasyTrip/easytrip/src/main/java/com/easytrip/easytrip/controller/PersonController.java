@@ -18,29 +18,34 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
+    //GET
     @GetMapping("/persons")
     public Page<Person> getPersons(Pageable pageable) {
         return personRepository.findAll(pageable);
     }
 
-
+    //POST
     @PostMapping("/persons")
     public Person createPersons(@Valid @RequestBody Person persons) {
         return personRepository.save(persons);
     }
 
+    //PUT
     @PutMapping("/persons/{personId}")
     public Person updatePersons(@PathVariable Long personId,
                                    @Valid @RequestBody Person personRequest) {
         return personRepository.findById(personId)
-                .map(question -> {
-                    question.setEmail(personRequest.getEmail());
-                    question.setPassword(personRequest.getPassword());
-                    return personRepository.save(question);
+                .map(person -> {
+                    person.setEmail(personRequest.getEmail());
+                    person.setPassword(personRequest.getPassword());
+                    person.setNome(personRequest.getNome());
+                    person.setDescription(personRequest.getDescription());
+                    return personRepository.save(person);
                 }).orElseThrow(() -> new ResourceNotFoundException("Person not found with id " + personId));
     }
 
 
+    //DELETE
     @DeleteMapping("/persons/{personId}")
     public ResponseEntity<?> deletePerson(@PathVariable Long personId) {
         return personRepository.findById(personId)
