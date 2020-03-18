@@ -17,19 +17,25 @@ public class Person extends AuditModel {
     )
     private Long id;
 
-    @NotBlank
-    @Size(min= 4,max = 1000)
-    private String password;//check securitys hash of srping
 
     @NotBlank
     @Column(unique = true)
     private String email;
+
+    @NotBlank
+    @Size(min= 4,max = 1000)
+    private String password;//check securitys hash of srping
+
 
     @Size(min= 0,max = 1000)
     private String nome;
 
     @Column(columnDefinition="VARCHAR(100)")
     private String description;
+
+    private int type;
+
+    private int status;
 
     public void setId(Long id){
         this.id = id;
@@ -67,5 +73,20 @@ public class Person extends AuditModel {
         return description;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 }

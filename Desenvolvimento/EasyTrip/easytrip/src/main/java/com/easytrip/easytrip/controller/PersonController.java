@@ -30,7 +30,7 @@ public class PersonController {
         return personRepository.save(persons);
     }
 
-    //PUT
+    //UPDATE
     @PutMapping("/persons/{personId}")
     public Person updatePersons(@PathVariable Long personId,
                                    @Valid @RequestBody Person personRequest) {
@@ -40,6 +40,8 @@ public class PersonController {
                     person.setPassword(personRequest.getPassword());
                     person.setNome(personRequest.getNome());
                     person.setDescription(personRequest.getDescription());
+                    person.setType(personRequest.getType());
+                    person.setStatus(personRequest.getStatus());
                     return personRepository.save(person);
                 }).orElseThrow(() -> new ResourceNotFoundException("Person not found with id " + personId));
     }

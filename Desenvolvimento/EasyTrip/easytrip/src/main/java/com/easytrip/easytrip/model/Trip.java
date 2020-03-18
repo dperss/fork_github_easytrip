@@ -25,7 +25,6 @@ public class Trip extends AuditModel{
 
    private String Origin_data;
 
-
    private String Destiny_data;
 
    private String Accommodation;
