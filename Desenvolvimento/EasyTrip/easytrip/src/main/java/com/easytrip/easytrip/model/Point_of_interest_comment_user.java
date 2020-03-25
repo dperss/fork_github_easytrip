@@ -7,8 +7,8 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "photo_points")
-public class Photo_point extends AuditModel {
+@Table(name = "Point_of_interest_comment_user")
+public class Point_of_interest_comment_user extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "question_generator")
@@ -19,6 +19,9 @@ public class Photo_point extends AuditModel {
     )
     private Long id;
 
+    private String comment;
+
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "point_of_interest_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -26,10 +29,10 @@ public class Photo_point extends AuditModel {
     private Point_of_interest point_of_interest;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "photo_id", nullable = false)
+    @JoinColumn(name = "person_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Photo photo;
+    private Person person;
 
     public Long getId() {
         return id;
@@ -37,6 +40,14 @@ public class Photo_point extends AuditModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Point_of_interest getPoint_of_interest() {
@@ -47,11 +58,12 @@ public class Photo_point extends AuditModel {
         this.point_of_interest = point_of_interest;
     }
 
-    public Photo getPhoto() {
-        return photo;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
+    public void setPerson(Person person) {
+        this.person = person;
     }
+
 }

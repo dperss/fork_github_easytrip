@@ -27,4 +27,27 @@ public class Itinerary extends AuditModel {
     @JsonIgnore
     private Trip trip;
 
+    public Long getId() {
+        return id;
+    }
+
+    public int getClassification() {
+        return classification;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setClassification(int classification) {
+        this.classification = classification;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
 }
