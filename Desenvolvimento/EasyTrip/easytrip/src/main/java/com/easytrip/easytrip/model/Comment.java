@@ -28,34 +28,40 @@ public class Comment extends AuditModel {
     private Float rating;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "trip_id", nullable = false)
+    @JoinColumn(name = "itinerary_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Trip trip;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
+    private Itinerary itinerary;
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getComment() {
         return comment;
     }
 
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public Float getRating() {
         return rating;
     }
 
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
 
+    public Itinerary getItinerary() {
+        return itinerary;
+    }
+
+    public void setItinerary(Itinerary itinerary) {
+        this.itinerary = itinerary;
+    }
 }

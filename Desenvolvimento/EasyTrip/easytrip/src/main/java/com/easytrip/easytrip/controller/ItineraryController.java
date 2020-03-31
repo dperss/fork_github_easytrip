@@ -3,7 +3,6 @@ package com.easytrip.easytrip.controller;
 
 import com.easytrip.easytrip.exception.ResourceNotFoundException;
 import com.easytrip.easytrip.model.Itinerary;
-import com.easytrip.easytrip.model.Trip;
 import com.easytrip.easytrip.repository.ItineraryRepository;
 import com.easytrip.easytrip.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,56 +22,51 @@ public class ItineraryController {
     @Autowired
     private TripRepository tripRepository;
 
+
     //GET
     @GetMapping("/trips/{tripId}/itinerarys")
-    public List<Itinerary> getItineraryByQuestionId(@PathVariable Long personId) {
-        return itineraryRepository.findByTripId(personId);
+    public List<Itinerary> getTripsByItineraryId(@PathVariable Long tripId) {
+        return itineraryRepository.findByTripId(tripId);
     }
 
     //POST
-    @PostMapping("/persons/{personId}/trips")
-    public Trip addTrip(@PathVariable Long personId,
-                        @Valid @RequestBody Trip trips) {
-        return personRepository.findById(personId)
-                .map(person -> {
-                    trips.setPerson(person);
-                    return tripRepository.save(trips);
-                }).orElseThrow(() -> new ResourceNotFoundException("Person not found with id " + personId));
-    }
-
-    @PutMapping("/persons/{personId}/trips/{tripId}")
-    public Trip updateTrip(@PathVariable Long personId,
-                           @PathVariable Long tripId,
-                           @Valid @RequestBody Trip tripRequest) {
-        if(!personRepository.existsById(personId)) {
-            throw new ResourceNotFoundException("Person not found with id " + personId);
-        }
-
+    @PostMapping("/trips/{tripId}/itinerarys")
+    public Itinerary addItinerary(@PathVariable Long tripId,
+                        @Valid @RequestBody Itinerary itinerarys) {
         return tripRepository.findById(tripId)
                 .map(trip -> {
-                    trip.setDestiny(tripRequest.getDestiny());
-                    trip.setOrigin(tripRequest.getOrigin());
-                    trip.setDestiny(tripRequest.getDestiny());
-                    trip.setOrigin_data(tripRequest.getOrigin_data());
-                    trip.setDestiny_data(tripRequest.getDestiny_data());
-                    trip.setAccommodation(tripRequest.getAccommodation());
-                    trip.setTransportation(tripRequest.getTransportation());
-                    return tripRepository.save(trip);
+                    itinerarys.setTrip(trip);
+                    return itineraryRepository.save(itinerarys);
                 }).orElseThrow(() -> new ResourceNotFoundException("Trip not found with id " + tripId));
     }
 
-    @DeleteMapping("/persons/{personId}/trips/{tripId}")
-    public ResponseEntity<?> deleteAnswer(@PathVariable Long personId,
-                                          @PathVariable Long tripId) {
-        if(!personRepository.existsById(personId)) {
-            throw new ResourceNotFoundException("Person not found with id " + personId);
+    @PutMapping("/trips/{tripId}/itinerarys/{itineraryId}")
+    public Itinerary updateItinerary(@PathVariable Long tripId,
+                           @PathVariable Long itineraryId,
+                           @Valid @RequestBody Itinerary itineraryRequest) {
+        if(!tripRepository.existsById(tripId)) {
+            throw new ResourceNotFoundException("Trip not found with id " + tripId);
         }
 
-        return tripRepository.findById(tripId)
-                .map(trip -> {
-                    tripRepository.delete(trip);
+        return itineraryRepository.findById(itineraryId)
+                .map(itinerary -> {
+                    itinerary.setClassification(itineraryRequest.getClassification());
+                    return itineraryRepository.save(itinerary);
+                }).orElseThrow(() -> new ResourceNotFoundException("Itinerary not found with id " + itineraryId));
+    }
+
+    @DeleteMapping("/trips/{tripId}/itinerary/{itineraryId}")
+    public ResponseEntity<?> deleteItinerary(@PathVariable Long tripId,
+                                          @PathVariable Long itineraryId) {
+        if(!tripRepository.existsById(tripId)) {
+            throw new ResourceNotFoundException("Trip not found with id " + tripId);
+        }
+
+        return itineraryRepository.findById(itineraryId)
+                .map(itinerary -> {
+                    itineraryRepository.delete(itinerary);
                     return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Trip not found with id " + tripId));
+                }).orElseThrow(() -> new ResourceNotFoundException("Itinerary not found with id " + itineraryId));
 
     }
 }
