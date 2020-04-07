@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface Itinerary_pointRepository extends JpaRepository<Itinerary_point, Long> {
     List<Itinerary_point> findByItineraryId(Long itineraryId);
-    List<Itinerary_point> findBypoint_of_interestId(Long point_of_interestId);
-
+    List<Itinerary_point> findByPoint_of_interestId(Long point_of_interestId);
 }

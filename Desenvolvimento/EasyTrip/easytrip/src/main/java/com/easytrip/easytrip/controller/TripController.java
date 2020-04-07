@@ -24,7 +24,7 @@ public class TripController {
 
     //GET
     @GetMapping("/persons/{personId}/trips")
-    public List<Trip> getTripsByQuestionId(@PathVariable Long personId) {
+    public List<Trip> getTripsByPersonsId(@PathVariable Long personId) {
         return tripRepository.findByPersonId(personId);
     }
 
