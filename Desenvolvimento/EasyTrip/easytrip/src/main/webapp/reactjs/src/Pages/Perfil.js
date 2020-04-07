@@ -41,8 +41,22 @@ export default class Perfil extends React.Component {
             fontFamily: "Hobo Std",
             fontSize: "70px"
         };
+        const f1 = {
+            marginLeft: "220px"
 
+        };
+        const b1 = {
+            marginTop: "5px"
 
+        };
+        const f2 = {
+            marginLeft: "220px"
+
+        };
+        const f3 = {
+            marginLeft: "220px"
+
+        };
         return (
 
             <div>
@@ -113,7 +127,7 @@ export default class Perfil extends React.Component {
                                                 <Form>
                                                     <Jumbotron>
                                                         <h5> Alterar Username</h5>
-                                                            <Form.Group  as={Col} md="4" controlId="validationCustomUsername">
+                                                            <Form.Group  as={Col} md="4" controlId="validationCustomUsername" style = {f1}>
                                                                 <Form.Label>Novo Username</Form.Label>
                                                                 <InputGroup>
                                                                     <InputGroup.Prepend>
@@ -125,17 +139,17 @@ export default class Perfil extends React.Component {
                                                                     </Form.Control.Feedback>
                                                                 </InputGroup>
                                                             </Form.Group>
-                                                        <Button variant="outline-dark" type="submit">Confirmar</Button>
+                                                        <Button style = {b1} variant="outline-dark" type="submit">Confirmar</Button>
                                                     </Jumbotron>
 
-                                                    <Jumbotron>
+                                                    <Jumbotron >
                                                         <h5> Alterar Password</h5>
 
-                                                            <Form.Group as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {f2} as={Col} md="5"controlId="formGroupPassword">
                                                                 <Form.Label>Atual</Form.Label>
                                                                 <Form.Control type="password" placeholder="Password" />
                                                             </Form.Group>
-                                                            <Form.Group as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {f3} as={Col} md="5"controlId="formGroupPassword">
                                                                 <Form.Label>Nova  </Form.Label>
                                                                 <Form.Control type="password" placeholder="Nova Password" />
                                                             </Form.Group>
