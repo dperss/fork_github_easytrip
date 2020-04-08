@@ -17,6 +17,8 @@ public class Photo extends AuditModel{
             sequenceName = "question_sequence",
             initialValue = 1000
     )
+
+
     private Long id;
 
     private byte photo;
@@ -26,6 +28,12 @@ public class Photo extends AuditModel{
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Person person;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "photo_point_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Photo_point photo_point;
 
     public Long getId() {
         return id;
@@ -49,5 +57,13 @@ public class Photo extends AuditModel{
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Photo_point getPhoto_point() {
+        return photo_point;
+    }
+
+    public void setPhoto_point(Photo_point photo_point) {
+        this.photo_point = photo_point;
     }
 }

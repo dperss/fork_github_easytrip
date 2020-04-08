@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface Photo_pointRepository extends JpaRepository<Photo_point, Long> {
-    List<Photo_point> findByPoint_of_interestId(Long point_of_interestId);
-    List<Photo_point> findByPhotoId(Long photoId);
+
 }

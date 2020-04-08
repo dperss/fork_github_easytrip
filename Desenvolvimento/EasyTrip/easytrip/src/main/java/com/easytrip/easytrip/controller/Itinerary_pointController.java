@@ -15,15 +15,14 @@ import java.util.List;
 @RestController
 public class Itinerary_pointController{
 
+    @Autowired
+    private Itinerary_pointRepository itinerary_pointRepository;
 
     @Autowired
     private ItineraryRepository itineraryRepository;
 
     @Autowired
     private Point_of_interestRepository point_of_interestRepository;
-
-    @Autowired
-    private Itinerary_pointRepository itinerary_pointRepository;
 
 
     //GET
