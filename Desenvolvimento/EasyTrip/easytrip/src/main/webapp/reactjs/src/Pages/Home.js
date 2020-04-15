@@ -1,7 +1,12 @@
 import React from "react";
 
-import { Jumbotron, Nav, Navbar, Form, FormControl, Button, NavDropdown} from "react-bootstrap";
+
+import {Jumbotron, Nav, Navbar, Form, FormControl, Button, NavDropdown} from "react-bootstrap";
 import Background from "../assets/imagem.png";
+
+
+import "react-datepicker/dist/react-datepicker.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -9,8 +14,6 @@ export default class Home extends React.Component{
 
 
     render() {
-
-
 
      const jum = {
             backgroundImage: `url(${Background})`,
@@ -26,7 +29,9 @@ export default class Home extends React.Component{
          textAlign: "left"
      };
 
-
+        const easy = {
+            fontFamily: "Hobo Std"
+        };
 
 
         return (
@@ -34,7 +39,7 @@ export default class Home extends React.Component{
             <div>
 
                     <Navbar bg="dark" variant="dark">
-                        <Navbar.Brand >EasyTrip</Navbar.Brand>
+                        <Navbar.Brand style = {easy}>EasyTrip</Navbar.Brand>
                         <NavDropdown title = "" id = "basic-nav-dropdown">
                             <NavDropdown.Item href = "/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href = "/registo">Registo</NavDropdown.Item>
@@ -47,8 +52,8 @@ export default class Home extends React.Component{
 
                         </Nav>
                         <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-4" />
-                            <Button  variant="outline-light">Search</Button>
+                            <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
+                            <Button  variant="outline-light">Procura</Button>
                         </Form>
 
                     </Navbar>
@@ -59,6 +64,13 @@ export default class Home extends React.Component{
                         </h1>
 
                     </Jumbotron>
+
+
+
+
+
+
+
 
 
 

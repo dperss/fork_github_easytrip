@@ -24,12 +24,15 @@ export default class info extends React.Component{
 
 
         };
+        const easy = {
+            fontFamily: "Hobo Std"
+        };
 
 
         return(
             <div>
                 <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href = "/">EasyTrip</Navbar.Brand>
+                    <Navbar.Brand href = "/" style = {easy}>EasyTrip</Navbar.Brand>
                     <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href="/registo">Registo</NavDropdown.Item>
@@ -41,8 +44,8 @@ export default class info extends React.Component{
 
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-4" />
-                        <Button  variant="outline-light">Search</Button>
+                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
+                        <Button  variant="outline-light">Procura</Button>
                     </Form>
 
                 </Navbar>
