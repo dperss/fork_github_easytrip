@@ -1,5 +1,7 @@
 import React from "react";
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import {Button, Form, FormControl, Nav, Navbar, NavDropdown, Card, CardDeck, Pagination} from "react-bootstrap";
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 import Hoteis from "../assets/hoteis.jpg";
 import Resort from "../assets/e24547b6d0b63924294191179d76e798.jpg";
@@ -10,24 +12,10 @@ import Resort from "../assets/e24547b6d0b63924294191179d76e798.jpg";
 export default class Alojamentos extends React.Component{
     render(){
 
-
-    const cg1 = {
-        marginTop: "50px",
-        marginLeft: "12%",
-        width: "90rem",
-        backgroundColor: "secondary",
-
-
-    };
-    const easy = {
-        fontFamily: "Hobo Std"
-    };
-
-
         return(
             <div>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href = "/" style = {easy} >EasyTrip</Navbar.Brand>
+                <Navbar bg = "dark" variant = "dark" fixed = "top">
+                    <Navbar.Brand href = "/" style = {{fontFamily: "Hobo Std"}} >EasyTrip</Navbar.Brand>
                     <NavDropdown title = "" id = "basic-nav-dropdown">
                         <NavDropdown.Item href = "/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href = "/registo">Registo</NavDropdown.Item>
@@ -35,16 +23,17 @@ export default class Alojamentos extends React.Component{
                     </NavDropdown>
                     <Nav className="mr-auto">
                         <Nav.Link href="/alojamentos">Alojamentos</Nav.Link>
-                        <Nav.Link href="/transportes">Transportes</Nav.Link>
+
 
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
-                        <Button  variant="outline-light">Procura</Button>
+                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" icon = "search" />
+                        <Button  variant="outline-light" >Procura</Button>
                     </Form>
 
                 </Navbar>
-                <CardDeck style = {cg1}>
+
+                <CardDeck style = {{marginTop: "100px", marginLeft: "12%",width: "90rem",backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />
                         <Card.Body>
@@ -82,7 +71,7 @@ export default class Alojamentos extends React.Component{
 
                     </Card>
                 </CardDeck>
-                <CardDeck style = {cg1}>
+                <CardDeck style = {{marginTop: "50px", marginLeft: "12%", width: "90rem", backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />
                         <Card.Body>
@@ -120,7 +109,7 @@ export default class Alojamentos extends React.Component{
 
                     </Card>
                 </CardDeck>
-                <CardDeck  style = {cg1}>
+                <CardDeck  style = {{marginTop: "50px",marginLeft: "12%",width: "90rem", backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />
                         <Card.Body>

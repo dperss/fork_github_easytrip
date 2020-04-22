@@ -23,47 +23,8 @@ export default class Perfil extends React.Component {
 
     render() {
 
-        const jum = {
-            backgroundImage: `url(${Background})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            height: "180px",
-
-        };
 
 
-        const r = {
-            marginTop: "100px",
-
-
-        };
-
-        const perfil = {
-            textAlign: "left",
-            fontFamily: "Hobo Std",
-            fontSize: "70px",
-
-        };
-        const f1 = {
-            marginLeft: "220px"
-
-        };
-        const b1 = {
-            marginTop: "5px"
-
-        };
-        const f2 = {
-            marginLeft: "220px"
-
-        };
-        const f3 = {
-            marginLeft: "220px"
-
-        };
-
-        const easy1 = {
-            fontFamily: "Hobo Std"
-        };
 
 
 
@@ -71,8 +32,8 @@ export default class Perfil extends React.Component {
         return (
 
             <div>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand style = {easy1} href = "/">EasyTrip</Navbar.Brand>
+                <Navbar bg="dark" variant="dark" fixed = "top">
+                    <Navbar.Brand style = {{fontFamily: "Hobo Std"}} href = "/">EasyTrip</Navbar.Brand>
                     <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/info">Informações</NavDropdown.Item>
 
@@ -90,14 +51,18 @@ export default class Perfil extends React.Component {
 
                 </Navbar>
                 <Container>
-                    <Jumbotron style = {jum}>
-                        <h1 style = {perfil}>
+                    <Jumbotron style = {{backgroundImage: `url(${Background})`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        height: "180px"}}>
+                        <h1 style = {{textAlign: "left", fontFamily: "Hobo Std", fontSize: "70px"}}>
                             Perfil
                          </h1>
 
+
                      </Jumbotron>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
-                         <Row style = {r}>
+                         <Row style = {{marginTop: "100px"}}>
                              <Col sm={3}>
                                  <Nav variant="pills" className="flex-column" >
                                      <Nav.Item>
@@ -150,7 +115,7 @@ export default class Perfil extends React.Component {
                                                 <Form>
                                                     <Jumbotron >
                                                         <h5 style = {{fontWeight: "bold", textAlign: "left"}}> Alteração do Username</h5>
-                                                            <Form.Group  as={Col} md="4" controlId="validationCustomUsername" style = {f1}>
+                                                            <Form.Group  as={Col} md="4" controlId="validationCustomUsername" style = {{marginLeft: "220px"}}>
                                                                 <Form.Label>Novo Username</Form.Label>
                                                                 <InputGroup>
                                                                     <InputGroup.Prepend>
@@ -162,17 +127,17 @@ export default class Perfil extends React.Component {
                                                                     </Form.Control.Feedback>
                                                                 </InputGroup>
                                                             </Form.Group>
-                                                        <Button style = {b1} variant="outline-dark" type="submit">Confirmar</Button>
+                                                        <Button style = {{marginTop: "5px"}} variant="outline-dark" type="submit">Confirmar</Button>
                                                     </Jumbotron>
 
                                                     <Jumbotron >
                                                         <h5 style = {{fontWeight: "bold", textAlign: "left"}}> Alteração da Password</h5>
 
-                                                            <Form.Group style = {f2} as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5"controlId="formGroupPassword">
                                                                 <Form.Label>Atual</Form.Label>
                                                                 <Form.Control type="password" placeholder="Password" />
                                                             </Form.Group>
-                                                            <Form.Group style = {f3} as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5"controlId="formGroupPassword">
                                                                 <Form.Label>Nova  </Form.Label>
                                                                 <Form.Control type="password" placeholder="Nova Password" />
                                                             </Form.Group>

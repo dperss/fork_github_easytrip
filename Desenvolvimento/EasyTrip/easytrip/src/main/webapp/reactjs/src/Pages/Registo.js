@@ -1,4 +1,5 @@
 import React from "react";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Container, Form, InputGroup, Col, Jumbotron, Button} from "react-bootstrap";
@@ -7,43 +8,23 @@ import Background from "../assets/imagem.png";
 
 
 export default class Registo extends React.Component{
+
+
     render(){
-
-     const form = {
-         marginTop: "100px"
-
-     };
-     const jum = {
-            backgroundImage: `url(${Background})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            width: "100vh"
-
-        };
-        const h1 = {
-            fontFamily: "Hobo Std",
-            fontSize: "70px",
-            textAlign: "left"
-        };
-
-        const  bt = {
-            marginTop: "100px"
-        };
-
 
 
        return (
            <div >
                <Container>
 
-                   <Jumbotron style = {jum}>
-                       <h1 style = {h1}>
+                   <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "100vh"}}>
+                       <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
                            Registo
                        </h1>
                    </Jumbotron>
 
 
-                <Form style = {form}>
+                <Form style = {{marginTop: "100px"}}>
                     <Form.Row >
                         <Form.Group  as={Col} md="4" controlId="validationCustomUsername">
                             <Form.Label>Username</Form.Label>
@@ -70,18 +51,20 @@ export default class Registo extends React.Component{
 
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as = {Col} controlId = "formGridEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Introduza o email" />
+                            <Form.Control type = "email" placeholder = "Introduza o email" />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Group as = {Col} controlId = "formGroupPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type = "password"
+                                          placeholder = "Password"
+                            />
                         </Form.Group>
                     </Form.Row>
                 </Form>
-                <Button style = {bt} variant="dark" type="submit">
+                <Button style = {{marginTop: "100px"}} variant="dark" type="submit">
                     Confirmar
                 </Button>
                </Container>

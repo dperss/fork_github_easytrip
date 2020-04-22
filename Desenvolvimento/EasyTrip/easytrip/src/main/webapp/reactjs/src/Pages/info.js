@@ -6,33 +6,14 @@ import Background from "../assets/imagem.png";
 
 export default class info extends React.Component{
     render(){
-        const jum1 = {
-            backgroundImage: `url(${Background})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            width: "100vh"
-        };
-        const inf = {
-            textAlign: "left",
-            fontFamily: "Hobo Std",
-            fontSize: "70px"
-
-        };
-
-        const r = {
-            marginTop: "100px",
 
 
-        };
-        const easy = {
-            fontFamily: "Hobo Std"
-        };
 
 
         return(
             <div>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href = "/" style = {easy}>EasyTrip</Navbar.Brand>
+                <Navbar bg="dark" variant="dark" fixed = "top">
+                    <Navbar.Brand href = "/" style = {{fontFamily: "Hobo Std"}}>EasyTrip</Navbar.Brand>
                     <NavDropdown title="" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                         <NavDropdown.Item href="/registo">Registo</NavDropdown.Item>
@@ -50,8 +31,8 @@ export default class info extends React.Component{
 
                 </Navbar>
                 <Container>
-                    <Jumbotron style = {jum1}>
-                        <h1 style = {inf}>
+                    <Jumbotron style = {{backgroundImage: `url(${Background})`,backgroundPosition: "center",backgroundSize: "cover",width: "100vh"}}>
+                        <h1 style = {{textAlign: "left",fontFamily: "Hobo Std",fontSize: "70px"}}>
                             Informações
                         </h1>
 
@@ -59,7 +40,7 @@ export default class info extends React.Component{
 
 
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first" >
-                        <Row style = {r}>
+                        <Row style = {{marginTop: "100px"}}>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column" >
                                     <Nav.Item>
