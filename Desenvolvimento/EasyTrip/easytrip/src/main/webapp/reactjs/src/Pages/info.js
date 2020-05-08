@@ -21,7 +21,7 @@ export default class info extends React.Component{
                     </NavDropdown>
                     <Nav className="mr-auto">
                         <Nav.Link href = "/alojamentos">Alojamentos</Nav.Link>
-                        <Nav.Link href = "/transportes">Transportes</Nav.Link>
+
 
                     </Nav>
                     <Form inline>

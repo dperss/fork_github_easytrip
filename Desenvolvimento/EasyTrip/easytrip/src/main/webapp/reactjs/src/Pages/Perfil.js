@@ -41,7 +41,7 @@ export default class Perfil extends React.Component {
                     </NavDropdown>
                     <Nav className="mr-auto">
                         <Nav.Link href = "/alojamentos">Alojamentos</Nav.Link>
-                        <Nav.Link href = "/transportes">Transportes</Nav.Link>
+
 
                     </Nav>
                     <Form inline>
@@ -133,11 +133,11 @@ export default class Perfil extends React.Component {
                                                     <Jumbotron >
                                                         <h5 style = {{fontWeight: "bold", textAlign: "left"}}> Alteração da Password</h5>
 
-                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5" controlId="formGroupPassword">
                                                                 <Form.Label>Atual</Form.Label>
                                                                 <Form.Control type="password" placeholder="Password" />
                                                             </Form.Group>
-                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5"controlId="formGroupPassword">
+                                                            <Form.Group style = {{marginLeft: "220px"}} as={Col} md="5" controlId="formGroupPassword">
                                                                 <Form.Label>Nova  </Form.Label>
                                                                 <Form.Control type="password" placeholder="Nova Password" />
                                                             </Form.Group>

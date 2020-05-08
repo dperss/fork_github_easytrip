@@ -54,7 +54,7 @@ export default class Alojamentos extends React.Component{
 
                 </Navbar>
 
-                <Jumbotron style = {{width: "350px", marginLeft: "40px", marginTop: "100px" }}>
+                <Jumbotron style = {{width: "350px", marginLeft: "30px", marginTop: "100px" }}>
                     <Form >
                         <FormControl type="text" placeholder = "Para onde?" className="mr-sm-4" />
 
@@ -96,7 +96,7 @@ export default class Alojamentos extends React.Component{
                     </Form.Group>
 
 
-                <CardDeck style = {{ marginTop: "-650px",marginLeft: "125%", width: "90rem", backgroundColor: "secondary",}}>
+                <CardDeck style = {{ marginTop: "-650px",marginLeft: "117%", width: "70rem", backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant = "top" src={Hoteis} />
                         <Card.Body>
@@ -105,7 +105,7 @@ export default class Alojamentos extends React.Component{
                                 This is a wider card with supporting text below as a natural lead-in to
                                 additional content. This content is a little bit longer.
                             </Card.Text>
-                            <Button  variant = "outline-dark">Mostrar</Button>
+                            <Button   variant = "outline-dark">Mostrar</Button>
                         </Card.Body>
 
                     </Card>
@@ -134,7 +134,7 @@ export default class Alojamentos extends React.Component{
 
                     </Card>
                 </CardDeck>
-                <CardDeck style = {{marginTop: "50px", marginLeft: "125%", width: "90rem", backgroundColor: "secondary",}}>
+                <CardDeck style = {{marginTop: "50px", marginLeft: "117%", width: "70rem", backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant = "top" src={Hoteis} />
                         <Card.Body>
@@ -172,7 +172,7 @@ export default class Alojamentos extends React.Component{
 
                     </Card>
                 </CardDeck>
-                <CardDeck  style = {{marginTop: "50px",marginLeft: "125%",width: "90rem", backgroundColor: "secondary",}}>
+                <CardDeck  style = {{marginTop: "50px",marginLeft: "117%",width: "70rem", backgroundColor: "secondary",}}>
                     <Card>
                         <Card.Img variant = "top" src={Hoteis} />
                         <Card.Body>

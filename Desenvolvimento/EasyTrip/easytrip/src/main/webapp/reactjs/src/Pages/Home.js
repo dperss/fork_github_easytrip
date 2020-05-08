@@ -77,7 +77,7 @@ export default class Home extends React.Component{
                     </Jumbotron>
 
                 <FormGroup style = {{ padding: "10px" }}>
-                        <Form.Control  style = {{width: "800px", marginLeft: "550px"}} type = "text" placeholder = "  Para onde vai?" />
+                        <Form.Control  style = {{width: "800px", marginLeft: "400px"}} type = "text" placeholder = "  Para onde vai?" />
 
                 </FormGroup>
                 <FormGroup>
@@ -92,9 +92,9 @@ export default class Home extends React.Component{
 
                     />
                 </FormGroup>
-                <Button variant="outline-dark" type="submit"> Viajar</Button>
+                <Button variant="outline-dark" type="submit" href = "/viajar"> Viajar</Button>
                 <h2 style = {{marginTop: "100px"}}> Melhores classificados </h2>
-                <CardDeck style = {{marginTop: "50px", marginLeft: "12%",width: "90rem",backgroundColor: "secondary",}}>
+                <CardDeck style = {{marginTop: "50px", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
 
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />
@@ -134,7 +134,7 @@ export default class Home extends React.Component{
                     </Card>
                 </CardDeck>
                 <h2 style = {{marginTop: "100px"}}> Mais vistos </h2>
-                <CardDeck style = {{marginTop: "50px", marginLeft: "12%",width: "90rem",backgroundColor: "secondary",}}>
+                <CardDeck style = {{marginTop: "50px", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
 
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />

@@ -10,6 +10,8 @@ import Home from "./Pages/Home";
 import info from "./Pages/info";
 import Alojamentos from "./Pages/Alojamentos";
 import Perfil from "./Pages/Perfil";
+import viajar from "./Pages/viajar";
+
 
 
 function App(){
@@ -21,6 +23,8 @@ function App(){
             <Route exact path = "/info" component = {info}/>
             <Route exact path = "/alojamentos" component = {Alojamentos}/>
             <Route exact path = "/perfil" component={Perfil}/>
+            <Route exact path = "/viajar" component={viajar}/>
+
         </div>
     );
 }
