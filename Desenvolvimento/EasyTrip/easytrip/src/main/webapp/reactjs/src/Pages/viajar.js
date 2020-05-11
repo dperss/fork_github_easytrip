@@ -10,7 +10,7 @@ import {
     Tab,
     Col,
     Jumbotron,
-    Container, FormGroup, CardDeck, Card,
+    Container, FormGroup, CardDeck, Card, Tabs
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Hoteis from "../assets/hoteis.jpg";
@@ -52,7 +52,7 @@ export default class viajar extends React.Component{
                     <Container>
 
                         <Tab.Container id="pills" defaultActiveKey="alojamentos" >
-                            <Row style = {{marginTop: "100px", marginLeft: "-20%"}}>
+                            <Row style = {{marginTop: "100px", marginLeft: "-17%"}}>
                                 <Col sm={3}>
                                     <Nav variant="pills" className="flex-column" >
                                         <Nav.Item>
@@ -166,6 +166,56 @@ export default class viajar extends React.Component{
                                                 </CardDeck>
 
                                             </Jumbotron>
+
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey = "transportes">
+                                            <Form.Group controlId="exampleForm.SelectCustom" style = {{width: "300px"}}>
+                                                <Form.Label>Escolha o tipo de transporte</Form.Label>
+                                                <Form.Control as = "select" >
+                                                    <option>Autocarro</option>
+                                                    <option>Carro</option>
+                                                    <option>Avião</option>
+                                                    <option>Comboio</option>
+                                                </Form.Control>
+                                            </Form.Group>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey = "itinerario">
+                                            <Tabs defaultActiveKey = "criar_itinerario " transition={false} id = "noanim-tab-example">
+                                                <Tab eventKey = "criar_itinerario" title = "Criar Itinerário">
+
+                                                </Tab>
+                                                <Tab eventKey = "outros_itinerarios" title = "Outros Itinerários">
+                                                    <CardDeck style = {{ marginTop: "70px", width: "60rem", backgroundColor: "secondary",}}>
+                                                        <Card>
+                                                            <Card.Img variant = "top" src={Hoteis} />
+                                                            <Card.Body>
+                                                                <Card.Title>Card title</Card.Title>
+                                                                <Card.Text>
+                                                                    This is a wider card with supporting text below as a natural lead-in to
+                                                                    additional content. This content is a little bit longer.
+                                                                </Card.Text>
+                                                                <Button  variant = "outline-dark">Adicionar</Button>
+                                                            </Card.Body>
+
+                                                        </Card>
+                                                    </CardDeck>
+                                                    <CardDeck style = {{ marginTop: "70px", width: "60rem", backgroundColor: "secondary",}}>
+                                                        <Card>
+                                                            <Card.Img variant = "top" src = {Hoteis} />
+                                                            <Card.Body>
+                                                                <Card.Title>Card title</Card.Title>
+                                                                <Card.Text>
+                                                                    This card has supporting text below as a natural lead-in to additional
+                                                                    content.{' '}
+                                                                </Card.Text>
+                                                                <Button  variant = "outline-dark">Adicionar</Button>
+                                                            </Card.Body>
+                                                        </Card>
+
+                                                    </CardDeck>
+                                                </Tab>
+
+                                            </Tabs>
 
                                         </Tab.Pane>
                                     </Tab.Content>

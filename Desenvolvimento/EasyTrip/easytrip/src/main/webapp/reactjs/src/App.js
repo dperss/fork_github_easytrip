@@ -11,6 +11,8 @@ import info from "./Pages/info";
 import Alojamentos from "./Pages/Alojamentos";
 import Perfil from "./Pages/Perfil";
 import viajar from "./Pages/viajar";
+import gestao_pt from "./Pages/gestao_pt";
+import gestao_user from "./Pages/gestao_user";
 
 
 
@@ -24,6 +26,8 @@ function App(){
             <Route exact path = "/alojamentos" component = {Alojamentos}/>
             <Route exact path = "/perfil" component={Perfil}/>
             <Route exact path = "/viajar" component={viajar}/>
+            <Route exact path = "/gestao_pontos" component={gestao_pt}/>
+            <Route exact path = "/gestao_user" component={gestao_user}/>
 
         </div>
     );

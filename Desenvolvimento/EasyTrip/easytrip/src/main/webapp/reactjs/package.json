@@ -19,6 +19,7 @@
     "react-datepicker": "^2.14.1",
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
+    "react-dropbox-chooser": "0.0.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.0.1"
