@@ -12,31 +12,8 @@ export default class Login extends React.Component{
 
     render() {
 
-        const form = {
-            marginTop: "100px",
-            width: "500px",
-            marginLeft: "300px"
-        };
 
 
-        const jum = {
-            backgroundImage: `url(${Background})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover"
-        };
-
-
-        const h1 = {
-            fontFamily: "Hobo Std",
-            fontSize: "70px",
-            textAlign: "left"
-
-        };
-        const bt = {
-            marginTop: "20px",
-
-
-        };
 
 
 
@@ -45,14 +22,14 @@ export default class Login extends React.Component{
             <div >
 
                 <Container>
-                <Jumbotron style = {jum}>
-                    <h1  style = {h1}>
+                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center",backgroundSize: "cover"}}>
+                    <h1  style = {{fontFamily: "Hobo Std",fontSize: "70px",textAlign: "left"}}>
                         Login
                     </h1>
                 </Jumbotron>
                 </Container>
                 <Container >
-                        <Form style = {form}>
+                        <Form style = {{marginTop: "100px",width: "500px",marginLeft: "300px"}}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control  type = "email" placeholder = "Introduza o email" />
@@ -67,7 +44,7 @@ export default class Login extends React.Component{
                             </p>
 
 
-                            <Button style = {bt} variant = "dark" type="submit">
+                            <Button style = {{marginTop: "20px"}} variant = "dark" type="submit" href = "/">
                                 Confirmar
                             </Button>
 
