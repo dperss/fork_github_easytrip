@@ -1,41 +1,46 @@
-package com.easytrip.easytrip.model;
+package com.easytrip.easytrip.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "persons")
-public class Person extends AuditModel {
+public class Person{
 
     @Id
-    @GeneratedValue(generator = "question_generator")
-    @SequenceGenerator(
-            name = "question_generator",
-            sequenceName = "question_sequence",
-            initialValue = 1000
-    )
+    @GeneratedValue
     private Long id;
 
-
-    @NotBlank
-    @Column(unique = true)
+    @NotNull
     private String email;
 
-    @NotBlank
-    @Size(min= 4,max = 1000)
+    @NotNull
     private String password;//check securitys hash of srping
 
-
-    @Size(min= 0,max = 1000)
+    @NotNull
     private String nome;
 
-    @Column(columnDefinition="VARCHAR(100)")
+    @NotNull
     private String description;
 
+    @NotNull
     private int type;
 
+    @NotNull
     private int status;
+
+    public Person() {
+    }
+
+    public Person(@NotNull String email, @NotNull String password, String nome, String description, int type, int status) {
+        this.email = email;
+        this.password = password;
+        this.nome = nome;
+        this.description = description;
+        this.type = type;
+        this.status = status;
+    }
 
     public void setId(Long id){
         this.id = id;
