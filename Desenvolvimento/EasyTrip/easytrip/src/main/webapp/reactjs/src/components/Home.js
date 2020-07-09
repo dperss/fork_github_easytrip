@@ -5,22 +5,19 @@ import 'react-dates/lib/css/_datepicker.css';
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Background from "../assets/imagem.png";
+import Background from "../assets/images/imagem.png";
 import {
     Jumbotron,
-    Nav,
-    Navbar,
     Form,
     FormControl,
     Button,
-    NavDropdown,
     FormGroup,
     Card,
     CardDeck
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
-import Hoteis from "../assets/hoteis.jpg";
-import Resort from "../assets/e24547b6d0b63924294191179d76e798.jpg";
+import Hoteis from "../assets/images/hoteis.jpg";
+import Resort from "../assets/images/e24547b6d0b63924294191179d76e798.jpg";
 
 moment.locale("pt");
 
@@ -47,24 +44,13 @@ export default class Home extends React.Component{
 
             <div  >
 
-                    <Navbar bg = "dark" variant = "dark" fixed = "top">
-                        <Navbar.Brand style = {{fontFamily: "Hobo Std"}}>EasyTrip</Navbar.Brand>
-                        <NavDropdown title = "" id = "basic-nav-dropdown">
-                            <NavDropdown.Item href = "/login">Login</NavDropdown.Item>
-                            <NavDropdown.Item href = "/registo">Registo</NavDropdown.Item>
-                            <NavDropdown.Item href = "/perfil">Perfil</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav className="mr-auto">
-                            <Nav.Link href="/alojamentos">Alojamentos</Nav.Link>
 
-
-                        </Nav>
                         <Form inline>
                             <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
                             <Button  variant="outline-light">Procura</Button>
                         </Form>
 
-                    </Navbar>
+
 
 
 

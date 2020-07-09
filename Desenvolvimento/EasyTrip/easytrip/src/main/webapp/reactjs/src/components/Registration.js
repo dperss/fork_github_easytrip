@@ -3,7 +3,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Container, Form, InputGroup, Col, Jumbotron, Button} from "react-bootstrap";
-import Background from "../assets/imagem.png";
+import Background from "../assets/images/imagem.png";
 
 
 

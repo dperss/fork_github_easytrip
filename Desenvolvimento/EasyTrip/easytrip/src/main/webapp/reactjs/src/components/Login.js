@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
-import Background from '../assets/imagem.png';
+import Background from '../assets/images/imagem.png';
 
 
 
@@ -11,10 +11,6 @@ import {Form, Button, Container, Jumbotron} from 'react-bootstrap';
 export default class Login extends React.Component{
 
     render() {
-
-
-
-
 
 
 
