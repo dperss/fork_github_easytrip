@@ -10,7 +10,7 @@ public interface Resource<T> {
 	@GetMapping("/search/{searchText}")
     ResponseEntity<Page<T>> findAll(Pageable pageable, @PathVariable String searchText);
 
-	@GetMapping
+    @GetMapping
     ResponseEntity<Page<T>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir);
 	
 	@GetMapping("{id}")

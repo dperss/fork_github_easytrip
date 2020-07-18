@@ -23,7 +23,7 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for(int i=1; i<=1000; i++) {
+		for(int i=1; i<=10; i++) {
 
 
 			Person person = new Person("email" + i,"email","Diogo Ramos" + i,"teste",1,2);

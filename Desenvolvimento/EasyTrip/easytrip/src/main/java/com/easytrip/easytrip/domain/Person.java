@@ -18,16 +18,16 @@ public class Person{
     @NotNull
     private String password;//check securitys hash of srping
 
-    @NotNull
+
     private String nome;
 
-    @NotNull
+
     private String description;
 
-    @NotNull
+
     private int type;
 
-    @NotNull
+
     private int status;
 
     public Person() {

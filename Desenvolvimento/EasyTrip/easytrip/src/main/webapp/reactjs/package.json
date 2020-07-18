@@ -25,8 +25,12 @@
     "react-dates": "^21.8.0",
     "react-dom": "^16.13.1",
     "react-dropbox-chooser": "0.0.5",
+    "react-fontawesome": "^1.7.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "store": "^2.0.12",
     "styled-components": "^5.0.1"
   },
   "scripts": {

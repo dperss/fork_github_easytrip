@@ -1,18 +1,57 @@
-import React from "react";
+import React,{Component} from "react";
+import {Card,Table} from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Container, Form, InputGroup, Col, Jumbotron, Button} from "react-bootstrap";
 import Background from "../assets/images/imagem.png";
+import axios from 'axios';
 
 
+export default class Registo extends Component{
 
-export default class Registo extends React.Component{
+    constructor(props){
+    super(props);
+    this.state = this.initialState;
+    this.personChange = this.personChange.bind(this);
+    this.submitPerson = this.submitPerson.bind(this);
+    }
+
+    initialState ={
+    email:'',
+    password:'',
+    nome:''
+    };
+
+    submitPerson = event => {
+
+        event.preventDefault();
+
+        const person = {
+        email: this.state.email,
+        password:this.state.password,
+        nome:this.state.nome
+        };
+
+        axios.post("http://localhost:8081/rest/persons",person)
+            .then(response => {
+                if(response.data != null){
+                this.setState(this.initialState);
+                alert("Person  Sucessfully");
+                }
+            });
+    }
+
+    personChange = event => {
+            this.setState({
+                [event.target.name]:event.target.value
+            });
+    }
+
 
 
     render(){
-
-
+    const {email,password,nome} = this.state;
        return (
            <div >
                <Container>
@@ -24,49 +63,51 @@ export default class Registo extends React.Component{
                    </Jumbotron>
 
 
-                <Form style = {{marginTop: "100px"}}>
-                    <Form.Row >
-                        <Form.Group  as={Col} md="4" controlId="validationCustomUsername">
-                            <Form.Label>Username</Form.Label>
-                            <InputGroup>
-                                <InputGroup.Prepend>
-                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required/>
-                                <Form.Control.Feedback type="invalid">
-                                    Por favor escolha outro username.
-                                </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
-                        <Form.Group as={Col} md="4" controlId="validationCustom01">
-                            <Form.Label>Primeiro Nome</Form.Label>
-                            <Form.Control required type="text" placeholder="Primeiro Nome"/>
-                        </Form.Group>
-                        <Form.Group as={Col} md="4" controlId="validationCustom02">
-                            <Form.Label>Último Nome</Form.Label>
-                            <Form.Control required type="text" placeholder="Último Nome"/>
+
+
+                <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+
+                        <Form.Group  controlId="formGridEmail">
+                          <Form.Label>Email</Form.Label>
+                          <Form.Control required autoComplete="on"
+                          type="email" name="email"
+                          value={email}
+                          onChange={this.personChange}
+                          placeholder="Enter email" />
                         </Form.Group>
 
-                    </Form.Row>
-                    <Form.Row>
-                        <Form.Group as = {Col} controlId = "formGridEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type = "email" placeholder = "Introduza o email" />
+                      <Form.Group controlId="formGridPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control required autoComplete="off"
+                        type="password" name="password"
+                        value={password}
+                        onChange={this.personChange}
+                        placeholder="Password" />
+                      </Form.Group>
+
+                      <Form.Group controlId="formGridConfirm_Password">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control required autoComplete="off"
+                        type="password" name="confirm_password"
+                         placeholder="Confirm Password" />
+                      </Form.Group>
+
+
+                        <Form.Group  controlId="formGridNome">
+                          <Form.Label>Nome</Form.Label>
+                          <Form.Control autoComplete="off"
+                          type="text"
+                          name="nome"
+                          value={nome}
+                          onChange={this.personChange}
+                          placeholder="Nome" />
                         </Form.Group>
 
-                        <Form.Group as = {Col} controlId = "formGroupPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type = "password"
-                                          placeholder = "Password"
-                            />
-                        </Form.Group>
-                    </Form.Row>
+                      <Button variant="primary" type="submit">
+                        Submit
+                      </Button>
                 </Form>
-                <Button style = {{marginTop: "100px"}} variant="dark" type="submit">
-                    Confirmar
-                </Button>
+
                </Container>
 
            </div>

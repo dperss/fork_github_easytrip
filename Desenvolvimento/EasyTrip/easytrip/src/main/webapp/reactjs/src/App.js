@@ -8,7 +8,7 @@ import NavigationBar from './components/NavigationBar';
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-import User_Management from "./components/User_Management";
+import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
 
 
@@ -24,9 +24,9 @@ export default function App() {
                 <Col lg={12} className={"margin-top"}>
                     <Switch>
                         <Route path="/Home" exact component={Home}/>
-                        <Route path="/login" exact component={Login}/>
-                        <Route path="/registration" exact component={Registration}/>
-                        <Route path="/User_Management" exact component={User_Management}/>
+                        <Route path="/Login" exact component={Login}/>
+                        <Route path="/Registration" exact component={Registration}/>
+                        <Route path="/PersonList" exact component={PersonList}/>
                     </Switch>
                 </Col>
             </Row>
