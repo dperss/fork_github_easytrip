@@ -18,7 +18,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 # GET
 	http://localhost:8081/rest/persons
-
+    http://localhost:8081/rest/persons?pageNumber=0&pageSize=5&sortBy=email&sortDir=asc
+    
 # GET By ID
 	http://localhost:8081/rest/persons/100
 
