@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {deletePerson} from './../services/index';
 
 import './../assets/css/Style.css';
-import {Card, Table, Image, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
+import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, faFastForward, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
@@ -195,9 +195,9 @@ class PersonList extends Component {
                                     </tr> :
                                     persons.map((person) => (
                                     <tr key={person.id}>
+                                        <td>{person.nome}</td>
                                         <td>{person.email}</td>
                                         <td>{person.password}</td>
-                                        <td>{person.nome}</td>
                                         <td>{person.description}</td>
                                         <td>{person.type}</td>
                                         <td>{person.status}</td>

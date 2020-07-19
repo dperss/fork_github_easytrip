@@ -10,33 +10,54 @@ import {Form, Button, Container, Jumbotron} from 'react-bootstrap';
 
 export default class Login extends React.Component{
 
-    render() {
+    constructor(props){
+    super(props);
+    this.state = this.initialState;
 
+    }
+
+    initialState ={
+    id:'',
+    email:'',
+    password:'',
+    };
+
+
+    render() {
+    const {email,password} = this.state;
 
 
         return (
             <div >
 
                 <Container>
-                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center",backgroundSize: "cover"}}>
-                    <h1  style = {{fontFamily: "Hobo Std",fontSize: "70px",textAlign: "left"}}>
-                        Login
+                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
+                    <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
+                    Login
                     </h1>
                 </Jumbotron>
                 </Container>
                 <Container >
-                        <Form style = {{marginTop: "100px",width: "500px",marginLeft: "300px"}}>
-                            <Form.Group controlId="formBasicEmail">
+                            <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+                            <Form.Group  controlId="formGridEmail">
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control  type = "email" placeholder = "Introduza o email" />
+                                <Form.Control required autoComplete="on"
+                                type="email" name="email"
+                                value={email}
+                                onChange={this.personChange}
+                                placeholder="Enter email" />
                             </Form.Group>
 
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label >Password</Form.Label>
-                                <Form.Control type = "password" placeholder = "Password" />
+                            <Form.Group controlId="formGridPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control required autoComplete="off"
+                                type="password" name="password"
+                                value={password}
+                                onChange={this.personChange}
+                                placeholder="Password" />
                             </Form.Group>
                             <p> Ainda não tem conta?
-                                <a href = "/registo" > Registe-se</a>
+                                <a href = "/registration" > Registe-se</a>
                             </p>
 
 

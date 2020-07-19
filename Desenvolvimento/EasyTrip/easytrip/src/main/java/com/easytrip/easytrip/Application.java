@@ -26,7 +26,7 @@ public class Application implements CommandLineRunner {
 		for(int i=1; i<=10; i++) {
 
 
-			Person person = new Person("email" + i,"email","Diogo Ramos" + i,"teste",1,2);
+			Person person = new Person("email@email.com" + i,"password","Diogo Ramos" + i,"teste",1,2);
 
 			servicePerson.saveOrUpdate(person);
 

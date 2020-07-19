@@ -1,9 +1,9 @@
 import React,{Component} from "react";
-import {Card,Table} from 'react-bootstrap';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {Container, Form, InputGroup, Col, Jumbotron, Button} from "react-bootstrap";
+import {Container, Form, Jumbotron, Button} from "react-bootstrap";
 import Background from "../assets/images/imagem.png";
 import axios from 'axios';
 import MyToast from './MyToast';
@@ -20,10 +20,13 @@ export default class Registo extends Component{
     }
 
     initialState ={
+    id:'',
     email:'',
     password:'',
+    confirm_password:'',
     nome:''
     };
+
 
     submitPerson = event => {
 
@@ -35,6 +38,7 @@ export default class Registo extends Component{
         nome:this.state.nome
         };
 
+        if(this.state.password === this.state.confirm_password){
         axios.post("http://localhost:8081/rest/persons",person)
             .then(response => {
                 if(response.data != null){
@@ -45,18 +49,24 @@ export default class Registo extends Component{
                 }
             });
             this.setState(this.initialState);
+         }else{
+            //Meter mensagem de erro passwords não serem iguais
+         }
+
     }
 
     personChange = event => {
             this.setState({
                 [event.target.name]:event.target.value
             });
+
+
     }
 
 
 
     render(){
-    const {email,password,nome} = this.state;
+    const {email,password,nome,confirm_password} = this.state;
        return (
        <div>
             <div style={{"display":this.state.show ? "block" : "none"}}>
@@ -102,7 +112,9 @@ export default class Registo extends Component{
                                     <Form.Label>Confirm Password</Form.Label>
                                     <Form.Control required autoComplete="off"
                                     type="password" name="confirm_password"
-                                     placeholder="Confirm Password" />
+                                    value={confirm_password}
+                                    onChange={this.personChange}
+                                    placeholder="Confirm Password" />
                                   </Form.Group>
 
 
