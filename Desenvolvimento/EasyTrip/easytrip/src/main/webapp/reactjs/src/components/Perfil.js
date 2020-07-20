@@ -15,7 +15,8 @@ import {
 } from "react-bootstrap";
 
 
-import Background from "../assets/imagem.png";
+import Background from "../assets/images/imagem.png";
+
 
 
 
@@ -32,24 +33,8 @@ export default class Perfil extends React.Component {
         return (
 
             <div>
-                <Navbar bg="dark" variant="dark" fixed = "top">
-                    <Navbar.Brand style = {{fontFamily: "Hobo Std"}} href = "/">EasyTrip</Navbar.Brand>
-                    <NavDropdown title="" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/info">Informações</NavDropdown.Item>
 
 
-                    </NavDropdown>
-                    <Nav className="mr-auto">
-                        <Nav.Link href = "/alojamentos">Alojamentos</Nav.Link>
-
-
-                    </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-4" />
-                        <Button  variant="outline-light">Search</Button>
-                    </Form>
-
-                </Navbar>
                 <Container>
                     <Jumbotron style = {{backgroundImage: `url(${Background})`,
                         backgroundPosition: "center",

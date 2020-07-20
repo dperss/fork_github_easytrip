@@ -10,10 +10,11 @@ import Login from "./components/Login";
 import Registration from "./components/Registration";
 import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
-
+import Perfil from "./components/Perfil";
 
 
 export default function App() {
+
 
 
   return (
@@ -23,10 +24,12 @@ export default function App() {
             <Row>
                 <Col lg={12} className={"margin-top"}>
                     <Switch>
+                        <Route path="/" exact component={Home} />
                         <Route path="/Home" exact component={Home}/>
                         <Route path="/Login" exact component={Login}/>
                         <Route path="/Registration" exact component={Registration}/>
                         <Route path="/PersonList" exact component={PersonList}/>
+                        <Route path="/Perfil" exact component={Perfil}/>
                     </Switch>
                 </Col>
             </Row>
@@ -34,5 +37,6 @@ export default function App() {
         <Footer/>
     </Router>
   );
+
 }
 

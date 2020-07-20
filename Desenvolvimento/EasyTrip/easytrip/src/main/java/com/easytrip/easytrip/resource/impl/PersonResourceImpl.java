@@ -43,6 +43,7 @@ public class PersonResourceImpl implements Resource<Person> {
         return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
     }
 
+
     @Override
     public ResponseEntity<Person> save(Person person) {
         return new ResponseEntity<>(personService.saveOrUpdate(person), HttpStatus.CREATED);

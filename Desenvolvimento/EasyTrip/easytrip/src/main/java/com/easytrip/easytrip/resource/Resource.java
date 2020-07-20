@@ -15,6 +15,7 @@ public interface Resource<T> {
 	
 	@GetMapping("{id}")
     ResponseEntity<T> findById(@PathVariable Long id);
+
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     ResponseEntity<T> save(@RequestBody T t);

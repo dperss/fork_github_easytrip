@@ -42,7 +42,7 @@ export default class Home extends React.Component{
 
         return (
 
-            <div  >
+            <div style = {{width: "80%"}} >
 
 
                         <Form inline>
@@ -63,7 +63,7 @@ export default class Home extends React.Component{
                     </Jumbotron>
 
                 <FormGroup style = {{ padding: "10px" }}>
-                        <Form.Control  style = {{width: "800px", marginLeft: "400px"}} type = "text" placeholder = "  Para onde vai?" />
+                        <Form.Control   type = "text" placeholder = "  Para onde vai?" />
 
                 </FormGroup>
                 <FormGroup>
@@ -79,8 +79,8 @@ export default class Home extends React.Component{
                     />
                 </FormGroup>
                 <Button variant="outline-dark" type="submit" href = "/viajar"> Viajar</Button>
-                <h2 style = {{marginTop: "100px"}}> Melhores classificados </h2>
-                <CardDeck style = {{marginTop: "50px", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
+                <h2 style = {{marginTop: "10%"}}> Melhores classificados </h2>
+                <CardDeck style = {{marginTop: "5%", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
 
                     <Card>
                         <Card.Img variant="top" src={Hoteis} />

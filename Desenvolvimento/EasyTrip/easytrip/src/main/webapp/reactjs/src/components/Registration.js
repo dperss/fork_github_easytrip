@@ -1,8 +1,5 @@
 import React,{Component} from "react";
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import {Container, Form, Jumbotron, Button} from "react-bootstrap";
 import Background from "../assets/images/imagem.png";
 import axios from 'axios';
