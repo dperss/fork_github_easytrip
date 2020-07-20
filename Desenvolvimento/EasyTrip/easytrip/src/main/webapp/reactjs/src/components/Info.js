@@ -61,15 +61,6 @@ export default class Info extends React.Component{
                     </Tab.Container>
                 </Container>
 
-
-
-
-
-
-
-
-
-
             </div>
 
         );
