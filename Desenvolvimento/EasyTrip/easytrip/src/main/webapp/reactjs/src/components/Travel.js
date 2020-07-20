@@ -13,13 +13,14 @@ import {
     Container, FormGroup, CardDeck, Card, Tabs
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
-import Hoteis from "../assets/hoteis.jpg";
+import Hoteis from "../assets/images/hoteis.jpg";
 
 
 
 
 
-export default class viajar extends React.Component{
+
+export default class Travel extends React.Component{
 
     constructor(props) {
         super(props);
@@ -33,21 +34,7 @@ export default class viajar extends React.Component{
 
         return(
             <div>
-                <Navbar bg = "dark" variant = "dark" fixed = "top">
-                    <Navbar.Brand href = "/" style = {{fontFamily: "Hobo Std"}} >EasyTrip</Navbar.Brand>
-                    <NavDropdown title = "" id = "basic-nav-dropdown">
-                        <NavDropdown.Item href = "/perfil">Perfil</NavDropdown.Item>
-                        <NavDropdown.Item >LogOut</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav className="mr-auto">
 
-                    </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" icon = "search" />
-                        <Button  variant="outline-light" >Procura</Button>
-                    </Form>
-
-                </Navbar>
 
                     <Container>
 

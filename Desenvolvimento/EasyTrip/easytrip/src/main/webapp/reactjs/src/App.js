@@ -11,10 +11,11 @@ import Registration from "./components/Registration";
 import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
 import Perfil from "./components/Perfil";
+import Accommodation from "./components/Accommodation";
+import Travel from "./components/Travel";
 
 
 export default function App() {
-
 
 
   return (
@@ -30,6 +31,8 @@ export default function App() {
                         <Route path="/Registration" exact component={Registration}/>
                         <Route path="/PersonList" exact component={PersonList}/>
                         <Route path="/Perfil" exact component={Perfil}/>
+                        <Route path="/Accommodation" exact component={Accommodation}/>
+                        <Route path="/Travel" exact component={Travel}/>
                     </Switch>
                 </Col>
             </Row>

@@ -14,14 +14,15 @@ import {
 } from "react-bootstrap";
 
 
-import Hoteis from "../assets/hoteis.jpg";
-import Resort from "../assets/e24547b6d0b63924294191179d76e798.jpg";
+import Hoteis from "../assets/images/hoteis.jpg";
+import Resort from "../assets/images/e24547b6d0b63924294191179d76e798.jpg";
+
 import {DateRangePicker} from "react-dates";
 
 
 
 
-export default class Alojamentos extends React.Component{
+export default class Accommodation extends React.Component{
 
     constructor(props) {
         super(props);
@@ -36,23 +37,7 @@ export default class Alojamentos extends React.Component{
 
         return(
             <div>
-                <Navbar bg = "dark" variant = "dark" fixed = "top">
-                    <Navbar.Brand href = "/" style = {{fontFamily: "Hobo Std"}} >EasyTrip</Navbar.Brand>
-                    <NavDropdown title = "" id = "basic-nav-dropdown">
-                        <NavDropdown.Item href = "/login">Login</NavDropdown.Item>
-                        <NavDropdown.Item href = "/registo">Registo</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav className="mr-auto">
 
-
-
-                    </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" icon = "search" />
-                        <Button  variant="outline-light" >Procura</Button>
-                    </Form>
-
-                </Navbar>
 
                 <Jumbotron style = {{width: "350px", marginLeft: "30px", marginTop: "100px" }}>
                     <Form >
