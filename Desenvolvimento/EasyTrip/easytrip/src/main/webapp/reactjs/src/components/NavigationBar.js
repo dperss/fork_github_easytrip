@@ -46,14 +46,6 @@ constructor(props) {
              {button}
 
 
-
-
-
-
-
-
-
-
         </Navbar>
 
     );
@@ -70,6 +62,8 @@ function UserGreeting(props) {
     <Link to={"Travel"} className="nav-link">Viajar</Link>
     <Link to={"Accommodation"} className="nav-link">Alojamento</Link>
     <Link to={"PersonList"} className="nav-link">Gestão de Pessoas</Link>
+    <Link to={"PointList"} className="nav-link">Lista de pontos</Link>
+    <Link to={"Profile"} className="nav-link">Perfil</Link>
   </Nav>
 
   /*<Dropdown >
@@ -81,7 +75,6 @@ function UserGreeting(props) {
             <Dropdown.Item href="/Logout">Logout</Dropdown.Item>
         </Dropdown.Menu>
   </Dropdown>*/
-
 
 )
 };

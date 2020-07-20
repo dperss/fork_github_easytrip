@@ -20,7 +20,7 @@ import Background from "../assets/images/imagem.png";
 
 
 
-export default class Perfil extends React.Component {
+export default class Profile extends React.Component {
 
     render() {
 

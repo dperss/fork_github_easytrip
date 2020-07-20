@@ -42,25 +42,25 @@ export default class Home extends React.Component{
 
         return (
 
-            <div style = {{width: "80%"}} >
-
-
-                        <Form inline>
-                            <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
-                            <Button  variant="outline-light">Procura</Button>
-                        </Form>
+            <div >
 
 
 
 
 
-                    <Jumbotron  style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", height: "180px"}}>
 
-                        <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px",textAlign: "left"}}>
-                            Bem Vindo!
-                        </h1>
 
-                    </Jumbotron>
+                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
+                    <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
+                    Bem Vindo!
+                    </h1>
+                </Jumbotron>
+                <Form inline>
+                     <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
+                     <Button  variant="outline-light">Procura</Button>
+                 </Form>
+
+
 
                 <FormGroup style = {{ padding: "10px" }}>
                         <Form.Control   type = "text" placeholder = "  Para onde vai?" />
@@ -159,18 +159,6 @@ export default class Home extends React.Component{
 
                     </Card>
                 </CardDeck>
-
-
-
-        <footer style = {{width: "150px"}}>
-            <a href = "/info" > Sobre EasyTrip</a>
-        </footer>
-
-
-
-
-
-
 
 
 

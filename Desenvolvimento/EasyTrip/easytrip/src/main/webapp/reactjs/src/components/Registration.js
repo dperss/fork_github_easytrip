@@ -68,7 +68,6 @@ export default class Registo extends Component{
        <div>
             <div style={{"display":this.state.show ? "block" : "none"}}>
                 <MyToast show = {this.state.show} message = {"Registo bem sucedido."} type = {"success"}/>
-
             </div>
 
 

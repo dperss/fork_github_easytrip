@@ -10,9 +10,11 @@ import Login from "./components/Login";
 import Registration from "./components/Registration";
 import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
-import Perfil from "./components/Perfil";
+import Profile from "./components/Profile";
 import Accommodation from "./components/Accommodation";
 import Travel from "./components/Travel";
+import Info from "./components/Info";
+import PointList from "./components/PointList";
 
 
 export default function App() {
@@ -30,9 +32,11 @@ export default function App() {
                         <Route path="/Login" exact component={Login}/>
                         <Route path="/Registration" exact component={Registration}/>
                         <Route path="/PersonList" exact component={PersonList}/>
-                        <Route path="/Perfil" exact component={Perfil}/>
+                        <Route path="/Profile" exact component={Profile}/>
                         <Route path="/Accommodation" exact component={Accommodation}/>
                         <Route path="/Travel" exact component={Travel}/>
+                        <Route path="/Info" exact component={Info}/>
+                        <Route path="/PointList" exact component={PointList}/>
                     </Switch>
                 </Col>
             </Row>

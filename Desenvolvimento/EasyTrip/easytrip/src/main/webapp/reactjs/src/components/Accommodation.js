@@ -10,7 +10,8 @@ import {
     Card,
     CardDeck,
     Pagination,
-    Jumbotron, FormGroup
+    Jumbotron,
+    FormGroup
 } from "react-bootstrap";
 
 
@@ -200,9 +201,7 @@ export default class Accommodation extends React.Component{
                 <Pagination>
 
                 </Pagination>
-                <footer style = {{width: "150px"}}>
-                    <a href = "/info" > Sobre EasyTrip</a>
-                </footer>
+
 
             </div>
 

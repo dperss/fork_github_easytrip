@@ -1,10 +1,10 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Container, Form, FormControl, Jumbotron, Nav, Navbar,Tab, Row, Col, NavDropdown} from "react-bootstrap";
-import Background from "../assets/imagem.png";
+import Background from "../assets/images/imagem.png";
 
 
-export default class info extends React.Component{
+export default class Info extends React.Component{
     render(){
 
 
@@ -12,26 +12,10 @@ export default class info extends React.Component{
 
         return(
             <div>
-                <Navbar bg="dark" variant="dark" fixed = "top">
-                    <Navbar.Brand href = "/" style = {{fontFamily: "Hobo Std"}}>EasyTrip</Navbar.Brand>
-                    <NavDropdown title="" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/registo">Registo</NavDropdown.Item>
-
-                    </NavDropdown>
-                    <Nav className="mr-auto">
-                        <Nav.Link href = "/alojamentos">Alojamentos</Nav.Link>
 
 
-                    </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
-                        <Button  variant="outline-light">Procura</Button>
-                    </Form>
-
-                </Navbar>
                 <Container>
-                    <Jumbotron style = {{backgroundImage: `url(${Background})`,backgroundPosition: "center",backgroundSize: "cover",width: "100vh"}}>
+                    <Jumbotron style = {{backgroundImage: `url(${Background})`,backgroundPosition: "center",backgroundSize: "cover", width: "115%"}}>
                         <h1 style = {{textAlign: "left",fontFamily: "Hobo Std",fontSize: "70px"}}>
                             Informações
                         </h1>
