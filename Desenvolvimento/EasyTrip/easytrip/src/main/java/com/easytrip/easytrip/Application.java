@@ -1,8 +1,7 @@
 package com.easytrip.easytrip;
 
 
-
-import com.easytrip.easytrip.domain.Person;
+import com.easytrip.easytrip.domain.User;
 import com.easytrip.easytrip.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +14,11 @@ public class Application implements CommandLineRunner {
 
 
 	@Autowired
-	private IService<Person> servicePerson;
+	private IService<User> servicePerson;
+	/*@Autowired
+	private IService<Travel> serviceTravel;*/
+
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -26,9 +29,12 @@ public class Application implements CommandLineRunner {
 		for(int i=1; i<=10; i++) {
 
 
-			Person person = new Person("email@email.com" + i,"password","Diogo Ramos" + i,"teste",1,2);
+			User user = new User("email@email.com" + i,"password","Diogo Ramos" + i,"teste");
+			//Travel travel= new Travel("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
 
-			servicePerson.saveOrUpdate(person);
+			//serviceTravel.saveOrUpdate(travel);
+			servicePerson.saveOrUpdate(user);
+
 
 
 

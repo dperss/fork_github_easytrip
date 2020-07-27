@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Person{
+public class User {
 
     @Id
     @GeneratedValue
@@ -25,21 +25,14 @@ public class Person{
     private String description;
 
 
-    private int type;
-
-
-    private int status;
-
-    public Person() {
+    public User() {
     }
 
-    public Person(@NotNull String email, @NotNull String password, String nome, String description, int type, int status) {
+    public User(@NotNull String email, @NotNull String password, String nome, String description) {
         this.email = email;
         this.password = password;
         this.nome = nome;
         this.description = description;
-        this.type = type;
-        this.status = status;
     }
 
     public void setId(Long id){
@@ -78,20 +71,5 @@ public class Person{
         return description;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
 }

@@ -10,6 +10,8 @@ public interface IService<T> {
 	
 	T findById(Long id);
 
+	T findByEmail(String email);
+
 	T saveOrUpdate(T t);
 	
 	String deleteById(Long id);

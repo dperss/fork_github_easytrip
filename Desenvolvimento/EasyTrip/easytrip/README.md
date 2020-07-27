@@ -17,17 +17,19 @@ Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 # GET
-	http://localhost:8081/rest/persons
-    http://localhost:8081/rest/persons?pageNumber=0&pageSize=5&sortBy=email&sortDir=asc
+    http://localhost:8081/rest/users?pageNumber=0&pageSize=5&sortBy=email&sortDir=asc
     
 # GET By ID
-	http://localhost:8081/rest/persons/100
+	http://localhost:8081/rest/users/10
 
+# GET By Email
+		http://localhost:8081/rest/users/email/test@test.co
+	
 # POST
-	http://localhost:8081/rest/persons
+	http://localhost:8081/rest/users
 
 # PUT
-	http://localhost:8081/rest/persons
+	http://localhost:8081/rest/users
 
 # DELETE
-	http://localhost:8081/rest/persons/100
+	http://localhost:8081/rest/persons/10
