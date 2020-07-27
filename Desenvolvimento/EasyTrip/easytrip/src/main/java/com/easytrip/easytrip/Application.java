@@ -29,7 +29,7 @@ public class Application implements CommandLineRunner {
 		for(int i=1; i<=10; i++) {
 
 
-			User user = new User("email@email.com" + i,"password","Diogo Ramos" + i,"teste");
+			User user = new User("email@email.com" + i,"password","Diogo Ramos" + i,"teste","https://randomuser.me/api/portraits/med/men/67.jpg");
 			//Travel travel= new Travel("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
 
 			//serviceTravel.saveOrUpdate(travel);

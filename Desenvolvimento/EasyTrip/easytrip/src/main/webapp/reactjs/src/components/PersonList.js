@@ -39,7 +39,7 @@ class PersonList extends Component {
 
     findAllPersons(currentPage) {
             currentPage -= 1;
-            axios.get("http://localhost:8081/rest/persons?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+            axios.get("http://localhost:8081/rest/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
                 .then(response => response.data)
                 .then((data) => {
                     this.setState({

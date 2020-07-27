@@ -33,3 +33,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 # DELETE
 	http://localhost:8081/rest/persons/10
+	
+	
+	
+http://localhost:8081/swagger-ui/index.html?url=/v3/api-docs
