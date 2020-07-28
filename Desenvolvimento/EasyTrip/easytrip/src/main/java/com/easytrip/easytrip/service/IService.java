@@ -10,7 +10,7 @@ public interface IService<T> {
 	
 	T findById(Long id);
 
-	T findByEmail(String email);
+	T findByUsername(String username);
 
 	T saveOrUpdate(T t);
 	

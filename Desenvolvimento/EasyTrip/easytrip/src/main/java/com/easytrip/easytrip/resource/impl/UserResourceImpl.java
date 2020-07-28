@@ -51,9 +51,9 @@ public class UserResourceImpl implements Resource<User> {
     }
 
     @Override
-    public ResponseEntity<User> findByEmail(String email) {
+    public ResponseEntity<User> findByUsername(String username) {
         try{
-        return new ResponseEntity<>(userService.findByEmail(email), HttpStatus.OK);}
+        return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);}
         catch (Exception e){
             System.out.println("User does´t exist");
             return null;
@@ -64,17 +64,19 @@ public class UserResourceImpl implements Resource<User> {
 
     @Override
     public ResponseEntity<User> save(User user) {
-        System.out.println("updateUser");
+        System.out.println("User created");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<User> update(User user) {
+        System.out.println("User Updated");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<String> deleteById(Long id) {
+        System.out.println("User deleted ID:" + id);
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);
     }
 

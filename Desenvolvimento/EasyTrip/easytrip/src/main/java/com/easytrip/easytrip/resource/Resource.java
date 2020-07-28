@@ -20,7 +20,7 @@ public interface Resource<T> {
     ResponseEntity<T> findById(@PathVariable Long id);
 
     @GetMapping("/email/{email}")
-    ResponseEntity<T> findByEmail(@PathVariable String email);
+    ResponseEntity<T> findByUsername(@PathVariable String username);
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @PreAuthorize("hasAuthority('user:write')")

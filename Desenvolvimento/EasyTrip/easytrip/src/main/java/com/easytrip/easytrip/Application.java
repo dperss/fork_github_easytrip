@@ -9,14 +9,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+
 public class Application implements CommandLineRunner {
 
 
 
 	@Autowired
-	private IService<User> servicePerson;
+	private IService<User> serviceUser;
 	/*@Autowired
 	private IService<Travel> serviceTravel;*/
+
 
 
 
@@ -26,19 +28,31 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for(int i=1; i<=10; i++) {
 
 
-			User user = new User("email@email.com" + i,"password","Diogo Ramos" + i,"teste","https://randomuser.me/api/portraits/med/men/67.jpg");
+
+			User user = new User(
+					"diogo" ,
+					"123",
+					"Diogo Ramos",
+					"teste",
+					"https://o7planning.org/templates/o7planning/resources/icons/triceratops.png",
+					"ADMIN",
+					true,
+					true,
+					true,
+					true
+					);
+
 			//Travel travel= new Travel("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
 
 			//serviceTravel.saveOrUpdate(travel);
-			servicePerson.saveOrUpdate(user);
+			serviceUser.saveOrUpdate(user);
 
 
 
 
-		}
+
 	}
 
 }

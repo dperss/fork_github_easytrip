@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import static com.easytrip.easytrip.Security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
+
     USER(Sets.newHashSet(USER_READ,USER_WRITE)),
     USER_BLOCKED(Sets.newHashSet(USER_READ)),
     ADMIN(Sets.newHashSet(USER_READ,USER_WRITE,TRAVEL_READ,TRAVEL_WRITE));

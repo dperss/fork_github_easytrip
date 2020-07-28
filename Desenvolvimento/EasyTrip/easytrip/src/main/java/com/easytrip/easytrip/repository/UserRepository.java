@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("FROM User b WHERE b.nome LIKE %:searchText% OR b.email LIKE %:searchText%  ")
-    Page<User> findAllPersons(Pageable pageable, @Param("searchText") String searchText);
+    @Query("FROM User b WHERE b.nome LIKE %:searchText% OR b.username LIKE %:searchText%  ")
+    Page<User> findAllUsers(Pageable pageable, @Param("searchText") String searchText);
 
-    User findByEmail(String email);
+    User findByUsername(String username);
+
+
 }
