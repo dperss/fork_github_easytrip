@@ -46,7 +46,7 @@ public class Application implements CommandLineRunner {
 					"Diogo Ramos",
 					"teste",
 					"https://o7planning.org/templates/o7planning/resources/icons/triceratops.png",
-					"ADMIN",
+					"USER",
 					true,
 					true,
 					true,

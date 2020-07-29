@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.crypto.SecretKey;
 
-import static com.easytrip.easytrip.Security.ApplicationUserRole.USER;
+import static com.easytrip.easytrip.Security.ApplicationUserRole.*;
 
 
 @Configuration
@@ -48,18 +48,19 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                //.addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig),JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*","/v2/*","/swagger-ui/*","/spring-security-rest/*",
+                .antMatchers("/*").hasRole(USER.name())
+                .antMatchers("/**","/api/**", "index", "/css/*", "/js/*","/v2/*","/swagger-ui/*","/spring-security-rest/*",
                         "/v2/api-docs",
                         "/configuration/ui",
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
-                        "/webjars/**").permitAll()
-                .antMatchers("/*").hasRole(USER.name())
+                        "/webjars/**"
+                        ).permitAll()
+
                 .anyRequest()
                 .authenticated();
     }
