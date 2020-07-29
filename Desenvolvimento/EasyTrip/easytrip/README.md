@@ -36,4 +36,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 	
 	
 	
-http://localhost:8081/swagger-ui/index.html?url=/v3/api-docs
+http://localhost:8081/swagger-ui/index.html
+
+/v2/api-docs

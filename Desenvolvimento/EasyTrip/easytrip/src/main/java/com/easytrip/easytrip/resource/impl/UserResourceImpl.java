@@ -3,6 +3,7 @@ package com.easytrip.easytrip.resource.impl;
 import com.easytrip.easytrip.domain.User;
 import com.easytrip.easytrip.resource.Resource;
 import com.easytrip.easytrip.service.impl.UserServiceImpl;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserResourceImpl implements Resource<User> {
 
@@ -25,6 +26,10 @@ public class UserResourceImpl implements Resource<User> {
 
 
     @Override
+    @ApiOperation(value = "Finds contact bye pages",
+            notes = "tesddsdsd"
+            //response = "Page<User>"
+    )
     public ResponseEntity<Page<User>> findAll(Pageable pageable, String searchText) {
         return new ResponseEntity<>(userService.findAll(pageable, searchText), HttpStatus.OK);
     }

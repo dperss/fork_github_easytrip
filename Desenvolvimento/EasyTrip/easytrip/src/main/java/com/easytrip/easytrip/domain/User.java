@@ -1,5 +1,7 @@
 package com.easytrip.easytrip.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,13 +16,16 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
+@ApiModel(description = "Details about the users")
 public class User implements UserDetails {
     String ROLE_PREFIX = "ROLE_";
 
     @Id
     @GeneratedValue
+    @ApiModelProperty(notes="The unique id of the Users")
     private Long id;
     @NotNull
+    @ApiModelProperty(notes="The email")
     private String username;
     @NotNull
     private String password;
