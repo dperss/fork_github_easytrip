@@ -57,7 +57,7 @@ export default class Home extends React.Component{
                     <Col lg = {true}>
                         <Jumbotron style = {jumbstyle}>
                             <h1 style = {bvindo}>
-                                Bem Vindo!
+                                Bem Vindos!
                             </h1>
                         </Jumbotron>
                     </Col>
