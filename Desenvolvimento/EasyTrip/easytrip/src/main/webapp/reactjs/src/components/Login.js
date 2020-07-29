@@ -64,22 +64,35 @@ export default class Login extends React.Component{
     render() {
     const {email,password} = this.state;
 
+        const  jumblog =  {
+            backgroundImage: `url(${Background})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+        };
+
+        const lg = {
+            fontFamily: "Hobo Std",
+            fontSize: "300%",
+            textAlign: "left"
+        };
+
+
         return (
             <div >
 
                 <Container>
                     <Row>
-                        <Col>
-                            <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
-                                <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
+                        <Col sm>
+                            <Jumbotron style = {jumblog}>
+                                <h1 style = {lg}>
                                     Login
                                 </h1>
                             </Jumbotron>
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-                            <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+                        <Col sm>
+                            <Form  onSubmit={this.submitPerson} id="personFormId">
                                 <Form.Group  controlId="formGridEmail">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control required autoComplete="on"
@@ -90,9 +103,9 @@ export default class Login extends React.Component{
                                 </Form.Group>
                             </Form>
 
-                        </Col>
-                        <Col>
-                            <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+                        </Col >
+                        <Col sm>
+                            <Form  onSubmit={this.submitPerson} id="personFormId">
                                 <Form.Group controlId="formGridPassword">
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control required autoComplete="off"
@@ -105,7 +118,7 @@ export default class Login extends React.Component{
                         </Col>
                     </Row>
                     <Row>
-                        <Col >
+                        <Col sm>
                             <Button variant="primary" type="submit">
                                 Confirmar
                             </Button>
@@ -113,7 +126,7 @@ export default class Login extends React.Component{
 
                     </Row>
                     <Row>
-                        <Col>
+                        <Col sm>
                             <p> Ainda não tem conta?
                                 <a href = "/registration" > Registe-se</a>
                             </p>

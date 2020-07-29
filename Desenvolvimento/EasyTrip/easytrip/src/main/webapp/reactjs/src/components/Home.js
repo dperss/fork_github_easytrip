@@ -9,15 +9,14 @@ import Background from "../assets/images/imagem.png";
 import {
     Jumbotron,
     Form,
-    FormControl,
+    Row,
     Button,
-    FormGroup,
+    Col,
     Card,
     CardDeck
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Hoteis from "../assets/images/hoteis.jpg";
-import Resort from "../assets/images/e24547b6d0b63924294191179d76e798.jpg";
 
 moment.locale("pt");
 
@@ -37,134 +36,87 @@ export default class Home extends React.Component{
 
     render() {
 
+        const  jumbstyle = {
+            backgroundImage: `url(${Background})`,
+            backgroundPosition: 'top',
+            backgroundSize: 'cover',
 
+        };
+
+        const bvindo = {
+            fontFamily: 'Hobo Std',
+            fontSize: '300%',
+            textAlign: 'left'
+        };
 
 
         return (
 
             <div >
+                <Row>
+                    <Col lg = {true}>
+                        <Jumbotron style = {jumbstyle}>
+                            <h1 style = {bvindo}>
+                                Bem Vindo!
+                            </h1>
+                        </Jumbotron>
+                    </Col>
 
 
+                </Row>
+                <Row>
+                    <Col sm >
+                        <Form>
+                            <DateRangePicker
+                                startDate = {this.state.startDate}
+                                startDateId = "your_unique_start_date_id"
+                                endDate = {this.state.endDate}
+                                endDateId = "your_unique_end_date_id"
+                                onDatesChange = {({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                                focusedInput = {this.state.focusedInput}
+                                onFocusChange = {focusedInput => this.setState({ focusedInput })}
 
+                            />
+                        </Form>
+                    </Col>
+                    <Col sm >
+                        <Form  >
+                            <Form.Control  type = "text" placeholder = "  Para onde vai?" />
 
+                        </Form>
+                    </Col>
 
+                    <Col sm >
+                        <Button  variant="outline-dark" type="submit" href = "/viajar"> Viajar</Button>
 
+                    </Col>
+                </Row>
+                <Row>
+                    <Col >
+                        <h2 style = {{marginTop: "10%"}}> Melhores classificados </h2>
+                    </Col>
+                </Row>
+                <Row>
+                    <CardDeck style = {{ width: "30rem", backgroundColor: "secondary",}}>
+                        <Card>
+                            <Card.Img variant="top" src={Hoteis} />
+                            <Card.Body>
+                                <Card.Title as = "h5" >
 
-                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
-                    <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
-                    Bem Vindo!
-                    </h1>
-                </Jumbotron>
-                <Form inline>
-                     <FormControl type="text" placeholder="Procura" className="mr-sm-4" />
-                     <Button  variant="outline-light">Procura</Button>
-                 </Form>
+                                </Card.Title>
+                                <Card.Text>
+                                    This is a wider card with supporting text below as a natural lead-in to
+                                    additional content. This content is a little bit longer.
+                                </Card.Text>
+                                <Button  variant="outline-dark">Procurar</Button>
+                            </Card.Body>
 
+                        </Card>
+                    </CardDeck>
+                </Row>
+                <Row>
 
-
-                <FormGroup style = {{ padding: "10px" }}>
-                        <Form.Control   type = "text" placeholder = "  Para onde vai?" />
-
-                </FormGroup>
-                <FormGroup>
-                    <DateRangePicker
-                        startDate = {this.state.startDate}
-                        startDateId = "your_unique_start_date_id"
-                        endDate = {this.state.endDate}
-                        endDateId = "your_unique_end_date_id"
-                        onDatesChange = {({ startDate, endDate }) => this.setState({ startDate, endDate })}
-                        focusedInput = {this.state.focusedInput}
-                        onFocusChange = {focusedInput => this.setState({ focusedInput })}
-
-                    />
-                </FormGroup>
-                <Button variant="outline-dark" type="submit" href = "/viajar"> Viajar</Button>
-                <h2 style = {{marginTop: "10%"}}> Melhores classificados </h2>
-                <CardDeck style = {{marginTop: "5%", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
-
-                    <Card>
-                        <Card.Img variant="top" src={Hoteis} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src = {Hoteis} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This card has supporting text below as a natural lead-in to additional
-                                content.{' '}
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src = {Resort} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to
-                                show that equal height action.
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-
-                    </Card>
-                </CardDeck>
-                <h2 style = {{marginTop: "100px"}}> Mais vistos </h2>
-                <CardDeck style = {{marginTop: "50px", marginLeft: "3%",width: "90rem",backgroundColor: "secondary",}}>
-
-                    <Card>
-                        <Card.Img variant="top" src={Hoteis} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src = {Hoteis} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This card has supporting text below as a natural lead-in to additional
-                                content.{' '}
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src = {Resort} />
-                        <Card.Body>
-                            <Card.Title>Card title</Card.Title>
-                            <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to
-                                show that equal height action.
-                            </Card.Text>
-                            <Button  variant="outline-dark">Procurar</Button>
-                        </Card.Body>
-
-                    </Card>
-                </CardDeck>
-
-
-
-
-
-
+                </Row>
 
 
             </div>
