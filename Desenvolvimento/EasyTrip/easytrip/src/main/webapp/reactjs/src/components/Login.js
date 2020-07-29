@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
-import {Container, Form, Jumbotron, Button} from "react-bootstrap";
+import {Container, Form, Jumbotron, Button, Row, Col} from "react-bootstrap";
 import Background from "../assets/images/imagem.png";
 import axios from 'axios';
 import MyToast from './MyToast';
@@ -68,43 +68,59 @@ export default class Login extends React.Component{
             <div >
 
                 <Container>
-                <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
-                    <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
-                    Login
-                    </h1>
-                </Jumbotron>
-                </Container>
-                <Container >
+                    <Row>
+                        <Col>
+                            <Jumbotron style = {{backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundSize: "cover", width: "115%"}}>
+                                <h1 style = {{fontFamily: "Hobo Std", fontSize: "70px", textAlign: "left"}}>
+                                    Login
+                                </h1>
+                            </Jumbotron>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
                             <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
-                            <Form.Group  controlId="formGridEmail">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control required autoComplete="on"
-                                type="email" name="email"
-                                value={email}
-                                onChange={this.personChange}
-                                placeholder="Enter email" />
-                            </Form.Group>
+                                <Form.Group  controlId="formGridEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control required autoComplete="on"
+                                                  type="email" name="email"
+                                                  value={email}
+                                                  onChange={this.personChange}
+                                                  placeholder="Enter email" />
+                                </Form.Group>
+                            </Form>
 
-                            <Form.Group controlId="formGridPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control required autoComplete="off"
-                                type="password" name="password"
-                                value={password}
-                                onChange={this.personChange}
-                                placeholder="Password" />
-                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+                                <Form.Group controlId="formGridPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control required autoComplete="off"
+                                                  type="password" name="password"
+                                                  value={password}
+                                                  onChange={this.personChange}
+                                                  placeholder="Password" />
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col >
+                            <Button variant="primary" type="submit">
+                                Confirmar
+                            </Button>
+                        </Col>
+
+                    </Row>
+                    <Row>
+                        <Col>
                             <p> Ainda não tem conta?
                                 <a href = "/registration" > Registe-se</a>
                             </p>
 
-
-                            <Button variant="primary" type="submit">
-                               Submit
-                            </Button>
-
-                        </Form>
-
-            </Container>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }
