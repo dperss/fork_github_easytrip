@@ -14,17 +14,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.crypto.SecretKey;
 
-import static com.easytrip.easytrip.Security.ApplicationUserRole.*;
+import static com.easytrip.easytrip.Security.ApplicationUserRole.USER;
 
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@CrossOrigin(origins = "http://localhost:3000")
+
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -64,7 +63,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                         ).permitAll()
 
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+        ;
     }
 
     @Override

@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Travel {
+public class Trip {
 
     @Id
     @GeneratedValue
@@ -23,10 +23,10 @@ public class Travel {
 
     private String Transportation;
 
-    public Travel() {
+    public Trip() {
     }
 
-    public Travel(String origin, String destiny, String origin_date, String destiny_date, String accommodation, String transportation) {
+    public Trip(String origin, String destiny, String origin_date, String destiny_date, String accommodation, String transportation) {
         Origin = origin;
         Destiny = destiny;
         Origin_date = origin_date;
