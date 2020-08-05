@@ -8,7 +8,7 @@ export default class Footer extends Component {
 
         return (
             <Navbar fixed="bottom" bg="light" variant="dark">
-                <Container>
+                <Container >
                     <Col lg={12} className="text-center text-muted">
                         <div>{2020}-{fullYear+1}, All Rights Reserved by EasyTrip
                         <Link to={"Info"} className="nav-link">Info</Link></div>

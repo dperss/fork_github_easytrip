@@ -11,12 +11,12 @@ import {
     Form,
     Row,
     Button,
-    Col,
-    Card,
-    CardDeck
+    Col, Card,
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Hoteis from "../assets/images/hoteis.jpg";
+import axios from "axios";
+
 
 moment.locale("pt");
 
@@ -31,10 +31,18 @@ export default class Home extends React.Component{
             endDate: null
 
         }
+        this.state = {
+            name: null,
+            description: null,
+            img: null
+        }
+
     }
 
 
     render() {
+
+
 
         const  jumbstyle = {
             backgroundImage: `url(${Background})`,
@@ -49,7 +57,6 @@ export default class Home extends React.Component{
             textAlign: 'left'
         };
 
-
         return (
 
             <div >
@@ -57,12 +64,10 @@ export default class Home extends React.Component{
                     <Col lg = {true}>
                         <Jumbotron style = {jumbstyle}>
                             <h1 style = {bvindo}>
-                                Bem Vindos!
+                                Bem Vindo!
                             </h1>
                         </Jumbotron>
                     </Col>
-
-
                 </Row>
                 <Row>
                     <Col sm >
@@ -91,30 +96,16 @@ export default class Home extends React.Component{
 
                     </Col>
                 </Row>
-                <Row>
-                    <Col >
-                        <h2 style = {{marginTop: "10%"}}> Melhores classificados </h2>
-                    </Col>
+
+                <Row style = {{marginTop: "3%"}}>
+
                 </Row>
                 <Row>
-                    <CardDeck style = {{ width: "30rem", backgroundColor: "secondary",}}>
-                        <Card>
-                            <Card.Img variant="top" src={Hoteis} />
-                            <Card.Body>
-                                <Card.Title as = "h5" >
-
-                                </Card.Title>
-                                <Card.Text>
-                                    This is a wider card with supporting text below as a natural lead-in to
-                                    additional content. This content is a little bit longer.
-                                </Card.Text>
-                                <Button  variant="outline-dark">Procurar</Button>
-                            </Card.Body>
-
-                        </Card>
-                    </CardDeck>
-                </Row>
-                <Row>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title/>
+                        </Card.Body>
+                    </Card>
 
                 </Row>
 

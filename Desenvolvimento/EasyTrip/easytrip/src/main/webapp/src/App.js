@@ -25,7 +25,7 @@ export default function App() {
         <NavigationBar/>
         <Container>
             <Row>
-                <Col lg={12} className={"margin-top"}>
+                <Col lg={true} className={"margin-top"}>
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/Home" exact component={Home}/>
