@@ -8,62 +8,54 @@ import MyToast from './MyToast';
 
 export default class Registo extends Component{
 
-    constructor(props){
-    super(props);
-    this.state = this.initialState;
-    this.state.show = false;
-    this.personChange = this.personChange.bind(this);
-    this.submitPerson = this.submitPerson.bind(this);
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: "",
+            password: "",
+            password_confirmation: "",
+            username: "",
+            registrationError: ""
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
     }
-
-    initialState ={
-    id:'',
-    email:'',
-    password:'',
-    confirm_password:'',
-    nome:''
-    };
-
-
-    submitPerson = event => {
+    handleSubmit (event){
+        const {email, password, password_confirmation, username} = this.state;
+        axios.post("http://localhost:8081/api/users", {
+             user:{
+                 email: email,
+                 password: password,
+                 password_confirmation: password_confirmation,
+                 username: username
+             }
+        },
+            {withCredentials: true} )
+            .then(response => {
+                console.log("registration res", response);
+            })
+            .catch(error => {
+            console.log("registration error", error);
+        })
 
         event.preventDefault();
 
-        const person = {
-        email: this.state.email,
-        password:this.state.password,
-        nome:this.state.nome
-        };
-
-        if(this.state.password === this.state.confirm_password){
-        axios.post("http://localhost:8081/api/users",person)
-            .then(response => {
-                if(response.data != null){
-                this.setState({"show":true})
-                setTimeout(() => this.setState({"show":false}), 3000);
-                } else{
-                this.setState({"show":false})
-                }
-            });
-            this.setState(this.initialState);
-         }else{
-            //Meter mensagem de erro passwords não serem iguais
-         }
-
     }
 
-    personChange = event => {
-            this.setState({
-                [event.target.name]:event.target.value
-            });
+    handleChange (event) {
+        this.setState({
+            [event.target.name]: event.target.value
+            }
+        )
 
 
     }
-
 
 
     render(){
-    const {email,password,nome,confirm_password} = this.state;
        return (
        <div>
             <div style={{"display":this.state.show ? "block" : "none"}}>
@@ -84,49 +76,49 @@ export default class Registo extends Component{
 
 
 
-                            <Form style = {{marginTop: "5%"}} onSubmit={this.submitPerson} id="personFormId">
+                            <Form style = {{marginTop: "5%"}} onSubmit = {this.handleSubmit} id="personFormId">
 
-                                    <Form.Group  controlId="formGridEmail">
-                                      <Form.Label>Email</Form.Label>
-                                      <Form.Control required autoComplete="on"
-                                      type="email" name="email"
-                                      value={email}
-                                      onChange={this.personChange}
-                                      placeholder="Enter email" />
-                                    </Form.Group>
+                                <Form.Group  controlId="formGridEmail">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control required
+                                                  type="email" name="email"
+                                                  value={this.state.email}
+                                                  onChange={this.handleChange}
+                                                  placeholder="Enter email" />
+                                </Form.Group>
 
-                                  <Form.Group controlId="formGridPassword">
+                                <Form.Group controlId="formGridPassword">
                                     <Form.Label>Password</Form.Label>
-                                    <Form.Control required autoComplete="off"
-                                    type="password" name="password"
-                                    value={password}
-                                    onChange={this.personChange}
-                                    placeholder="Password" />
-                                  </Form.Group>
+                                    <Form.Control required
+                                                  type="password" name="password"
+                                                  value={this.state.password}
+                                                  onChange={this.handleChange}
+                                                  placeholder="Password" />
+                                </Form.Group>
 
-                                  <Form.Group controlId="formGridConfirm_Password">
+                                <Form.Group controlId="formGridPassword_confirmation">
                                     <Form.Label>Confirm Password</Form.Label>
-                                    <Form.Control required autoComplete="off"
-                                    type="password" name="confirm_password"
-                                    value={confirm_password}
-                                    onChange={this.personChange}
-                                    placeholder="Confirm Password" />
-                                  </Form.Group>
+                                    <Form.Control required
+                                                  type="password" name="password_confirmation"
+                                                  value={this.state.password_confirmation}
+                                                  onChange={this.handleChange}
+                                                  placeholder="Confirm Password" />
+                                </Form.Group>
 
 
-                                    <Form.Group  controlId="formGridNome">
-                                      <Form.Label>Nome</Form.Label>
-                                      <Form.Control autoComplete="off"
-                                      type="text"
-                                      name="nome"
-                                      value={nome}
-                                      onChange={this.personChange}
-                                      placeholder="Nome" />
-                                    </Form.Group>
+                                <Form.Group  controlId="formGridNome">
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="username"
+                                        value={this.state.username}
+                                        onChange={this.handleChange}
+                                        placeholder="Username" />
+                                </Form.Group>
 
-                                  <Button variant="primary" type="submit">
-                                    Submit
-                                  </Button>
+                                <Button variant="primary" type="submit">
+                                    Registo
+                                </Button>
                             </Form>
 
                            </Container>
