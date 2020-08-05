@@ -17,12 +17,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.crypto.SecretKey;
 
-import static com.easytrip.easytrip.Security.ApplicationUserRole.*;
+import static com.easytrip.easytrip.Security.ApplicationUserRole.USER;
 
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -51,6 +52,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig),JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
+                .anyRequest().authenticated()
                 .antMatchers("/*").hasRole(USER.name())
                 .antMatchers("/**","/api/**", "index", "/css/*", "/js/*","/v2/*","/swagger-ui/*","/spring-security-rest/*",
                         "/v2/api-docs",
@@ -62,7 +64,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                         ).permitAll()
 
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+        ;
     }
 
     @Override

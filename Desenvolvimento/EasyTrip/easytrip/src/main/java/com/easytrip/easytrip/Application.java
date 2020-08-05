@@ -26,7 +26,7 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	private IService<User> serviceUser;
 	/*@Autowired
-	private IService<Travel> serviceTravel;*/
+	private IService<Trip> serviceTravel;*/
 
 
 
@@ -53,7 +53,7 @@ public class Application implements CommandLineRunner {
 					true
 					);
 
-			//Travel travel= new Travel("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
+			//Trip travel= new Trip("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
 
 			//serviceTravel.saveOrUpdate(travel);
 			serviceUser.saveOrUpdate(user);

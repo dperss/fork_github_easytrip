@@ -12,7 +12,7 @@ import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Accommodation from "./components/Accommodation";
-import Travel from "./components/Travel";
+import Trip from "./components/Trip";
 import Info from "./components/Info";
 import PointList from "./components/PointList";
 
@@ -34,7 +34,7 @@ export default function App() {
                         <Route path="/PersonList" exact component={PersonList}/>
                         <Route path="/Profile" exact component={Profile}/>
                         <Route path="/Accommodation" exact component={Accommodation}/>
-                        <Route path="/Travel" exact component={Travel}/>
+                        <Route path="/Trip" exact component={Trip}/>
                         <Route path="/Info" exact component={Info}/>
                         <Route path="/PointList" exact component={PointList}/>
                     </Switch>

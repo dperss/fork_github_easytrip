@@ -2,28 +2,28 @@ package com.easytrip.easytrip.service.impl;
 
 /*
 @Service
-public class TravelServiceImpl implements IService<Travel> {
+public class TravelServiceImpl implements IService<Trip> {
 
     @Autowired
-    private TravelRepository travelRepository;
+    private TripRepository travelRepository;
 
     @Override
-    public Page<Travel> findAll(Pageable pageable, String searchText) {
+    public Page<Trip> findAll(Pageable pageable, String searchText) {
         return travelRepository.findAllTravels(pageable, searchText);
     }
 
     @Override
-    public Page<Travel> findAll(Pageable pageable) {
+    public Page<Trip> findAll(Pageable pageable) {
         return travelRepository.findAll(pageable);
     }
 
     @Override
-    public Travel findById(Long id) {
+    public Trip findById(Long id) {
         return travelRepository.findById(id).get();
     }
 
     @Override
-    public Travel saveOrUpdate(Travel travel) {
+    public Trip saveOrUpdate(Trip travel) {
         return travelRepository.save(travel);
     }
 
@@ -32,7 +32,7 @@ public class TravelServiceImpl implements IService<Travel> {
         JSONObject jsonObject = new JSONObject();
         try {
             travelRepository.deleteById(id);
-            jsonObject.put("message", "Travel deleted successfully");
+            jsonObject.put("message", "Trip deleted successfully");
         } catch (JSONException e) {
             e.printStackTrace();
         }
