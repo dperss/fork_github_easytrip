@@ -36,7 +36,7 @@ export default class Registo extends Component{
         };
 
         if(this.state.password === this.state.confirm_password){
-        axios.post("http://localhost:8081/rest/persons",person)
+        axios.post("http://localhost:8081/api/users",person)
             .then(response => {
                 if(response.data != null){
                 this.setState({"show":true})
