@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,7 +21,7 @@ import java.util.Collections;
 @EnableSwagger2
 public class Application implements CommandLineRunner {
 
-	//private UserDetailsImpl serviceUser;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -30,20 +31,6 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 
-/*
-			User user = new User(
-					"diogo" ,
-					"123456",
-					"teste"
-					);
-
-			//Trip travel= new Trip("origin"+ i,  "destiny",  "01-02-2018",  "01-02-2018",  "accommodation",  "transportation");
-
-			//serviceTravel.saveOrUpdate(travel);
-			serviceUser.build(user);
-
-*/
-
 	}
 
 
@@ -51,8 +38,8 @@ public class Application implements CommandLineRunner {
 	public Docket swaggerConfiguration(){
 		return new Docket (DocumentationType.SWAGGER_2)
 				.select()
-				.paths(PathSelectors.ant("/**"))
 				.apis(RequestHandlerSelectors.basePackage("com.easytrip.easytrip"))
+				.paths(PathSelectors.ant("/**"))
 				.build()
 				.apiInfo(apiDetails())
 				;
