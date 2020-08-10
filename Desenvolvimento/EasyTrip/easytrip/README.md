@@ -71,7 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 	
 #Documentation	
-http://localhost:8081/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 
 /v2/api-docs
 
@@ -83,3 +83,5 @@ AIzaSyCTlmafkvB17b5ZsF884AusohJ9CW1aReg
 #SQL
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+

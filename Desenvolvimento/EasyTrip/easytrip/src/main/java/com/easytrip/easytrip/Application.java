@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -18,12 +20,7 @@ import java.util.Collections;
 @EnableSwagger2
 public class Application implements CommandLineRunner {
 
-
-
-
 	//private UserDetailsImpl serviceUser;
-
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -45,11 +42,10 @@ public class Application implements CommandLineRunner {
 			//serviceTravel.saveOrUpdate(travel);
 			serviceUser.build(user);
 
-
-
 */
 
 	}
+
 
 	@Bean
 	public Docket swaggerConfiguration(){
@@ -64,8 +60,8 @@ public class Application implements CommandLineRunner {
 
 	private ApiInfo apiDetails(){
 		return new ApiInfo(
-				"Adress book api",
-				"sample api  ",
+				"EasyTrip api",
+				"Here you will fine all the REST commands  ",
 				"1.0",
 				"Free to use",
 				new springfox.documentation.service.Contact("Diogo Ramos","easytrip.life","dperss@gmail.com"),

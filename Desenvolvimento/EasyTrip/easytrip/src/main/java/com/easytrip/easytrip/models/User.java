@@ -42,11 +42,18 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    /*@ManyToMany
+    @ManyToMany
     @JoinTable(name = "user_points",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "point_of_interest_id"))
-    private Set<Role> user_points = new HashSet<>();*/
+    private Set<Role> user_points = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "user_trips",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id"))
+    private Set<Role> user_trips = new HashSet<>();
+
 
     public User(){
     }

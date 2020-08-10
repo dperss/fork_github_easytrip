@@ -114,10 +114,23 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-data-rest</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 
 
     </dependencies>
 
+	<repositories>
+		<repository>
+			<id>jcenter-snapshots</id>
+			<name>jcenter</name>
+			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
