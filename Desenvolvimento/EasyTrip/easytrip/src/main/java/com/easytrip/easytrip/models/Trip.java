@@ -37,21 +37,14 @@ public class Trip {
     public Trip() {
     }
 
-    public Trip(String origin, String destiny, String origin_date, String destiny_date, String accommodation, String transportation) {
+    public Trip(String origin, String destiny, String origin_date, String destiny_date, String accommodation, String transportation, List<Itinerary> itineraries) {
         Origin = origin;
         Destiny = destiny;
         Origin_date = origin_date;
         Destiny_date = destiny_date;
         Accommodation = accommodation;
         Transportation = transportation;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.itineraries = itineraries;
     }
 
     public String getOrigin() {
@@ -100,5 +93,13 @@ public class Trip {
 
     public void setTransportation(String transportation) {
         Transportation = transportation;
+    }
+
+    public List<Itinerary> getItineraries() {
+        return itineraries;
+    }
+
+    public void setItineraries(List<Itinerary> itineraries) {
+        this.itineraries = itineraries;
     }
 }

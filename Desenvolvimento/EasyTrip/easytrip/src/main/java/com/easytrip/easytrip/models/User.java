@@ -56,15 +56,14 @@ public class User {
     private Set<Trip> trips = new HashSet<>();
 
 
-    public User(){
+    public User() {
     }
 
-    public User(String username,String email,String password ) {
+    public User(@NotBlank @Size(max = 20) String username, @NotBlank String password, @NotBlank String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
-
 
     public Long getId() {
         return id;
@@ -114,13 +113,28 @@ public class User {
         this.photo = photo;
     }
 
-
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Point_of_Interest> getUser_points() {
+        return user_points;
+    }
+
+    public void setUser_points(Set<Point_of_Interest> user_points) {
+        this.user_points = user_points;
+    }
+
+    public Set<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Set<Trip> trips) {
+        this.trips = trips;
     }
 }
 

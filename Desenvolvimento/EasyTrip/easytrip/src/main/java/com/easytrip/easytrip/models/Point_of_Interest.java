@@ -26,15 +26,16 @@ public class Point_of_Interest {
     @JoinColumn(name ="photos_fk",referencedColumnName = "id")
     private List<Photo> photos;
 
-    public Point_of_Interest(String name, String location, Float classification, String type_of_point, String description) {
+    public Point_of_Interest() {
+    }
+
+    public Point_of_Interest(String name, String location, Float classification, String type_of_point, String description, List<Photo> photos) {
         this.name = name;
         this.location = location;
         this.classification = classification;
         this.type_of_point = type_of_point;
         this.description = description;
-    }
-
-    public Point_of_Interest() {
+        this.photos = photos;
     }
 
     public Long getId() {
