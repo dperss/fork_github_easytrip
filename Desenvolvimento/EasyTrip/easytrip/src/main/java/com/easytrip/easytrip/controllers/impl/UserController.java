@@ -1,56 +1,85 @@
 package com.easytrip.easytrip.controllers.impl;
 
 import com.easytrip.easytrip.controllers.Controller;
+import com.easytrip.easytrip.models.Point_of_Interest;
 import com.easytrip.easytrip.models.User;
-import com.easytrip.easytrip.repository.RoleRepository;
-import com.easytrip.easytrip.repository.UserRepository;
+import com.easytrip.easytrip.services.impl.UserServiceImpl;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-//@RestController
-//@RequestMapping("/users")
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/test/users")
 public class UserController implements Controller<User> {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
+    private UserServiceImpl userService;
 
 
-    @Override
-    public ResponseEntity<Page<User>> findAll(Pageable pageable, String searchText) {
-        return null;
+
+    @ApiOperation(value = "Finds contact bye email",
+            notes = "tesddsdsd"
+            //response = "Page<User>"
+    )
+    @GetMapping("/search/{searchText}")
+    public ResponseEntity<Page<User>> findByEmail(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(userService.loadUserByEmail(pageable, searchText), HttpStatus.OK);
     }
+
+
 
     @Override
     public ResponseEntity<Page<User>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
-        return null;
+
+
+
+        return new ResponseEntity<>(userService.findAll(
+                PageRequest.of(
+                        pageNumber, pageSize,
+                        sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
+                )
+        ), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<User> findById(Long id) {
-        return null;
+        try{
+            return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
+        catch (Exception e){
+
+            System.out.println("User does´t exist");
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
     }
 
     @Override
     public ResponseEntity<User> save(User user) {
-        return null;
+        System.out.println("User created");
+        return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<User> update(User user) {
-        return null;
+        System.out.println("User Updated");
+        return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<String> deleteById(Long id) {
-        return null;
+        System.out.println("User deleted ID:" + id);
+        return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);
     }
+
 }

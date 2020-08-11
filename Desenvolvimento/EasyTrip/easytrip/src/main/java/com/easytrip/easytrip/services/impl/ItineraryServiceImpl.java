@@ -17,7 +17,7 @@ public class ItineraryServiceImpl implements Services<Itinerary> {
     ItineraryRepository itineraryRepository;
 
 
-    @Override
+
     public Page findAll(Pageable pageable, String searchText) {
         return itineraryRepository.findAllItinerarys(pageable, searchText);
     }

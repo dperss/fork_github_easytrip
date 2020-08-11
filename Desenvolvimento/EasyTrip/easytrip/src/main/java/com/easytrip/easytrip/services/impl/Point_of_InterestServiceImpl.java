@@ -1,9 +1,7 @@
 package com.easytrip.easytrip.services.impl;
 
 import com.easytrip.easytrip.models.Point_of_Interest;
-import com.easytrip.easytrip.models.Trip;
 import com.easytrip.easytrip.repository.Point_of_InterestRepository;
-import com.easytrip.easytrip.repository.TripRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -18,7 +16,7 @@ public class Point_of_InterestServiceImpl implements Services<Point_of_Interest>
     @Autowired
     Point_of_InterestRepository point_of_InterestRepository;
 
-    @Override
+
     public Page findAll(Pageable pageable, String searchText) {
         return point_of_InterestRepository.findAllPoint_of_Interests(pageable, searchText);
     }

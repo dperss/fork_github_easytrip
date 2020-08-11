@@ -2,18 +2,18 @@ package com.easytrip.easytrip.controllers.impl;
 
 import com.easytrip.easytrip.controllers.Controller;
 import com.easytrip.easytrip.models.Itinerary;
+import com.easytrip.easytrip.models.Point_of_Interest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-//@RequestMapping("/itinerarys")
+@RestController
+@RequestMapping("/itinerarys")
 public class ItineraryController implements Controller<Itinerary> {
 
 
-    @Override
     public ResponseEntity<Page<Itinerary>> findAll(Pageable pageable, String searchText) {
         return null;
     }

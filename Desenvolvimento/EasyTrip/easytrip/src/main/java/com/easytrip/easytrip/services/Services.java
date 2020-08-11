@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 
 public interface Services<T> {
-    Page<T> findAll(Pageable pageable, String searchText);
+
 
     Page<T> findAll(Pageable pageable);
 

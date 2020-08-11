@@ -2,6 +2,7 @@ package com.easytrip.easytrip.controllers.impl;
 
 import com.easytrip.easytrip.controllers.Controller;
 import com.easytrip.easytrip.models.Comment;
+import com.easytrip.easytrip.models.Point_of_Interest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -9,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-//@RestController
-//@RequestMapping("/comments")
+@RestController
+@RequestMapping("/comments")
 public class CommentsController implements Controller <Comment>{
 
-    @Override
+
     public ResponseEntity<Page<Comment>> findAll(Pageable pageable, String searchText) {
         return null;
     }

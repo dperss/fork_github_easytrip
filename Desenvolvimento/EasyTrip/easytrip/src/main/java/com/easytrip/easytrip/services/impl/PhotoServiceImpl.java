@@ -16,7 +16,7 @@ public class PhotoServiceImpl implements Services<Photo> {
     PhotoRepository photoRepository;
 
 
-    @Override
+
     public Page findAll(Pageable pageable, String searchText) {
         return photoRepository.findAllPhotos(pageable, searchText);
     }

@@ -19,7 +19,7 @@ public class CommentServiceImpl implements Services<Comment> {
     CommentRepository commentRepository;
 
 
-    @Override
+
     public Page findAll(Pageable pageable, String searchText) {
         return commentRepository.findAllComments(pageable, searchText);
     }

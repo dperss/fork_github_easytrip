@@ -1,5 +1,6 @@
 package com.easytrip.easytrip.models;
 
+import com.easytrip.easytrip.security.services.UserDetailsImpl;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -46,13 +47,13 @@ public class User {
     @JoinTable(name = "user_points",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "point_of_interest_id"))
-    private Set<Role> user_points = new HashSet<>();
+    private Set<Point_of_Interest> user_points = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "user_trips",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
-    private Set<Role> user_trips = new HashSet<>();
+    private Set<Trip> trips = new HashSet<>();
 
 
     public User(){
@@ -63,6 +64,7 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
 
     public Long getId() {
         return id;

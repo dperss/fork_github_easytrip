@@ -14,7 +14,7 @@ public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String Origin;
 
@@ -29,6 +29,10 @@ public class Trip {
     private String Transportation;
 
 
+    @OneToMany(targetEntity = Itinerary.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="itineraries_fk",referencedColumnName = "id")
+    private List<Itinerary> itineraries;
+
 
     public Trip() {
     }
@@ -42,11 +46,11 @@ public class Trip {
         Transportation = transportation;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -17,7 +17,7 @@ public class TripServiceImpl implements Services<Trip> {
     @Autowired
     TripRepository tripRepository;
 
-    @Override
+
     public Page findAll(Pageable pageable, String searchText) {
         return tripRepository.findAllTrips(pageable, searchText);
     }
