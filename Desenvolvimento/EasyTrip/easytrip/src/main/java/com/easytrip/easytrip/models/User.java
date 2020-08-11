@@ -34,7 +34,7 @@ public class User {
     private String email;
     private String description;
     private String photo;
-    private String role;
+
 
 
     @ManyToMany
@@ -114,13 +114,6 @@ public class User {
         this.photo = photo;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public Set<Role> getRoles() {
         return roles;
