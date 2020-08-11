@@ -12,6 +12,8 @@ import PersonList from "./components/PersonList";
 import Profile from "./components/Profile";
 import Info from "./components/Info";
 import PointList from "./components/PointList";
+import {Trip} from "./components/Trip";
+import Accommodation from "./components/Accommodation";
 
 
 
@@ -70,8 +72,8 @@ class App extends Component {
 
               {currentUser && (
                 <li className="nav-item">
-                  <Link to={"/user"} className="nav-link">
-                    User
+                  <Link to={"/Trip"} className="nav-link">
+                    Viagem
                   </Link>
                 </li>
               )}
@@ -117,6 +119,8 @@ class App extends Component {
               <Route path="/Info" component={Info} />
               <Route path="/PointList" component={PointList} />
               <Route path="/PersonList" component={PersonList} />
+              <Route path = "/Trip" component={Trip}/>
+              <Route path= "/Accommodation" component={Accommodation}/>
             </Switch>
           </div>
         </div>
