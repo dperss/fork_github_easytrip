@@ -14,6 +14,7 @@ import Info from "./components/Info";
 import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
+import { Itinerary} from "./components/Itinerary";
 
 
 
@@ -121,6 +122,7 @@ class App extends Component {
               <Route path="/PersonList" component={PersonList} />
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
+              <Route path = "/Itinerary" component={Itinerary}/>
             </Switch>
           </div>
         </div>
