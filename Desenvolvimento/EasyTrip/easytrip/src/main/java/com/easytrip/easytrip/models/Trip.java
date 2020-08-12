@@ -24,9 +24,18 @@ public class Trip {
 
     private String Destiny_date;
 
-    private String Accommodation;
 
-    private String Transportation;
+    @ManyToMany
+    @JoinTable(name = "trip_accomodations",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "accommodations_id"))
+    private Set<Accommodation> accommodations = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "user_transports",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "transportation_id"))
+    private Set<Transportation> transportation = new HashSet<>();
 
 
     @OneToMany(targetEntity = Itinerary.class,cascade = CascadeType.ALL)
@@ -37,14 +46,22 @@ public class Trip {
     public Trip() {
     }
 
-    public Trip(String origin, String destiny, String origin_date, String destiny_date, String accommodation, String transportation, List<Itinerary> itineraries) {
+    public Trip(String origin, String destiny, String origin_date, String destiny_date, Set<Accommodation> accommodations, Set<Transportation> transportation, List<Itinerary> itineraries) {
         Origin = origin;
         Destiny = destiny;
         Origin_date = origin_date;
         Destiny_date = destiny_date;
-        Accommodation = accommodation;
-        Transportation = transportation;
+        this.accommodations = accommodations;
+        this.transportation = transportation;
         this.itineraries = itineraries;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getOrigin() {
@@ -79,20 +96,20 @@ public class Trip {
         Destiny_date = destiny_date;
     }
 
-    public String getAccommodation() {
-        return Accommodation;
+    public Set<Accommodation> getAccommodations() {
+        return accommodations;
     }
 
-    public void setAccommodation(String accommodation) {
-        Accommodation = accommodation;
+    public void setAccommodations(Set<Accommodation> accommodations) {
+        this.accommodations = accommodations;
     }
 
-    public String getTransportation() {
-        return Transportation;
+    public Set<Transportation> getTransportation() {
+        return transportation;
     }
 
-    public void setTransportation(String transportation) {
-        Transportation = transportation;
+    public void setTransportation(Set<Transportation> transportation) {
+        this.transportation = transportation;
     }
 
     public List<Itinerary> getItineraries() {
