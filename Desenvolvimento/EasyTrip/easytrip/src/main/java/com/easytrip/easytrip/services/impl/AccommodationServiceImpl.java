@@ -2,21 +2,24 @@ package com.easytrip.easytrip.services.impl;
 
 import com.easytrip.easytrip.models.Accommodation;
 import com.easytrip.easytrip.models.Comment;
+import com.easytrip.easytrip.models.Trip;
 import com.easytrip.easytrip.repository.AccommodationRepository;
 import com.easytrip.easytrip.repository.CommentRepository;
+import com.easytrip.easytrip.repository.TripRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class AccommodationServiceImpl implements Services<Accommodation> {
 
-    AccommodationRepository accommodationRepository;
 
+    @Autowired
+    AccommodationRepository accommodationRepository;
 
 
     public Page findAll(Pageable pageable, String searchText) {
@@ -34,9 +37,9 @@ public class AccommodationServiceImpl implements Services<Accommodation> {
     }
 
     @Override
-    public Accommodation saveOrUpdate(Accommodation accommodation) {
+    public Accommodation saveOrUpdate(Accommodation trip) {
 
-        return accommodationRepository.save(accommodation);
+        return accommodationRepository.save(trip);
 
     }
 
@@ -45,7 +48,7 @@ public class AccommodationServiceImpl implements Services<Accommodation> {
         JSONObject jsonObject = new JSONObject();
         try {
             accommodationRepository.deleteById(id);
-            jsonObject.put("message", "Accommodation deleted successfully");
+            jsonObject.put("message", "Trip deleted successfully");
         } catch (JSONException e) {
             e.printStackTrace();
         }

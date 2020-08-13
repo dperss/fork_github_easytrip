@@ -1,9 +1,7 @@
 package com.easytrip.easytrip.services.impl;
 
 import com.easytrip.easytrip.models.Itinerary;
-import com.easytrip.easytrip.models.Photo;
 import com.easytrip.easytrip.repository.ItineraryRepository;
-import com.easytrip.easytrip.repository.PhotoRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;

@@ -33,8 +33,8 @@ public class User {
     @NotBlank
     private String email;
     private String description;
-    private String photo;
 
+    private byte[] photo;
 
 
     @ManyToMany
@@ -59,7 +59,7 @@ public class User {
     public User() {
     }
 
-    public User(@NotBlank @Size(max = 20) String username, @NotBlank String password, @NotBlank String email) {
+    public User(@NotBlank @Size(max = 20) String username,  @NotBlank String email,@NotBlank String password) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -105,11 +105,11 @@ public class User {
         this.description = description;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

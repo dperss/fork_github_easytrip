@@ -2,7 +2,6 @@ package com.easytrip.easytrip.repository;
 
 
 import com.easytrip.easytrip.models.Itinerary;
-import com.easytrip.easytrip.models.Photo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

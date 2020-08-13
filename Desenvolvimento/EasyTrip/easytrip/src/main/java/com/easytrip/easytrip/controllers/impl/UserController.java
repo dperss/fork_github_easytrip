@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/test/users")
 public class UserController implements Controller<User> {
 
     @Autowired
     private UserServiceImpl userService;
-
 
 
     @ApiOperation(value = "Finds contact bye email",

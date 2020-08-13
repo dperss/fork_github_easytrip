@@ -66,7 +66,6 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
 
     @Override
     public ResponseEntity<String> deleteById(Long id) {
-
         System.out.println("Trip deleted ID:" + id);
         return new ResponseEntity<>(point_of_interestService.deleteById(id), HttpStatus.OK);
     }

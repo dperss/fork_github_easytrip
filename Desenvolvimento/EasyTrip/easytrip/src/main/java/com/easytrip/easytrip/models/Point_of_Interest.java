@@ -22,20 +22,20 @@ public class Point_of_Interest {
 
     private String description;
 
-    @OneToMany(targetEntity = Photo.class,cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Image.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="photos_fk",referencedColumnName = "id")
-    private List<Photo> photos;
+    private List<Image> images;
 
     public Point_of_Interest() {
     }
 
-    public Point_of_Interest(String name, String location, Float classification, String type_of_point, String description, List<Photo> photos) {
+    public Point_of_Interest(String name, String location, Float classification, String type_of_point, String description, List<Image> images) {
         this.name = name;
         this.location = location;
         this.classification = classification;
         this.type_of_point = type_of_point;
         this.description = description;
-        this.photos = photos;
+        this.images = images;
     }
 
     public Long getId() {
@@ -86,11 +86,11 @@ public class Point_of_Interest {
         this.description = description;
     }
 
-    public List<Photo> getPhotos() {
-        return photos;
+    public List<Image> getPhotos() {
+        return images;
     }
 
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setPhotos(List<Image> images) {
+        this.images = images;
     }
 }

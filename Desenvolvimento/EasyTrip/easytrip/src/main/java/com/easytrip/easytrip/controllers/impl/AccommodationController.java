@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/test/accomodations")
 public class AccommodationController implements Controller<Accommodation> {
@@ -49,14 +49,11 @@ public class AccommodationController implements Controller<Accommodation> {
 
         return new ResponseEntity<>(accommodationService.findById(id), HttpStatus.OK);
 
-
     }
-
-
 
     @Override
     public ResponseEntity<Accommodation> save(Accommodation accommodation) {
-        System.out.println("Trip created");
+        System.out.println("Accommodation created");
         return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.CREATED);
     }
 

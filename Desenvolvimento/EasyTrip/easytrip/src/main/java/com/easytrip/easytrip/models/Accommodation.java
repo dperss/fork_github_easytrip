@@ -12,6 +12,8 @@ public class Accommodation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String Location;
 
     private String Description;
@@ -20,19 +22,20 @@ public class Accommodation {
 
     private Float Rating;
 
-    @OneToMany(targetEntity = Photo.class,cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Image.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="photos_fk",referencedColumnName = "id")
-    private List<Photo> photos;
+    private List<Image> images;
 
     public Accommodation() {
     }
 
-    public Accommodation(String location, String description, String price, Float rating, List<Photo> photos) {
+    public Accommodation(String name, String location, String description, String price, Float rating, List<Image> images) {
+        this.name = name;
         Location = location;
         Description = description;
         Price = price;
         Rating = rating;
-        this.photos = photos;
+        this.images = images;
     }
 
     public Long getId() {
@@ -75,11 +78,19 @@ public class Accommodation {
         Rating = rating;
     }
 
-    public List<Photo> getPhotos() {
-        return photos;
+    public List<Image> getPhotos() {
+        return images;
     }
 
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setPhotos(List<Image> images) {
+        this.images = images;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
