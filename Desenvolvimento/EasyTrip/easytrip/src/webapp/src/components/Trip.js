@@ -4,6 +4,7 @@ import {Row, Col, Button, Jumbotron} from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Background from "../assets/images/imagem.png";
 import {Itinerary} from "./Itinerary";
+import AccommodationDetail from "./AccommodationDetail";
 
 
 export class Trip extends React.Component{
@@ -76,11 +77,8 @@ export class Trip extends React.Component{
 
 
                 <Row>
-
                     <h5>ALOJAMENTOS: </h5>
-
-
-
+                    <AccommodationDetail/>
                 </Row>
 
                 <Row>
@@ -88,8 +86,13 @@ export class Trip extends React.Component{
                 </Row>
 
                 <Row>
-                    <h5> ITINERÁRIO: </h5>
-                    <Itinerary/>
+                    <Col>
+                        <h5> ITINERÁRIO: </h5>
+                    </Col>
+                    <Col>
+                        <Itinerary/>
+                    </Col>
+
                 </Row>
             </div>
         );
