@@ -12,17 +12,20 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Type(type = "org.hibernate.type.BinaryType")
+    private String name;
+
+    private String type;
+
+    @Column(name = "picByte", length = 1000)
     private byte[] image;
 
-    private Integer photoContentLength;
-
-    public Image() {
+    public Image(String name, String type, byte[] image) {
+        this.name = name;
+        this.type = type;
+        this.image = image;
     }
 
-    public Image(byte[] image, Integer photoContentLength) {
-        this.image = image;
-        this.photoContentLength = photoContentLength;
+    public Image() {
     }
 
     public Long getId() {
@@ -33,19 +36,27 @@ public class Image {
         this.id = id;
     }
 
-    public byte[] getImage() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public byte[] getPicByte() {
         return image;
     }
 
     public void setImage(byte[] image) {
         this.image = image;
-    }
-
-    public Integer getPhotoContentLength() {
-        return photoContentLength;
-    }
-
-    public void setPhotoContentLength(Integer photoContentLength) {
-        this.photoContentLength = photoContentLength;
     }
 }

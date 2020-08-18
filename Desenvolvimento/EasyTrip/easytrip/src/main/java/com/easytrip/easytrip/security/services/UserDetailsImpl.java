@@ -26,18 +26,16 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String description;
 
-	private byte[] photo;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String username, String email, String password,String description,byte[] photo,
+	public UserDetailsImpl(Long id, String username, String email, String password,String description,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.description=description;
-		this.photo=photo;
 		this.authorities = authorities;
 	}
 
@@ -52,7 +50,6 @@ public class UserDetailsImpl implements UserDetails {
 				user.getEmail(),
 				user.getPassword(),
 				user.getDescription(),
-				user.getPhoto(),
 				authorities);
 	}
 
@@ -87,13 +84,6 @@ public class UserDetailsImpl implements UserDetails {
 		this.description = description;
 	}
 
-	public byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
 
 	@Override
 	public boolean isAccountNonExpired() {
