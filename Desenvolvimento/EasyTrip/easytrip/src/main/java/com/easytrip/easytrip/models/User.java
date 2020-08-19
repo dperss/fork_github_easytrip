@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,8 +35,6 @@ public class User {
     private String email;
     private String description;
 
-    private byte[] photo;
-
 
     @ManyToMany
     @JoinTable(name = "user_roles",
@@ -54,6 +53,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
     private Set<Trip> trips = new HashSet<>();
+
+    @OneToMany(targetEntity = Image.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="images_fk",referencedColumnName = "id")
+    private List<Image> images;
 
 
     public User() {
@@ -105,13 +108,6 @@ public class User {
         this.description = description;
     }
 
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 
     public Set<Role> getRoles() {
         return roles;
@@ -135,6 +131,14 @@ public class User {
 
     public void setTrips(Set<Trip> trips) {
         this.trips = trips;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 }
 

@@ -6,13 +6,14 @@ import axios from "axios";
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       redirect: null,
       userReady: false,
       currentUser: { username: "" },
-      selectedFile : null
+      file: null
     };
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -21,23 +22,25 @@ export default class Profile extends Component {
     if (!currentUser) this.setState({ redirect: "/home" });
     this.setState({ currentUser: currentUser, userReady: true })
   }
-  fileChangedHandler = event => {
-    this.setState({ selectedFile: event.target.files[0] })
-  }
+  onFormSubmit(e){
+              e.preventDefault();
+              const formData = new FormData();
+              formData.append('file',this.state.file);
+              const config = {
+                  headers: {
+                      'content-type': 'multipart/form-data'
+                  }
+              };
+              axios.post("http://localhost:8080/api/test/images/upload",formData,config)
+                  .then((response) => {
+                      alert("The file is successfully uploaded");
+                  }).catch((error) => {
+              });
+          }
+    onChange(e) {
+           this.setState({file:e.target.files[0]});
 
-  uploadHandler = () => {
-    const formData = new FormData()
-    formData.append(
-      'myFile',
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    )
-    axios.post('http://localhost:8080//api/test/photos', formData, {
-        onUploadProgress: progressEvent => {
-          console.log(progressEvent.loaded / progressEvent.total)
-        }
-      })
-  }
+       }
 
   render() {
     if (this.state.redirect) {
@@ -46,7 +49,7 @@ export default class Profile extends Component {
 
 
 
-    const { currentUser } = this.state;
+    const { currentUser,file } = this.state;
 
 
     return (
@@ -59,7 +62,6 @@ export default class Profile extends Component {
           </h3>
         </header>
         <p>
-          <strong>Token:</strong>{" "}
           {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
         </p>
@@ -72,12 +74,13 @@ export default class Profile extends Component {
           {currentUser.email}
         </p>
         <p>
+
          <strong>Photo:</strong>{" "}
-         <input type="file" onChange={this.fileChangedHandler}/>
-         <button onClick={this.uploadHandler}>Upload!</button>
-        </p>
-        <p>
-        <img src={`data:image/jpeg;base64,${currentUser.photo}`} />
+                <form onSubmit={this.onFormSubmit}>
+                <h1>File Upload</h1>
+                <input type="file" name="myImage" onChange= {this.onChange} />
+                <button type="submit">Upload</button>
+            </form>
         </p>
 
         <p>

@@ -9,9 +9,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Long> {
 
-    @Query("FROM Image b WHERE b.id LIKE %:searchText% ")
-    Page<Image> findAllImages(Pageable pageable, @Param("searchText") String searchText);
+    Optional<Image> findByName(String name);
 }
+

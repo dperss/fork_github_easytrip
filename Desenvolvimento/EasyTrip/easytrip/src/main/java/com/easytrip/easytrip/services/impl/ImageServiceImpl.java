@@ -1,30 +1,37 @@
 package com.easytrip.easytrip.services.impl;
 
 import com.easytrip.easytrip.models.Image;
+import com.easytrip.easytrip.models.User;
 import com.easytrip.easytrip.repository.ImageRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ImageServiceImpl implements Services<Image> {
 
+    @Autowired
     private ImageRepository imageRepository;
 
 
-
-
-    public Page findAll(Pageable pageable, String searchText) {
-        return imageRepository.findAllImages(pageable, searchText);
-    }
 
     @Override
     public Page findAll(Pageable pageable) {
         return imageRepository.findAll(pageable);
     }
+
+
+    public Optional<Image> findByName(String name) {
+        return imageRepository.findByName(name);
+    }
+
+
 
     @Override
     public  Image findById(Long id) {
