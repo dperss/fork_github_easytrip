@@ -16,6 +16,7 @@ import Hoteis from "../assets/images/hoteis.jpg";
 import Resort from "../assets/images/e24547b6d0b63924294191179d76e798.jpg";
 
 import {DateRangePicker} from "react-dates";
+import AccommodationDetail from "./AccommodationDetail";
 
 
 

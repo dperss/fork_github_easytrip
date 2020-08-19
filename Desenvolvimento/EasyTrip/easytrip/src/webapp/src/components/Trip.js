@@ -7,6 +7,7 @@ import {Itinerary} from "./Itinerary";
 import AccommodationDetail from "./AccommodationDetail";
 
 
+
 export class Trip extends React.Component{
     constructor(props) {
         super(props);
