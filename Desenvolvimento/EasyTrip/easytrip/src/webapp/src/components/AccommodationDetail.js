@@ -10,55 +10,55 @@ export default class AccommodationDetail extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            accommodations: []
-
+            accommodations: [],
         };
     }
 
-    getAccommodationData(){
-            axios.get("http://localhost:8080/api/test/accomodations/4", {})
-                .then(res => {
-                const data = res.data
+    componentDidMount() {
+        this.getAllAccommodationData();
+    }
+
+
+    getAllAccommodationData(currentPage) {
+        currentPage -= 1;
+        axios.get("http://localhost:8080/api/test/accomodations/5")
+            .then(response => {
+                const data = response.data
                 console.log(data)
-                    const accommodation = [data].map( a =>
-                        <div >
-                            <Card>
-                                <Card.Header>
-                                    Nome : {a.name}
-                                </Card.Header>
-                                <Card.Body>
-                                    <Card.Title>
-                                        {a.location}
-                                    </Card.Title>
-                                    <Card.Text>
-                                        {a.description}
+                const accommodation = [data].map( a =>
+                    <div >
+                        <Card>
+                            <Card.Header>
+                                Nome : {a.name}
+                            </Card.Header>
+                            <Card.Body>
+                                <Card.Title>
+                                    {a.location}
+                                </Card.Title>
+                                <Card.Text>
+                                    {a.description}
 
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-
-
-                        </div>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
 
 
+                    </div>)
 
-                    )
-                    this.setState({
-                        accommodation
-                    })
+                this.setState({
+                    accommodation
+                })
 
 
 
             })
-                .catch((error) => {
-                    console.log(error)
-                })
-    }
+            .catch((error) => {
+                console.log(error)
+            })
+    };
 
-    componentDidMount() {
-        this.getAccommodationData()
 
-    }
+
 
 
 
