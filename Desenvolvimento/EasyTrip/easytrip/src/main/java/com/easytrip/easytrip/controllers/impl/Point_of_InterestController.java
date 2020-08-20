@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
 
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Page<Point_of_Interest>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -43,6 +45,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> findById(Long id) {
 
             return new ResponseEntity<>(point_of_interestService.findById(id), HttpStatus.OK);
@@ -53,18 +56,21 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
 
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> save(Point_of_Interest point_of_interest) {
         System.out.println("Point_of_Interest created");
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.CREATED);
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> update(Point_of_Interest point_of_interest) {
         System.out.println("Point_of_Interest Updated");
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.OK);
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         System.out.println("Trip deleted ID:" + id);
         return new ResponseEntity<>(point_of_interestService.deleteById(id), HttpStatus.OK);

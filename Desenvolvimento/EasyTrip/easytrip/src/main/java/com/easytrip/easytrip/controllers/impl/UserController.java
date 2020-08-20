@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,7 @@ public class UserController implements Controller<User> {
 
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Page<User>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -52,6 +54,7 @@ public class UserController implements Controller<User> {
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> findById(Long id) {
         try{
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
@@ -64,18 +67,21 @@ public class UserController implements Controller<User> {
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> save(User user) {
         System.out.println("User created");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> update(User user) {
         System.out.println("User Updated");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
     }
 
     @Override
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         System.out.println("User deleted ID:" + id);
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);
