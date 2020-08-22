@@ -1,9 +1,10 @@
 import React from "react";
 import {
- Card
+   Card
 } from "react-bootstrap";
 import axios from "axios";
 
+axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhIiwiaWF0IjoxNTk4MDk1NDA3LCJleHAiOjE1OTg1OTU0MDd9.FtQIrA-z7sY92YGPjyt6LV8QIS5Tn_FwTCYkmBevVVA"}`};
 
 export default class AccommodationDetail extends React.Component{
 
@@ -13,32 +14,25 @@ export default class AccommodationDetail extends React.Component{
             accommodations: [],
         };
     }
-
     componentDidMount() {
         this.getAllAccommodationData();
     }
 
 
-    getAllAccommodationData(currentPage) {
-        currentPage -= 1;
+    getAllAccommodationData() {
         axios.get("http://localhost:8080/api/test/accomodations/5")
             .then(response => {
                 const data = response.data
                 console.log(data)
                 const accommodation = [data].map( a =>
                     <div >
-                        <Card>
-                            <Card.Header>
-                                Nome : {a.name}
-                            </Card.Header>
+                        <Card style = {{width: "500px", height: "300px"}}>
+                            <Card.Header> {a.name}</Card.Header>
                             <Card.Body>
-                                <Card.Title>
-                                    {a.location}
-                                </Card.Title>
-                                <Card.Text>
-                                    {a.description}
+                                <p>{a.location}</p>
+                                <p> {a.description}</p>
+                                <button> Adicionar</button>
 
-                                </Card.Text>
                             </Card.Body>
                         </Card>
 
