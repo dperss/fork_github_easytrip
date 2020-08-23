@@ -32,7 +32,7 @@ public class AccommodationController implements Controller<Accommodation> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Accommodation>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -45,7 +45,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Accommodation> findById(Long id) {
 
         return new ResponseEntity<>(accommodationService.findById(id), HttpStatus.OK);
@@ -53,21 +53,21 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    //@PreAuthorize(" hasRole('ROLE_ADMIN')")
+    @PreAuthorize(" hasRole('ROLE_ADMIN')")
     public ResponseEntity<Accommodation> save(Accommodation accommodation) {
         System.out.println("Accommodation created");
         return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.CREATED);
     }
 
     @Override
-    //@PreAuthorize("asRole('ROLE_ADMIN')")
+    @PreAuthorize("asRole('ROLE_ADMIN')")
     public ResponseEntity<Accommodation> update(Accommodation accommodation) {
         System.out.println("Accommodation Updated");
         return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.OK);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
         System.out.println("Accommodation deleted ID:" + id);

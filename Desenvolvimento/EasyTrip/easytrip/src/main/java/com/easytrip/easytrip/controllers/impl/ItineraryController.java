@@ -31,7 +31,7 @@ public class ItineraryController implements Controller<Itinerary> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Itinerary>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -48,7 +48,7 @@ public class ItineraryController implements Controller<Itinerary> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Itinerary> findById(Long id) {
 
         return new ResponseEntity<>(itineraryService.findById(id), HttpStatus.OK);
@@ -59,21 +59,21 @@ public class ItineraryController implements Controller<Itinerary> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Itinerary> save(Itinerary itinerary) {
         System.out.println("Itinerary created");
         return new ResponseEntity<>(itineraryService.saveOrUpdate(itinerary), HttpStatus.CREATED);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Itinerary> update(Itinerary itinerary) {
         System.out.println("Itinerary Updated");
         return new ResponseEntity<>(itineraryService.saveOrUpdate(itinerary), HttpStatus.OK);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
         System.out.println("Itinerary deleted ID:" + id);

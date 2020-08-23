@@ -55,7 +55,7 @@ public class UserController implements Controller<User> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
         return new ResponseEntity<>(userService.findAll(
                 PageRequest.of(
@@ -66,7 +66,7 @@ public class UserController implements Controller<User> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<User> findById(Long id) {
         try{
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
@@ -90,21 +90,21 @@ public class UserController implements Controller<User> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> save(User user) {
         System.out.println("User created");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> update(User user) {
         System.out.println("User Updated");
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         System.out.println("User deleted ID:" + id);
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);

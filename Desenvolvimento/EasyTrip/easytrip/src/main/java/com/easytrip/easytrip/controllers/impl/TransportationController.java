@@ -28,7 +28,7 @@ public class TransportationController implements Controller<Transportation> {
 
 
     @Override
-   // @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Transportation>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -42,7 +42,7 @@ public class TransportationController implements Controller<Transportation> {
     }
 
     @Override
-   // @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Transportation> findById(Long id) {
         try{
             return new ResponseEntity<>(transportationService.findById(id), HttpStatus.OK);}
@@ -56,7 +56,7 @@ public class TransportationController implements Controller<Transportation> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Transportation> save(Transportation transportation) {
         System.out.println("Transportation created");
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.CREATED);
@@ -65,14 +65,14 @@ public class TransportationController implements Controller<Transportation> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Transportation> update(Transportation transportation) {
         System.out.println("Transportation Updated");
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.OK);
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         System.out.println("Transportation deleted ID:" + id);
         return new ResponseEntity<>(transportationService.deleteById(id), HttpStatus.OK);
