@@ -30,7 +30,7 @@ public class CommentsController implements Controller<Comment> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Page<Comment>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -47,7 +47,7 @@ public class CommentsController implements Controller<Comment> {
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Comment> findById(Long id) {
 
         return new ResponseEntity<>(commentService.findById(id), HttpStatus.OK);
@@ -58,21 +58,21 @@ public class CommentsController implements Controller<Comment> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Comment> save(Comment comment) {
         System.out.println("Trip created");
         return new ResponseEntity<>(commentService.saveOrUpdate(comment), HttpStatus.CREATED);
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Comment> update(Comment comment) {
         System.out.println("Comment Updated");
         return new ResponseEntity<>(commentService.saveOrUpdate(comment), HttpStatus.OK);
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
         System.out.println("Comment deleted ID:" + id);

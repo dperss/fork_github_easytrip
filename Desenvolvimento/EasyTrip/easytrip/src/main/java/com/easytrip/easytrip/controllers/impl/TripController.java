@@ -26,7 +26,7 @@ public class TripController implements Controller<Trip> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Page<Trip>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -40,7 +40,7 @@ public class TripController implements Controller<Trip> {
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> findById(Long id) {
         try{
             return new ResponseEntity<>(tripService.findById(id), HttpStatus.OK);}
@@ -54,7 +54,7 @@ public class TripController implements Controller<Trip> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> save(Trip user) {
         System.out.println("Trip created");
         return new ResponseEntity<>(tripService.saveOrUpdate(user), HttpStatus.CREATED);
@@ -63,14 +63,14 @@ public class TripController implements Controller<Trip> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> update(Trip trip) {
         System.out.println("Trip Updated");
         return new ResponseEntity<>(tripService.saveOrUpdate(trip), HttpStatus.OK);
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         System.out.println("Trip deleted ID:" + id);
         return new ResponseEntity<>(tripService.deleteById(id), HttpStatus.OK);

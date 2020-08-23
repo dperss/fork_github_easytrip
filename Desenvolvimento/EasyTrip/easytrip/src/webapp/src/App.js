@@ -14,8 +14,8 @@ import Info from "./components/Info";
 import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
-import { Itinerary} from "./components/Itinerary";
-import AccommodationDetail from "./components/AccommodationDetail";
+import {Itinerary} from "./components/Itinerary";
+
 
 
 
@@ -81,6 +81,9 @@ class App extends Component {
               )}
             </div>
 
+            )}
+
+
             {currentUser ? (
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
@@ -124,7 +127,6 @@ class App extends Component {
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
-              <Route path = "/AccommodationDetail" component={AccommodationDetail}/>
             </Switch>
           </div>
         </div>

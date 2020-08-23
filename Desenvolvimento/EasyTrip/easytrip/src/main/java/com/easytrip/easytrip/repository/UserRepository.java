@@ -1,6 +1,6 @@
 package com.easytrip.easytrip.repository;
 
-import com.easytrip.easytrip.models.User;
+import com.easytrip.easytrip.models.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +22,21 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);
+
+    /*Page<User> findByRoleId(Long roleId, Pageable pageable);
+
+    Optional<User> findByIdAndRoleId(Long id, Long roleId);
+
+    Page<User> findByTripId(Long tripId, Pageable pageable);
+
+    Optional<User> findByIdAndTripId(Long id, Long tripId);
+
+    Page<User> findByPoint_of_InterestId(Long point_of_InterestId, Pageable pageable);
+
+    Optional<User> findByIdAndPoint_of_InterestId(Long id, Long point_of_InterestId);
+
+    Page<User> findByImageId(Long imageId, Pageable pageable);
+
+    Optional<User> findByIdAndImageId(Long id, Long imageId);*/
 
 }

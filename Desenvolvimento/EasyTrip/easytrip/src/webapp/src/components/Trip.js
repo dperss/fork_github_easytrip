@@ -4,8 +4,8 @@ import {Row, Col, Button, Jumbotron} from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Background from "../assets/images/imagem.png";
 import {Itinerary} from "./Itinerary";
-import AccommodationDetail from "./AccommodationDetail";
-
+import AccommodationCard from "./AccommodationCard";
+import axios from 'axios';
 
 
 export class Trip extends React.Component{
@@ -13,11 +13,29 @@ export class Trip extends React.Component{
         super(props);
         this.state = {
             startDate: null,
-            endDate: null
-
+            endDate: null,
+            CurrentAccomodations : [],
+            currentPage : -1,
+            personsPerPage : 5,
+            sortDir: "asc"
         }
     }
-
+    componentDidMount() {
+            this.findAllAccommodations(this.state.currentPage);
+    }
+    findAllPersons(currentPage) {
+                currentPage -= 1;
+                axios.get("http://localhost:8081/api/test/accommodations?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+                    .then(response => response.data)
+                    .then((data) => {
+                        this.setState({
+                            persons: data.content,
+                            totalPages: data.totalPages,
+                            totalElements: data.totalElements,
+                            currentPage: data.number + 1
+                        });
+                    });
+            };
 
 
     render() {
@@ -28,6 +46,12 @@ export class Trip extends React.Component{
             backgroundSize: 'cover',
 
         };
+        const {
+              allCountries,
+              CurrentAccomodations,
+              currentPage,
+              totalPages
+            } = this.state;
 
 
 
@@ -79,7 +103,9 @@ export class Trip extends React.Component{
 
                 <Row>
                     <h5>ALOJAMENTOS: </h5>
-                    <AccommodationDetail/>
+                     {CurrentAccomodations.map(accomodation => (
+                         <AccommodationCard key={accomodation.id} />
+                     ))}
                 </Row>
 
                 <Row>

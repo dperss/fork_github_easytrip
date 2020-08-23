@@ -18,7 +18,7 @@ public class Itinerary {
 
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "itinerary_point",
             joinColumns = @JoinColumn(name = "itinerary_id"),
             inverseJoinColumns = @JoinColumn(name = "point_of_interest_id"))

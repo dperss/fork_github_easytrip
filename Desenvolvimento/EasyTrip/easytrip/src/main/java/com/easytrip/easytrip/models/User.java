@@ -36,27 +36,28 @@ public class User {
     private String description;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_points",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "point_of_interest_id"))
     private Set<Point_of_Interest> user_points = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_trips",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "trip_id"))
     private Set<Trip> trips = new HashSet<>();
 
-    @OneToMany(targetEntity = Image.class,cascade = CascadeType.ALL)
-    @JoinColumn(name ="images_fk",referencedColumnName = "id")
-    private List<Image> images;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "images_id", referencedColumnName = "id")
+    private Image images;
 
 
     public User() {
@@ -114,7 +115,7 @@ public class User {
     }
 
     public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+        this.roles=roles;
     }
 
     public Set<Point_of_Interest> getUser_points() {
@@ -133,11 +134,11 @@ public class User {
         this.trips = trips;
     }
 
-    public List<Image> getImages() {
+    public Image getImages() {
         return images;
     }
 
-    public void setImages(List<Image> images) {
+    public void setImages(Image images) {
         this.images = images;
     }
 }
