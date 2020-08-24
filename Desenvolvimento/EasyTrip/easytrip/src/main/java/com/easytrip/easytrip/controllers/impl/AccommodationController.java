@@ -2,12 +2,7 @@ package com.easytrip.easytrip.controllers.impl;
 
 import com.easytrip.easytrip.controllers.Controller;
 import com.easytrip.easytrip.models.Accommodation;
-import com.easytrip.easytrip.models.Comment;
-import com.easytrip.easytrip.models.Point_of_Interest;
-import com.easytrip.easytrip.models.User;
-import com.easytrip.easytrip.services.Services;
 import com.easytrip.easytrip.services.impl.AccommodationServiceImpl;
-import com.easytrip.easytrip.services.impl.Point_of_InterestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,8 +23,19 @@ public class AccommodationController implements Controller<Accommodation> {
 
 
     @Autowired
-    private Services<Accommodation> accommodationService;
+    private AccommodationServiceImpl accommodationService;
 
+    @GetMapping("/search/location/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Accommodation>> findByLocation(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(accommodationService.findByLocation(pageable, searchText), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/name/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Accommodation>> findByName(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(accommodationService.findByName(pageable, searchText), HttpStatus.OK);
+    }
 
 
     @Override

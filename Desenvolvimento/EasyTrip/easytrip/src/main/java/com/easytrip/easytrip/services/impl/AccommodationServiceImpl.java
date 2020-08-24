@@ -1,11 +1,7 @@
 package com.easytrip.easytrip.services.impl;
 
 import com.easytrip.easytrip.models.Accommodation;
-import com.easytrip.easytrip.models.Comment;
-import com.easytrip.easytrip.models.Trip;
 import com.easytrip.easytrip.repository.AccommodationRepository;
-import com.easytrip.easytrip.repository.CommentRepository;
-import com.easytrip.easytrip.repository.TripRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -22,8 +18,12 @@ public class AccommodationServiceImpl implements Services<Accommodation> {
     AccommodationRepository accommodationRepository;
 
 
-    public Page findAll(Pageable pageable, String searchText) {
-        return accommodationRepository.findAllAccommodations(pageable, searchText);
+    public Page findByLocation(Pageable pageable, String searchText) {
+        return accommodationRepository.findByLocation(pageable, searchText);
+    }
+
+    public Page findByName(Pageable pageable, String searchText) {
+        return accommodationRepository.findByName(pageable, searchText);
     }
 
     @Override

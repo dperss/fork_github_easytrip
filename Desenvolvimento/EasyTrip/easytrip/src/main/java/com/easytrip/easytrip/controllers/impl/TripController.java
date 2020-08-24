@@ -6,11 +6,13 @@ import com.easytrip.easytrip.services.impl.TripServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,11 +26,21 @@ public class TripController implements Controller<Trip> {
     private TripServiceImpl tripService;
 
 
+    @GetMapping("/search/origin/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Trip>> findByOrigin(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(tripService.findByOrigin(pageable, searchText), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/destiny/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Trip>> findByDestiny(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(tripService.findByDestiny(pageable, searchText), HttpStatus.OK);
+    }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Trip>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
-
 
 
         return new ResponseEntity<>(tripService.findAll(
