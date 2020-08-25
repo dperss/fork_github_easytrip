@@ -18,8 +18,12 @@ public class TripServiceImpl implements Services<Trip> {
     TripRepository tripRepository;
 
 
-    public Page findAll(Pageable pageable, String searchText) {
-        return tripRepository.findAllTrips(pageable, searchText);
+    public Page findByOrigin(Pageable pageable, String searchText) {
+        return tripRepository.findByOrigin(pageable, searchText);
+    }
+
+    public Page findByDestiny(Pageable pageable, String searchText) {
+        return tripRepository.findByDestiny(pageable, searchText);
     }
 
     @Override

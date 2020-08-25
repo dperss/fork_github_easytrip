@@ -7,12 +7,13 @@ import com.easytrip.easytrip.services.impl.Point_of_InterestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,16 +27,27 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     private Point_of_InterestServiceImpl point_of_interestService;
 
 
+    @GetMapping("/search/name/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Point_of_Interest>> findByName(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(point_of_interestService.findByName(pageable, searchText), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/location/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<Point_of_Interest>> findByLocation(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(point_of_interestService.findByLocation(pageable, searchText), HttpStatus.OK);
+    }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
-        try{
-        return new ResponseEntity<>(point_of_interestService.findAll(
-                PageRequest.of(
-                        pageNumber, pageSize,
+        try {
+            return new ResponseEntity<>(point_of_interestService.findAll(
+                    PageRequest.of(
+                            pageNumber, pageSize,
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);}catch (Exception e){
@@ -52,8 +64,6 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
 
 
     }
-
-
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

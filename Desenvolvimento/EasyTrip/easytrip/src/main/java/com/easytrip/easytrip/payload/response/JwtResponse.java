@@ -3,25 +3,25 @@ package com.easytrip.easytrip.payload.response;
 import java.util.List;
 
 public class JwtResponse {
-	private String token;
-	private String type = "Bearer";
-	private Long id;
-	private String username;
-	private String email;
-	private String description;
-	private List<String> roles;
+    private final List<String> roles;
+    private String token;
+    private String type = "Bearer";
+    private Long id;
+    private String username;
+    private String email;
+    private String description;
 
-	public JwtResponse(String accessToken, Long id, String username, String email,String description,  List<String> roles) {
-		this.token = accessToken;
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.description=description;
-		this.roles = roles;
-	}
+    public JwtResponse(String accessToken, Long id, String username, String email, String description, List<String> roles) {
+        this.token = accessToken;
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.description = description;
+        this.roles = roles;
+    }
 
-	public String getAccessToken() {
-		return token;
+    public String getAccessToken() {
+        return token;
 	}
 
 	public void setAccessToken(String accessToken) {

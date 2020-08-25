@@ -1,8 +1,6 @@
 package com.easytrip.easytrip.repository;
 
 import com.easytrip.easytrip.models.Accommodation;
-import com.easytrip.easytrip.models.Itinerary;
-import com.easytrip.easytrip.models.Trip;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,9 +10,15 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface AccommodationRepository extends JpaRepository<Accommodation, Long>{
+public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
-    @Query("FROM Accommodation b WHERE b.id LIKE %:searchText% ")
-    Page<Accommodation> findAllAccommodations(Pageable pageable, @Param("searchText") String searchText);
+    @Query("FROM Accommodation a WHERE a.Location LIKE %:searchText% ")
+    Page<Accommodation> findByLocation(Pageable pageable, @Param("searchText") String searchText);
+
+    @Query("FROM Accommodation b WHERE b.name LIKE %:searchText% ")
+    Page<Accommodation> findByName(Pageable pageable, @Param("searchText") String searchText);
+
+
 }
+
 

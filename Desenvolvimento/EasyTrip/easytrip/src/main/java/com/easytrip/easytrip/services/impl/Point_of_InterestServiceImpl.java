@@ -17,9 +17,15 @@ public class Point_of_InterestServiceImpl implements Services<Point_of_Interest>
     Point_of_InterestRepository point_of_InterestRepository;
 
 
-    public Page findAll(Pageable pageable, String searchText) {
-        return point_of_InterestRepository.findAllPoint_of_Interests(pageable, searchText);
+    public Page findByLocation(Pageable pageable, String searchText) {
+        return point_of_InterestRepository.findByLocation(pageable, searchText);
     }
+
+
+    public Page findByName(Pageable pageable, String searchText) {
+        return point_of_InterestRepository.findByName(pageable, searchText);
+    }
+
 
     @Override
     public Page findAll(Pageable pageable) {

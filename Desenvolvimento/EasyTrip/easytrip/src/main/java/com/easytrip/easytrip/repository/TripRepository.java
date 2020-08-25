@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 public interface TripRepository extends JpaRepository<Trip, Long> {
 
     @Query("FROM Trip b WHERE b.Origin LIKE %:searchText% ")
-    Page<Trip> findAllTrips(Pageable pageable, @Param("searchText") String searchText);
+    Page<Trip> findByOrigin(Pageable pageable, @Param("searchText") String searchText);
 
+    @Query("FROM Trip b WHERE b.Destiny LIKE %:searchText% ")
+    Page<Trip> findByDestiny(Pageable pageable, @Param("searchText") String searchText);
 
 
 }
