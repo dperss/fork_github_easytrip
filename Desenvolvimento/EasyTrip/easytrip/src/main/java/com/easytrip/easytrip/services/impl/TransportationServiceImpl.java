@@ -18,10 +18,6 @@ public class TransportationServiceImpl implements Services<Transportation> {
 
 
 
-    public Page findAll(Pageable pageable, String searchText) {
-        return transportationRepository.findAllTransportations(pageable, searchText);
-    }
-
     @Override
     public Page findAll(Pageable pageable) {
         return transportationRepository.findAll(pageable);
