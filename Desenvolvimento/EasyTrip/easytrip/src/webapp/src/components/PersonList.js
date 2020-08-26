@@ -10,6 +10,7 @@ import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, 
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
+axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODI2ODc4NSwiZXhwIjoxNTk4NzY4Nzg1fQ.WDYZeyr2q5fD4B8sm5oAR4kpqCWP1mLyasLbGNh9rSo"}`}
 
 
 class PersonList extends Component {
@@ -20,7 +21,7 @@ class PersonList extends Component {
                 persons : [],
                 search : '',
                 currentPage : 1,
-                personsPerPage : 5,
+                personsPerPage : 3,
                 sortDir: "asc"
             };
         }
@@ -39,7 +40,7 @@ class PersonList extends Component {
 
     findAllPersons(currentPage) {
             currentPage -= 1;
-            axios.get("http://localhost:8081/api/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+            axios.get("http://localhost:8080/api/test/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
                 .then(response => response.data)
                 .then((data) => {
                     this.setState({
@@ -134,7 +135,7 @@ class PersonList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8081/api/users/search/"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
+        axios.get("http://localhost:8080/api/users/search"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
             .then(response => response.data)
             .then((data) => {
                 this.setState({

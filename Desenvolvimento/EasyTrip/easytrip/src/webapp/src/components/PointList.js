@@ -10,7 +10,7 @@ import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, 
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
-
+axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODI2ODc4NSwiZXhwIjoxNTk4NzY4Nzg1fQ.WDYZeyr2q5fD4B8sm5oAR4kpqCWP1mLyasLbGNh9rSo"}`}
 
 class PersonList extends Component {
 
@@ -39,7 +39,7 @@ class PersonList extends Component {
 
     findAllPersons(currentPage) {
         currentPage -= 1;
-        axios.get("http://localhost:8081/api/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get("http://localhost:8080/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -134,7 +134,7 @@ class PersonList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8081/api/users/search/"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
+        axios.get("http://localhost:8080/api/test/point_of_interests/search/"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -152,7 +152,7 @@ class PersonList extends Component {
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Person Deleted Successfully."} type = {"sucess"}/>
+                    <MyToast show = {this.state.show} message = {"Point of interest Deleted Successfully."} type = {"sucess"}/>
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header>
@@ -191,7 +191,7 @@ class PersonList extends Component {
                             {
                                 persons.length === 0 ?
                                     <tr align="center">
-                                        <td colSpan="7">No Persons Available.</td>
+                                        <td colSpan="7">No Point of interest Available.</td>
                                     </tr> :
                                     persons.map((person) => (
                                         <tr key={person.id}>
