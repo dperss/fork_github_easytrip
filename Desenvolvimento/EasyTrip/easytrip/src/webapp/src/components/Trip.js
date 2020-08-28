@@ -4,7 +4,7 @@ import {Row, Col, Button, Jumbotron} from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Background from "../assets/images/imagem.png";
 import {Itinerary} from "./Itinerary";
-import AccommodationCard from "./AccommodationCard";
+import ResultsAccommodation from "./ResultsAccommodation";
 import axios from 'axios';
 
 
@@ -104,7 +104,7 @@ export class Trip extends React.Component{
                 <Row>
                     <h5>ALOJAMENTOS: </h5>
                      {CurrentAccomodations.map(accomodation => (
-                         <AccommodationCard key={accomodation.id} />
+                         <ResultsAccommodation key={accomodation.id} />
                      ))}
                 </Row>
 
