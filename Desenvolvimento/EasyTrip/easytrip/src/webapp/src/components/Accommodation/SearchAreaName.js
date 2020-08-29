@@ -1,13 +1,13 @@
 import React from "react";
 
-function SearchArea({handleInput, search}) {
+function SearchAreaName({handleInput, search}) {
 
     return(
         <section className="searchbox-wrap">
 
             <input
                 type = "text"
-                placeholder = "Procure por um alojamento.."
+                placeholder = "Pesquise pelo nome do alojamento.."
                 className = "searchbox"
                 onChange={handleInput}
                 onKeyPress={search}
@@ -17,4 +17,4 @@ function SearchArea({handleInput, search}) {
     );
 }
 
-export default SearchArea;
+export default SearchAreaName;

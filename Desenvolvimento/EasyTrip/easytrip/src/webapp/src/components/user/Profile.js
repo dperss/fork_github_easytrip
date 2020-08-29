@@ -1,6 +1,6 @@
 import React, { Component,Image } from "react";
 import { Redirect } from "react-router-dom";
-import AuthService from "../services/auth/auth.service";
+import AuthService from "../../services/auth/auth.service";
 import axios from "axios";
 
 export default class Profile extends Component {
@@ -56,11 +56,12 @@ export default class Profile extends Component {
       <div className="container">
         {(this.state.userReady) ?
         <div>
-        <header className="jumbotron">
+        <header className="jumbotron-prof">
           <h3>
             <strong>{currentUser.username}</strong> Profile
           </h3>
         </header>
+            <h1 className = "h1-prof"> As minhas informações</h1>
         <p>
           {currentUser.accessToken.substring(0, 20)} ...{" "}
           {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}

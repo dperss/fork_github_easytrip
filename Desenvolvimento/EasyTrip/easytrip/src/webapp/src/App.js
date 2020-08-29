@@ -6,15 +6,16 @@ import AuthService from "./services/auth/auth.service";
 
 
 import Home from "./components/Home";
-import Login from "./components/Login";
-import Registration from "./components/Registration";
+import Login from "./components/user/Login";
+import Registration from "./components/user/Registration";
 import PersonList from "./components/PersonList";
-import Profile from "./components/Profile";
-import Info from "./components/Info";
+import Profile from "./components/user/Profile";
+import Info from "./components/user/Info";
 import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
-import Accommodation from "./components/Accommodation";
-import {Itinerary} from "./components/Itinerary";
+import {Itinerary} from "./components/Itinerary/Itinerary";
+import Footer from "./components/Footer";
+import Transportation from "./components/Transportation/Transportation";
 
 
 
@@ -58,18 +59,21 @@ class App extends Component {
               EasyTrip
             </Link>
             <div className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/home"} className="nav-link">
-                  Home
-                </Link>
-              </li>
 
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={"/PointList"} className="nav-link">
-                    Point List
+                    Lista de Pontos
                   </Link>
                 </li>
+              )}
+
+              {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/PersonList"} className="nav-link">
+                      Lista de Pessoas
+                    </Link>
+                  </li>
               )}
 
               {currentUser && (
@@ -114,6 +118,8 @@ class App extends Component {
             )}
           </nav>
 
+            <Footer/>
+
           <div className="container mt-3">
             <Switch>
               <Route exact path={["/", "/home"]} component={Home} />
@@ -125,8 +131,8 @@ class App extends Component {
               <Route path="/PointList" component={PointList} />
               <Route path="/PersonList" component={PersonList} />
               <Route path = "/Trip" component={Trip}/>
-              <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
+              <Route path = "/Transportation" component={Transportation}/>
             </Switch>
           </div>
         </div>

@@ -183,9 +183,9 @@ class PersonList extends Component {
                                   <th>Nome</th>
                                   <th>Email</th>
                                   <th>Password</th>
-                                  <th>Description</th>
-                                  <th>Type</th>
-                                  <th>Status</th>
+                                  <th>Descrição</th>
+
+
                                 </tr>
                               </thead>
                               <tbody>
@@ -196,12 +196,12 @@ class PersonList extends Component {
                                     </tr> :
                                     persons.map((person) => (
                                     <tr key={person.id}>
-                                        <td>{person.name}</td>
+                                        <td>{person.username}</td>
                                         <td>{person.email}</td>
                                         <td>{person.password}</td>
                                         <td>{person.description}</td>
-                                        <td>{person.type}</td>
-                                        <td>{person.status}</td>
+
+
                                         <td>
                                             <ButtonGroup>
                                                 <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
