@@ -12,7 +12,7 @@ import {
     Col,
 } from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
-import Accommodation from "./Accommodation/Accommodation";
+import Accommodation from "./Accommodation";
 
 
 
@@ -56,7 +56,7 @@ export default class Home extends React.Component{
 
                     <Col>
                         <Form >
-                            <DateRangePicker className = "datePicker"
+                            <DateRangePicker
                                              startDate = {this.state.startDate}
                                              startDateId = "your_unique_start_date_id"
                                              endDate = {this.state.endDate}

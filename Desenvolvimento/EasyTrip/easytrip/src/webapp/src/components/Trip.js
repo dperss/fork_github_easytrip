@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row, Col, Button, Jumbotron} from "react-bootstrap";
 import {DateRangePicker} from "react-dates";
 import Background from "../assets/images/imagem.png";
-import {Itinerary} from "./Itinerary/Itinerary";
-import ResultsAccommodation from "./Accommodation/ResultsAccommodation";
+import {Itinerary} from "./Itinerary";
+import ResultsAccommodation from "./ResultsAccommodation";
 import axios from 'axios';
 
 

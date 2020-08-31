@@ -6,16 +6,16 @@ import AuthService from "./services/auth/auth.service";
 
 
 import Home from "./components/Home";
-import Login from "./components/user/Login";
-import Registration from "./components/user/Registration";
+import Login from "./components/Login";
+import Registration from "./components/Registration";
 import PersonList from "./components/PersonList";
-import Profile from "./components/user/Profile";
-import Info from "./components/user/Info";
+import Profile from "./components/Profile";
+import Info from "./components/Info";
 import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
-import {Itinerary} from "./components/Itinerary/Itinerary";
+import {Itinerary} from "./components/Itinerary";
 import Footer from "./components/Footer";
-import Transportation from "./components/Transportation/Transportation";
+import Transportation from "./components/Transportation";
 
 
 

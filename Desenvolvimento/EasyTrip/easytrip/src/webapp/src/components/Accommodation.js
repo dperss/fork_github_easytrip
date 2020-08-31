@@ -23,6 +23,7 @@ function Accommodation() {
             axios(apiURL  + state.s)
                 .then(({data}) => {
                     let results = data.content;
+                    console.log(data);
                     setState(prevState => {
                         return {...prevState, results: results}
                     })

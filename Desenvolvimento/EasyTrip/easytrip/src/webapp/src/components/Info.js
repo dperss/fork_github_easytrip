@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Jumbotron, Nav,Tab, Row, Col} from "react-bootstrap";
-import Background from "../../assets/images/imagem.png";
+import Background from "../assets/images/imagem.png";
 
 
 export default class Info extends React.Component{

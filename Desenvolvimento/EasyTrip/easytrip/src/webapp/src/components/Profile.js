@@ -1,6 +1,6 @@
 import React, { Component,Image } from "react";
 import { Redirect } from "react-router-dom";
-import AuthService from "../../services/auth/auth.service";
+import AuthService from "../services/auth/auth.service";
 import axios from "axios";
 
 export default class Profile extends Component {
