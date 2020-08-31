@@ -3,10 +3,22 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {deletePerson} from './../services/index';
 
+import "./add"
 import './../assets/css/Style.css';
 import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, faFastForward, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {
+    faList,
+    faEdit,
+    faTrash,
+    faStepBackward,
+    faFastBackward,
+    faStepForward,
+    faFastForward,
+    faSearch,
+    faTimes,
+    faPlus
+} from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
@@ -135,7 +147,7 @@ class PersonList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/users/search"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
+        axios.get("http://localhost:8080/api/test/users/"+this.state.search+"?page="+currentPage+"&size="+this.state.personsPerPage)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -153,7 +165,7 @@ class PersonList extends Component {
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Person Deleted Successfully."} type = {"sucess"}/>
+                    <MyToast show = {this.state.show} message = {"Person Deleted Successfully."} type = {"success"}/>
                 </div>
                 <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
@@ -201,6 +213,8 @@ class PersonList extends Component {
                                         <td>
                                             <ButtonGroup>
                                                 <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                                <Link to={"/add"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faPlus}/></Link>{''}
+
                                                 <Button size="sm" variant="outline-danger" onClick={this.deletePerson.bind(this, person.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                             </ButtonGroup>
                                         </td>

@@ -1,26 +1,37 @@
 import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
-import {deletePerson} from './../services/index';
+import {deletePoint} from './../services/index';
 
 import './../assets/css/Style.css';
 import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, faFastForward, faSearch, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {
+    faList,
+    faEdit,
+    faTrash,
+    faStepBackward,
+    faFastBackward,
+    faStepForward,
+    faFastForward,
+    faSearch,
+    faTimes,
+    faPlus
+} from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
 axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
-class PersonList extends Component {
+class PointList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            persons : [],
+            points : [],
             search : '',
             currentPage : 1,
-            personsPerPage : 5,
+            pointsPerPage : 5,
             sortDir: "asc"
         };
     }
@@ -28,22 +39,22 @@ class PersonList extends Component {
     sortData = () => {
         setTimeout(() => {
             this.state.sortDir === "asc" ? this.setState({sortDir: "desc"}) : this.setState({sortDir: "asc"});
-            this.findAllPersons(this.state.currentPage);
+            this.findAllPoints(this.state.currentPage);
         }, 500);
     };
 
     componentDidMount() {
-        this.findAllPersons(this.state.currentPage);
+        this.findAllPoints(this.state.currentPage);
     }
 
 
-    findAllPersons(currentPage) {
+    findAllPoints(currentPage) {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get("http://localhost:8080/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.pointsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
-                    persons: data.content,
+                    points: data.content,
                     totalPages: data.totalPages,
                     totalElements: data.totalElements,
                     currentPage: data.number + 1
@@ -52,13 +63,13 @@ class PersonList extends Component {
     };
 
 
-    deletePerson = (personId) => {
-        this.props.deletePerson(personId);
+    deletePoint = (pointId) => {
+        this.props.deletePoint(pointId);
         setTimeout(() => {
-            if(this.props.personObject != null) {
+            if(this.props.pointObject != null) {
                 this.setState({"show":true});
                 setTimeout(() => this.setState({"show":false}), 3000);
-                this.findAllPersons(this.state.currentPage);
+                this.findAllPoints(this.state.currentPage);
             } else {
                 this.setState({"show":false});
             }
@@ -71,7 +82,7 @@ class PersonList extends Component {
         if(this.state.search) {
             this.searchData(targetPage);
         } else {
-            this.findAllPersons(targetPage);
+            this.findAllPoints(targetPage);
         }
         this.setState({
             [event.target.name]: targetPage
@@ -84,7 +95,7 @@ class PersonList extends Component {
             if(this.state.search) {
                 this.searchData(firstPage);
             } else {
-                this.findAllPersons(firstPage);
+                this.findAllPoints(firstPage);
             }
         }
     };
@@ -95,28 +106,28 @@ class PersonList extends Component {
             if(this.state.search) {
                 this.searchData(this.state.currentPage - prevPage);
             } else {
-                this.findAllPersons(this.state.currentPage - prevPage);
+                this.findAllPoints(this.state.currentPage - prevPage);
             }
         }
     };
 
     lastPage = () => {
-        let condition = Math.ceil(this.state.totalElements / this.state.personsPerPage);
+        let condition = Math.ceil(this.state.totalElements / this.state.pointsPerPage);
         if(this.state.currentPage < condition) {
             if(this.state.search) {
                 this.searchData(condition);
             } else {
-                this.findAllPersons(condition);
+                this.findAllPoints(condition);
             }
         }
     };
 
     nextPage = () => {
-        if(this.state.currentPage < Math.ceil(this.state.totalElements / this.state.personsPerPage)) {
+        if(this.state.currentPage < Math.ceil(this.state.totalElements / this.state.pointsPerPage)) {
             if(this.state.search) {
                 this.searchData(this.state.currentPage + 1);
             } else {
-                this.findAllPersons(this.state.currentPage + 1);
+                this.findAllPoints(this.state.currentPage + 1);
             }
         }
     };
@@ -129,7 +140,7 @@ class PersonList extends Component {
 
     cancelSearch = () => {
         this.setState({"search" : ''});
-        this.findAllPersons(this.state.currentPage);
+        this.findAllPoints(this.state.currentPage);
     };
 
     searchData = (currentPage) => {
@@ -138,7 +149,7 @@ class PersonList extends Component {
             .then(response => response.data)
             .then((data) => {
                 this.setState({
-                    persons: data.content,
+                    points: data.content,
                     totalPages: data.totalPages,
                     totalElements: data.totalElements,
                     currentPage: data.number + 1
@@ -147,12 +158,12 @@ class PersonList extends Component {
     };
 
     render() {
-        const {persons, currentPage, totalPages, search} = this.state;
+        const {points, currentPage, totalPages, search} = this.state;
 
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Point of interest Deleted Successfully."} type = {"sucess"}/>
+                    <MyToast show = {this.state.show} message = {"Point of interest Deleted Successfully."} type = {"success"}/>
                 </div>
                 <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
@@ -187,20 +198,21 @@ class PersonList extends Component {
                             </thead>
                             <tbody>
                             {
-                                persons.length === 0 ?
+                                points.length === 0 ?
                                     <tr align="center">
                                         <td colSpan="7">No Point of interest Available.</td>
                                     </tr> :
-                                    persons.map((person) => (
-                                        <tr key={person.id}>
-                                            <td>{person.name}</td>
-                                            <td>{person.location}</td>
-                                            <td>{person.description}</td>
-                                            <td>{person.type_of_point}</td>
+                                    points.map((point) => (
+                                        <tr key={point.id}>
+                                            <td>{point.name}</td>
+                                            <td>{point.location}</td>
+                                            <td>{point.description}</td>
+                                            <td>{point.type_of_point}</td>
                                             <td>
                                                 <ButtonGroup>
-                                                    <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
-                                                    <Button size="sm" variant="outline-danger" onClick={this.deletePerson.bind(this, person.id)}><FontAwesomeIcon icon={faTrash} /></Button>
+                                                    <Link to={"edit/"+point.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                                    <Link to={"add/"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faPlus}/></Link>
+                                                    <Button size="sm" variant="outline-danger" onClick={this.deletePoint.bind(this, point.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
@@ -209,7 +221,7 @@ class PersonList extends Component {
                             </tbody>
                         </Table>
                     </Card.Body>
-                    {persons.length > 0 ?
+                    {points.length > 0 ?
                         <Card.Footer>
                             <div style={{"float":"left"}}>
                                 Showing Page {currentPage} of {totalPages}
@@ -250,14 +262,14 @@ class PersonList extends Component {
 
 const mapStateToProps = state => {
     return {
-        personObject: state.person
+        pointObject: state.point
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        deletePerson: (personId) => dispatch(deletePerson(personId))
+        deletePoint: (pointId) => dispatch(deletePoint(pointId))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonList);
+export default connect(mapStateToProps, mapDispatchToProps)(PointList);

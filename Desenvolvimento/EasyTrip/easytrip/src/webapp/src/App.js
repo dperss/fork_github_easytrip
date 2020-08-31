@@ -15,6 +15,7 @@ import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
 import {Itinerary} from "./components/Itinerary";
+import add from "./components/add";
 
 
 
@@ -129,6 +130,7 @@ class App extends Component {
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
+              <Route path = "/add" component={add}/>
 
             </Switch>
           </div>
