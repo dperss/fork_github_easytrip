@@ -22,8 +22,12 @@ public class UserServiceImpl implements Services<User> {
     private RoleRepository roleRepository;
 
 
-    public Page<User> loadUserByEmail(Pageable pageable, String searchText) {
+    public Page<User> findByEmail(Pageable pageable, String searchText) {
         return userRepository.findByEmail(pageable,searchText);
+    }
+
+    public Page<User> findByUsername(Pageable pageable, String searchText) {
+        return userRepository.findByUsername(pageable,searchText);
     }
 
 

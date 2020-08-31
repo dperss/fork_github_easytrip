@@ -61,7 +61,7 @@ function UserGreeting(props) {
   <Nav className="mr-auto">
     <Link to={"Trip"} className="nav-link">Viajar</Link>
     <Link to={"Accommodation"} className="nav-link">Alojamento</Link>
-    <Link to={"PersonList"} className="nav-link">Gestão de Pessoas</Link>
+    <Link to={"UserList"} className="nav-link">Gestão de Pessoas</Link>
     <Link to={"PointList"} className="nav-link">Lista de pontos</Link>
     <Link to={"Profile"} className="nav-link">Perfil</Link>
   </Nav>

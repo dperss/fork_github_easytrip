@@ -8,7 +8,7 @@ import AuthService from "./services/auth/auth.service";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-import PersonList from "./components/PersonList";
+import UserList from "./components/UserList";
 import Profile from "./components/Profile";
 import Info from "./components/Info";
 import PointList from "./components/PointList";
@@ -27,7 +27,7 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      showPersonList: false,
+      showUserList: false,
       showAdminBoard: false,
       currentUser: undefined
     };
@@ -69,7 +69,7 @@ class App extends Component {
               )}
               {showAdminBoard && (
                   <li className="nav-item">
-                    <Link to={"/PersonList"} className="nav-link">
+                    <Link to={"/UserList"} className="nav-link">
                       Lista de Pessoas
                     </Link>
                   </li>
@@ -126,7 +126,7 @@ class App extends Component {
               <Route path="/Profile" component={Profile} />
               <Route path="/Info" component={Info} />
               <Route path="/PointList" component={PointList} />
-              <Route path="/PersonList" component={PersonList} />
+              <Route path="/UserList" component={UserList} />
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>

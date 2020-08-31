@@ -25,7 +25,7 @@ import axios from 'axios';
 axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
 
-class PersonList extends Component {
+class UserList extends Component {
 
     constructor(props) {
             super(props);
@@ -275,4 +275,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonList);
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
