@@ -58,18 +58,20 @@ class App extends Component {
               EasyTrip
             </Link>
             <div className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/home"} className="nav-link">
-                  Home
-                </Link>
-              </li>
 
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={"/PointList"} className="nav-link">
-                    Point List
+                    Lista de Pontos
                   </Link>
                 </li>
+              )}
+              {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/PersonList"} className="nav-link">
+                      Lista de Pessoas
+                    </Link>
+                  </li>
               )}
 
               {currentUser && (
@@ -81,7 +83,7 @@ class App extends Component {
               )}
             </div>
 
-            )}
+
 
 
             {currentUser ? (
@@ -127,8 +129,10 @@ class App extends Component {
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
+
             </Switch>
           </div>
+
         </div>
       </Router>
     );

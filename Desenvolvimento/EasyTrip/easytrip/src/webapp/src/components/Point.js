@@ -2,23 +2,23 @@ import React, {useState} from "react"
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css'
 import axios from 'axios'
 import SearchArea from "./SearchArea"
-import ResultsAccommodation from "./ResultsAccommodation";
 import SearchLocation from "./SearchLocation";
-import Popup from "./Popup";
+import ResultsPoint from "./ResultsPoint";
+import PointPopup from "./PointPopup";
 axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
 
-function Accommodation() {
+function Point() {
     const  [state, setState] = useState({
         s: "",
         results: [],
         selected: {}
 
     });
-    const apiURL ="http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=";
-    const apiURLLoc = "http://localhost:8080/api/test/accomodations/search/location/{searchText}?searchText=";
+    const apiURL ="http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=";
+    const apiURLLoc = "http://localhost:8080/api/test/point_of_interests/search/location/{searchText}?searchText=";
 
-    const search = (e) => {
+    const searchpoint = (e) => {
         if(e.key === "Enter"){
             axios(apiURL  + state.s)
                 .then(({data}) => {
@@ -31,7 +31,7 @@ function Accommodation() {
         }
     }
 
-    const locations = (e) => {
+    const locationpoint = (e) => {
         if(e.key === "Enter"){
             axios(apiURLLoc  + state.s)
                 .then(({data}) => {
@@ -56,7 +56,7 @@ function Accommodation() {
 
     const openPopup = id => {
 
-        axios("http://localhost:8080/api/test/accomodations/" + id)
+        axios("http://localhost:8080/api/test/point_of_interests/" + id)
             .then(({data}) =>{
                 let result = data;
                 console.log(result);
@@ -79,19 +79,20 @@ function Accommodation() {
 
         <div className = "Accommodation">
             <header className = "header_acc">
-                <h1 className = "h1_header_acc"> Alojamentos</h1>
+                <h1 className = "h1_header_acc"> Pontos de Interesse</h1>
             </header>
             <main className = "main_accommodations">
-                <SearchArea handleInput = {handleInput} search = {search}/>
+                <SearchArea handleInput = {handleInput} search = {searchpoint}/>
 
-                <SearchLocation handleInput = {handleInput} search = {locations}/>
+                <SearchLocation handleInput = {handleInput} search = {locationpoint}/>
 
-                <ResultsAccommodation results={state.results} openPopup = {openPopup}/>
+                <ResultsPoint results={state.results} openPopup = {openPopup}/>
 
-                {(typeof state.selected.name != "undefined") ? <Popup selected={state.selected} closePopup={closePopup}/> : false}
+                {(typeof state.selected.name != "undefined") ? <PointPopup selected={state.selected} closePopup={closePopup}/> : false}
             </main>
+
         </div>
     );
 }
 
-export default Accommodation;
+export default Point;

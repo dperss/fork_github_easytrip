@@ -1,13 +1,13 @@
-import React, {Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {Navbar, Container, Col} from 'react-bootstrap';
 
-export default class Footer extends Component {
-    render() {
+const Footer = () => {
+
         let fullYear = new Date().getFullYear();
 
         return (
-            <Navbar fixed="bottom" bg="light" variant="dark">
+            <Navbar fixed="bottom" bg="transparent" variant="dark">
                 <Container >
                     <Col lg={12} className="text-center text-muted">
                         <div>{2020}-{fullYear+1}, All Rights Reserved by EasyTrip
@@ -16,5 +16,7 @@ export default class Footer extends Component {
                 </Container>
             </Navbar>
         );
-    }
+
 }
+
+export default Footer;

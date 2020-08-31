@@ -10,7 +10,7 @@ import {faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward, 
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
-axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODI2ODc4NSwiZXhwIjoxNTk4NzY4Nzg1fQ.WDYZeyr2q5fD4B8sm5oAR4kpqCWP1mLyasLbGNh9rSo"}`}
+axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
 
 class UserList extends Component {
@@ -155,15 +155,15 @@ class UserList extends Component {
                 <div style={{"display":this.state.show ? "block" : "none"}}>
                     <MyToast show = {this.state.show} message = {"Person Deleted Successfully."} type = {"sucess"}/>
                 </div>
-                <Card className={"border border-dark bg-dark text-white"}>
+                <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
                         <div style={{"float":"left"}}>
-                            <FontAwesomeIcon icon={faList} /> Person List
+                            <FontAwesomeIcon icon={faList} /> Lista de Pessoas
                         </div>
                         <div style={{"float":"right"}}>
                              <InputGroup size="sm">
-                                <FormControl placeholder="Search" name="search" value={search}
-                                    className={"info-border bg-dark text-white"}
+                                <FormControl placeholder="Procurar" name="search" value={search}
+                                    className={"info-border bg-light text-dark"}
                                     onChange={this.searchChange}/>
                                 <InputGroup.Append>
                                     <Button size="sm" variant="outline-info" type="button" onClick={this.searchData}>
@@ -177,15 +177,13 @@ class UserList extends Component {
                         </div>
                     </Card.Header>
                     <Card.Body>
-                        <Table bordered hover striped variant="dark">
+                        <Table bordered hover striped variant="light">
                             <thead>
                                 <tr>
-                                  <th>Nome</th>
+                                  <th>Username</th>
                                   <th>Email</th>
                                   <th>Password</th>
-                                  <th>Description</th>
-                                  <th>Type</th>
-                                  <th>Status</th>
+                                  <th>Descrição</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -196,15 +194,13 @@ class UserList extends Component {
                                     </tr> :
                                     persons.map((person) => (
                                     <tr key={person.id}>
-                                        <td>{person.name}</td>
+                                        <td>{person.username}</td>
                                         <td>{person.email}</td>
                                         <td>{person.password}</td>
                                         <td>{person.description}</td>
-                                        <td>{person.type}</td>
-                                        <td>{person.status}</td>
                                         <td>
                                             <ButtonGroup>
-                                                <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
+                                                <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                                                 <Button size="sm" variant="outline-danger" onClick={this.deletePerson.bind(this, person.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                             </ButtonGroup>
                                         </td>
@@ -231,7 +227,7 @@ class UserList extends Component {
                                             <FontAwesomeIcon icon={faStepBackward} /> Prev
                                         </Button>
                                     </InputGroup.Prepend>
-                                    <FormControl className={"page-num bg-dark"} name="currentPage" value={currentPage}
+                                    <FormControl className={"page-num bg-light"} name="currentPage" value={currentPage}
                                         onChange={this.changePage}/>
                                     <InputGroup.Append>
                                         <Button type="button" variant="outline-info" disabled={currentPage === totalPages ? true : false}
