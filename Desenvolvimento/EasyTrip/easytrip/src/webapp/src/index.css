@@ -7,7 +7,26 @@
     outline: none;
     background: none;
 
-    background-color: #EEEEEE;
+    background-color: #EDF3F3;
+    border-radius: 8px;
+
+    color: #53565A;
+    font-size: 20px;
+    font-weight: 300;
+
+    transition: 0.4s ease-out;
+}
+.searchboxloc{
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    background-color: #EDF3F3;
     border-radius: 8px;
 
     color: #53565A;
@@ -18,6 +37,9 @@
 }
 
 .searchbox:focus {
+    box-shadow: 0px 0px 8px 3px #50A99B;
+}
+.searchboxloc:focus {
     box-shadow: 0px 0px 8px 3px #50A99B;
 }
 
@@ -52,5 +74,148 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+
+}
+
+.popup {
+    position: center;
+    margin-top: 20px;
+
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+
+    text-align: center;
+
+}
+
+.popup .content {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+
+    color: cadetblue;
+}
+
+.popup .content h2 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.popup .content h2 span {
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 5px;
+
+}
+
+.popup .content .plot {
+    display: block;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+
+
+}
+
+.popup .content .plot img {
+    flex: 1 1 50%;
+    max-width: 300px;
+    padding: 0px 15px;
+}
+
+.popup .content .plot p {
+    flex: 1 1 50%;
+    padding: 30px;
+}
+.popup .content .close {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+
+    background-color: #50A99B;
+    color: #50A99B;
+    border-radius:  8px;
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+
+    transition: 0.4s ease-out;
+}
+.popup .content .close:hover {
+    background: #17A2B8;
+}
+.jumbo-home {
+    background-image: url("../src/assets/images/imagem.png");
+    background-position: center;
+    background-size: cover;
+
+    font-family: "Hobo Std";
+    font-size: 48px;
+    font-weight:500 ;
+    text-align: left;
+
+    display: block;
+    width: 100%;
+    padding: 15px;
+}
+.searchbox-home {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    border-radius: 6px;
+    color: #53565A;
+    font-size: 20px;
+    font-weight: 300;
+
+    transition: 0.4s ease-out;
+    margin-right: 50px;
+    margin-bottom: 5px;
+}
+
+.searchbox-home:focus {
+    box-shadow: 0px 0px 8px 3px #50A99B;
+}
+
+.button-home {
+    display: inline-block;
+    margin: 0px 50px;
+    font-size: 16px;
+
+    width: 50%;
+    padding: 10px ;
+
+    background: transparent;
+    border: 2px solid #e7e7e7 ;
+}
+
+.jumbotron-prof {
+    background-image: url("../src/assets/images/imagem.png");
+    background-position: center;
+    background-size: cover;
+
+    display: block;
+    width: 100%;
+    padding: 50px;
+
+    font-family: "Hobo Std";
+    font-size: 60px;
+    font-weight:500 ;
+    text-align: left;
+}
+
+.h1-prof{
+    color: #53565A;
+    font-weight: 500;
+    text-align: center;
+    font-size: 48px;
+    margin-top: 20px;
 
 }

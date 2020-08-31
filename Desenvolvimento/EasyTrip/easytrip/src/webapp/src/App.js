@@ -15,6 +15,7 @@ import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
 import {Itinerary} from "./components/Itinerary";
+import Footer from "./components/Footer";
 
 
 
@@ -58,18 +59,20 @@ class App extends Component {
               EasyTrip
             </Link>
             <div className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/home"} className="nav-link">
-                  Home
-                </Link>
-              </li>
 
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={"/PointList"} className="nav-link">
-                    Point List
+                    Lista de Pontos
                   </Link>
                 </li>
+              )}
+              {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/PersonList"} className="nav-link">
+                      Lista de Pessoas
+                    </Link>
+                  </li>
               )}
 
               {currentUser && (
@@ -127,8 +130,10 @@ class App extends Component {
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
+
             </Switch>
           </div>
+
         </div>
       </Router>
     );
