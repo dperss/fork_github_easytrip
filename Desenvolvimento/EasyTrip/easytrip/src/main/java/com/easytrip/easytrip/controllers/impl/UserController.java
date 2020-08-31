@@ -30,7 +30,7 @@ import java.util.Set;
 public class UserController implements Controller<User> {
 
     @Autowired
-    private Services<User> userService;
+    private UserServiceImpl userService;
 
 
 
@@ -43,14 +43,21 @@ public class UserController implements Controller<User> {
     @Autowired
     private Services<Trip> tripServices;*/
 
-    @ApiOperation(value = "Finds contact bye email",
-            notes = "tesddsdsd"
-            //response = "Page<User>"
+    @ApiOperation(value = "Finds contact bye Email"
     )
-    /*@GetMapping("/search/{searchText}")
+    @GetMapping("/search/email/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findByEmail(Pageable pageable, String searchText) {
-        return new ResponseEntity<>(userService.loadUserByEmail(pageable, searchText), HttpStatus.OK);
-    }*/
+        return new ResponseEntity<>(userService.findByEmail(pageable, searchText), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Finds contact bye Username"
+    )
+    @GetMapping("/search/username/{searchText}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    public ResponseEntity<Page<User>> findByUsername(Pageable pageable, String searchText) {
+        return new ResponseEntity<>(userService.findByUsername(pageable, searchText), HttpStatus.OK);
+    }
 
 
 
