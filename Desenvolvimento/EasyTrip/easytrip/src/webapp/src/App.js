@@ -15,7 +15,6 @@ import PointList from "./components/PointList";
 import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
 import {Itinerary} from "./components/Itinerary";
-import Footer from "./components/Footer";
 
 
 

@@ -5,7 +5,6 @@ import 'react-dates/lib/css/_datepicker.css';
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Background from "../assets/images/imagem.png";
 import {
     Jumbotron,
     Form,
@@ -43,21 +42,6 @@ export default class Home extends React.Component{
 
 
     render() {
-
-
-
-        const  jumbstyle = {
-            backgroundImage: `url(${Background})`,
-            backgroundPosition: 'top',
-            backgroundSize: 'cover',
-
-        };
-
-        const bvindo = {
-            fontFamily: 'Hobo Std',
-            fontSize: '300%',
-            textAlign: 'left'
-        };
 
         return (
 

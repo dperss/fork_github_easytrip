@@ -18,7 +18,7 @@ function PointPopup({selected, closePopup}) {
 
 
                 <h4> Descrição: {selected.description}</h4>
-                <p>Preço: {selected.price}€</p>
+                <p>Tipo de ponto: {selected.type_of_point}</p>
             </main>
             <button className = "close" onClick={closePopup}>Fechar</button>
 

@@ -4,7 +4,7 @@ import axios from 'axios'
 import SearchArea from "./SearchArea"
 import SearchLocation from "./SearchLocation";
 import ResultsPoint from "./ResultsPoint";
-import Popup from "./Popup";
+import PointPopup from "./PointPopup";
 axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
 
@@ -88,7 +88,7 @@ function Point() {
 
                 <ResultsPoint results={state.results} openPopup = {openPopup}/>
 
-                {(typeof state.selected.name != "undefined") ? <Popup selected={state.selected} closePopup={closePopup}/> : false}
+                {(typeof state.selected.name != "undefined") ? <PointPopup selected={state.selected} closePopup={closePopup}/> : false}
             </main>
 
         </div>
