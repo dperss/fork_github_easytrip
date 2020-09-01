@@ -145,7 +145,7 @@ class PointList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=")
+        axios.get("http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=" + this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -194,6 +194,7 @@ class PointList extends Component {
                                 <th>Localização</th>
                                 <th>Descrição</th>
                                 <th>Tipo de Ponto</th>
+                                <Link to={"add/"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faPlus}/></Link>
                             </tr>
                             </thead>
                             <tbody>
@@ -211,7 +212,6 @@ class PointList extends Component {
                                             <td>
                                                 <ButtonGroup>
                                                     <Link to={"edit/"+point.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
-                                                    <Link to={"add/"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faPlus}/></Link>
                                                     <Button size="sm" variant="outline-danger" onClick={this.deletePoint.bind(this, point.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                                 </ButtonGroup>
                                             </td>

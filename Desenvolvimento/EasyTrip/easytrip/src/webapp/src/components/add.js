@@ -1,13 +1,20 @@
 import React, {Component} from "react"
-import { Form} from "react-bootstrap";
 import axios from "axios"
 import MyToast from "./MyToast";
+import {
+    Jumbotron,
+} from "react-bootstrap";
 
 
-
-
-
-
+const required = value => {
+    if (!value) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                This field is required!
+            </div>
+        );
+    }
+};
 
 
 class add extends Component {
@@ -21,17 +28,35 @@ class add extends Component {
             name: "",
             type_of_point: "",
             description: "",
-            location: ""
+            location: "",
+            successful: false,
+            message: ""
         };
     }
 
-    handleChange(e){
+    handleNameChange(e){
         this.setState({name: e.target.value})
     }
 
+    handlePointChange(e){
+        this.setState({type_of_point: e.target.value})
+    }
+
+    handleLocationChange(e){
+        this.setState({location: e.target.value})
+    }
+
+    handleDescriptionChange(e){
+        this.setState({description: e.target.value})
+    }
+
+
     postContent(){
-        axios.post("http://localhost:8080/api/test/accomodations", {
-            name: this.state.name
+        axios.post("http://localhost:8080/api/test/point_of_interests", {
+            name: this.state.name,
+            type_of_point: this.state.type_of_point,
+            location: this.state.location,
+            description: this.state.description
         })
 
     }
@@ -43,8 +68,64 @@ class add extends Component {
                 <div style={{"display":this.state.show ? "block" : "none"}}>
                     <MyToast show = {this.state.show} message = {"Point of interest Added Successfully."} type = {"sucess"}/>
                 </div>
-                <input type="text" value={this.state.name} onChange={this.handleChange.bind(this)}></input>
-                <button onClick={this.postContent.bind(this)}>post</button>
+
+                <header>
+                    <Jumbotron className = "jumbo-home">
+                        <h1>Adicionar Pontos de Interesse</h1>
+                    </Jumbotron>
+                </header>
+                <form className = "form-add">
+                    <label>
+                        Nome:
+                        <input className = "input-add"
+                            placeholder = "Nome"
+                            type="text"
+                            value={this.state.name}
+                            onChange={this.handleNameChange.bind(this)}
+                               validations = {[required]}
+                        />
+
+                    </label>
+
+                    <label>
+                        Localização:
+                        <input className = "input-add"
+                            placeholder = "Localização"
+                            type="text"
+                            value={this.state.location}
+                            onChange={this.handleLocationChange.bind(this)}
+                               validations = {[required]}
+                        />
+                    </label>
+
+                    <label>
+                        Descrição:
+                        <input className = "input-add"
+                            placeholder = "Descrição"
+                            type="text"
+                            value={this.state.description}
+                            onChange={this.handleDescriptionChange.bind(this)}
+                               validations = {[required]}
+                        />
+                    </label>
+
+
+                    <label>
+                        Tipo de Ponto:
+                        <input className = "input-add"
+                            placeholder = "Tipo de Ponto"
+                            type="text"
+                            value={this.state.type_of_point}
+                            onChange={this.handlePointChange.bind(this)}
+                               validations = {[required]}
+                        />
+                    </label>
+
+                    <button className = "button-add" onClick={this.postContent.bind(this)}>Adicionar</button>
+                </form>
+
+
+
             </div>
         )
     }

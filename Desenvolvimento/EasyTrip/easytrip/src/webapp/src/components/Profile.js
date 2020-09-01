@@ -4,45 +4,52 @@ import AuthService from "../services/auth/auth.service";
 import axios from "axios";
 
 export default class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: null,
-      userReady: false,
-      currentUser: { username: "" },
-      file: null
-    };
-    this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: null,
+            userReady: false,
+            currentUser: { username: "" },
+            file: null,
+            isInEditMode: false
+        };
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
 
-  componentDidMount() {
-    const currentUser = AuthService.getCurrentUser();
+    componentDidMount() {
+        const currentUser = AuthService.getCurrentUser();
 
-    if (!currentUser) this.setState({ redirect: "/home" });
-    this.setState({ currentUser: currentUser, userReady: true })
-  }
-  onFormSubmit(e){
-              e.preventDefault();
-              const formData = new FormData();
-              formData.append('file',this.state.file);
-              const config = {
-                  headers: {
-                      'content-type': 'multipart/form-data'
-                  }
-              };
-              axios.post("http://localhost:8080/api/test/images/upload",formData,config)
-                  .then((response) => {
-                      alert("The file is successfully uploaded");
-                  }).catch((error) => {
-              });
-          }
+        if (!currentUser) this.setState({ redirect: "/home" });
+        this.setState({ currentUser: currentUser, userReady: true })
+    }
+    onFormSubmit(e){
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('file',this.state.file);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        axios.post("http://localhost:8080/api/test/images/upload",formData,config)
+            .then((response) => {
+                alert("The file is successfully uploaded");
+            }).catch((error) => {
+        });
+    }
     onChange(e) {
-           this.setState({file:e.target.files[0]});
+        this.setState({file:e.target.files[0]});
 
-       }
+    }
 
-  render() {
+
+
+
+
+
+
+    render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }
@@ -76,7 +83,7 @@ export default class Profile extends Component {
         </p>
         <p>
 
-         <strong>Photo:</strong>{" "}
+         <strong>Foto:</strong>{" "}
                 <form onSubmit={this.onFormSubmit}>
                 <h1>File Upload</h1>
                 <input type="file" name="myImage" onChange= {this.onChange} />
@@ -84,12 +91,19 @@ export default class Profile extends Component {
             </form>
         </p>
 
-        <p>
-          <strong>Description:</strong>{" "}
+        <div >
+          <strong className = "ul-prof">Descrição:</strong>{" "}
+
+          <input
+          type="text"
+          placeholder="Insira uma descrição"
+          value={this.state.description}
+
+          />
           {currentUser.description}
-        </p>
-        <strong>Authorities:</strong>
-        <ul>
+        </div>
+        <strong className = "ul-prof">Roles:</strong>
+        <ul className = "ul-prof">
           {currentUser.roles &&
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
