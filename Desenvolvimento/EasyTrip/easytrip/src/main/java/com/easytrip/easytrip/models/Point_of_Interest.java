@@ -14,7 +14,9 @@ public class Point_of_Interest {
 
     private String name;
 
-    private String location;
+    private String location_nome;
+
+    private String location_gps;
 
     private Float classification;
 

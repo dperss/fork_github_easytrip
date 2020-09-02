@@ -2,6 +2,7 @@ package com.easytrip.easytrip.controllers.impl;
 
 import com.easytrip.easytrip.controllers.Controller;
 import com.easytrip.easytrip.models.Accommodation;
+import com.easytrip.easytrip.payload.response.MessageResponse;
 import com.easytrip.easytrip.services.impl.AccommodationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +25,8 @@ public class AccommodationController implements Controller<Accommodation> {
 
     @Autowired
     private AccommodationServiceImpl accommodationService;
+
+    private MessageResponse messageResponse;
 
     @GetMapping("/search/location/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
@@ -60,7 +63,7 @@ public class AccommodationController implements Controller<Accommodation> {
                 )
         ), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Accommodation pages");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -71,7 +74,7 @@ public class AccommodationController implements Controller<Accommodation> {
         try{
         return new ResponseEntity<>(accommodationService.findById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Accommodation by id");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
@@ -83,7 +86,7 @@ public class AccommodationController implements Controller<Accommodation> {
         try {
             return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.CREATED);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error saving Accommodations");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -94,7 +97,7 @@ public class AccommodationController implements Controller<Accommodation> {
         try {
         return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating Accommodations");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -106,7 +109,7 @@ public class AccommodationController implements Controller<Accommodation> {
         try{
         return new ResponseEntity<>(accommodationService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting Accommodation");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
