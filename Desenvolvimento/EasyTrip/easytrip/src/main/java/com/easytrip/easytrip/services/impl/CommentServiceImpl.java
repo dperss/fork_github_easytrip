@@ -9,6 +9,7 @@ import com.easytrip.easytrip.repository.ItineraryRepository;
 import com.easytrip.easytrip.services.Services;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentServiceImpl implements Services<Comment> {
 
+    @Autowired
     CommentRepository commentRepository;
 
 

@@ -29,26 +29,40 @@ public class TripController implements Controller<Trip> {
     @GetMapping("/search/origin/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Trip>> findByOrigin(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(tripService.findByOrigin(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/search/destiny/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Trip>> findByDestiny(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(tripService.findByDestiny(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Trip>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
-
+        try{
         return new ResponseEntity<>(tripService.findAll(
                 PageRequest.of(
                         pageNumber, pageSize,
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
@@ -68,8 +82,12 @@ public class TripController implements Controller<Trip> {
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> save(Trip user) {
-        System.out.println("Trip created");
+        try{
         return new ResponseEntity<>(tripService.saveOrUpdate(user), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -77,14 +95,22 @@ public class TripController implements Controller<Trip> {
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Trip> update(Trip trip) {
-        System.out.println("Trip Updated");
+        try{
         return new ResponseEntity<>(tripService.saveOrUpdate(trip), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
-        System.out.println("Trip deleted ID:" + id);
+        try{
         return new ResponseEntity<>(tripService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 }
