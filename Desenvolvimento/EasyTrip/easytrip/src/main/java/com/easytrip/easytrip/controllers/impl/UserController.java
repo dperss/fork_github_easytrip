@@ -51,7 +51,7 @@ public class UserController implements Controller<User> {
         try{
         return new ResponseEntity<>(userService.findByEmail(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error finding User bye Email");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -64,7 +64,7 @@ public class UserController implements Controller<User> {
         try{
         return new ResponseEntity<>(userService.findByUsername(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error finding User bye Username");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -82,7 +82,7 @@ public class UserController implements Controller<User> {
                 )
         ), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting User pages");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -94,32 +94,15 @@ public class UserController implements Controller<User> {
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
         catch (Exception e){
 
-            System.out.println("User does´t exist");
+            System.out.println("Error finding User bye id");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
     }
 
-   /* @PostMapping("/{userid}/roles")
-    public Role postRole(@PathVariable (value = "userid") Long userid,
-                                 @Valid @RequestBody Role role) {
-        return userRepository.findById(userid).map(post -> {
-            User.setRoles(role);
-            return roleServices.save(role);
-        }).orElseThrow(() -> new ResourceNotFoundException("User id " + userid + " not found"));
-    }*/
 
-
-
-    @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> save(User user) {
-        try{
-        return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
-        }catch (Exception e){
-            System.out.println("Error");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
     }
 
     @Override
@@ -128,7 +111,7 @@ public class UserController implements Controller<User> {
         try{
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating User");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -139,7 +122,7 @@ public class UserController implements Controller<User> {
         try{
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting User bye id");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

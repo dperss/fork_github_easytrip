@@ -33,7 +33,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
         try{
         return new ResponseEntity<>(point_of_interestService.findByName(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Point of Interest Name");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -44,7 +44,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
         try{
         return new ResponseEntity<>(point_of_interestService.findByLocation(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Point of Interest Location");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -61,7 +61,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);}catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Point of Interest pages");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
@@ -72,7 +72,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
             try{
             return new ResponseEntity<>(point_of_interestService.findById(id), HttpStatus.OK);
             }catch (Exception e){
-                System.out.println("Error");
+                System.out.println("Error finding Point of Interest bye id");
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
 
@@ -85,7 +85,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
         try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.CREATED);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error saving Point of Interest");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -96,7 +96,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
         try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating Point of Interest");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -107,7 +107,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
         try{
         return new ResponseEntity<>(point_of_interestService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting Point of Interest");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

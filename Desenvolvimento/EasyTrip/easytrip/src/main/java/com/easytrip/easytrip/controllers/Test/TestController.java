@@ -18,12 +18,18 @@ public class TestController {
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	public String userAccess() {
-		return "User Content.";
+		return "User.";
+	}
+
+	@GetMapping("/userBlocked")
+	@PreAuthorize("hasRole('ROLE_USER_BLOCKED')")
+	public String userBlocked() {
+		return "Blocked.";
 	}
 
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String adminAccess() {
-		return "Admin Board.";
+		return "Admin.";
 	}
 }

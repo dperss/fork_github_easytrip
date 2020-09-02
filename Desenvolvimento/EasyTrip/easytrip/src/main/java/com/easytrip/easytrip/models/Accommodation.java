@@ -26,16 +26,21 @@ public class Accommodation {
     @JoinColumn(name ="photos_fk",referencedColumnName = "id")
     private List<Image> images;
 
+    @OneToMany(targetEntity = Comment.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="comments_fk",referencedColumnName = "id")
+    private List<Comment> comments;
+
     public Accommodation() {
     }
 
-    public Accommodation(String name, String location, String description, String price, Float rating, List<Image> images) {
+    public Accommodation(String name, String location, String description, String price, Float rating, List<Image> images, List<Comment> comments) {
         this.name = name;
         Location = location;
         Description = description;
         Price = price;
         Rating = rating;
         this.images = images;
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -44,6 +49,14 @@ public class Accommodation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {
@@ -78,19 +91,19 @@ public class Accommodation {
         Rating = rating;
     }
 
-    public List<Image> getPhotos() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setPhotos(List<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
-    public String getName() {
-        return name;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

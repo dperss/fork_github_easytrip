@@ -40,7 +40,7 @@ public class TransportationController implements Controller<Transportation> {
                 )
         ), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Transportation pages");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -52,7 +52,7 @@ public class TransportationController implements Controller<Transportation> {
             return new ResponseEntity<>(transportationService.findById(id), HttpStatus.OK);}
         catch (Exception e){
 
-            System.out.println("Transportation does´t exist");
+            System.out.println("Error finding Transportation");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
@@ -65,7 +65,7 @@ public class TransportationController implements Controller<Transportation> {
         try{
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.CREATED);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error saving Transportation");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -78,7 +78,7 @@ public class TransportationController implements Controller<Transportation> {
         try{
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating Transportation");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -89,7 +89,7 @@ public class TransportationController implements Controller<Transportation> {
         try{
         return new ResponseEntity<>(transportationService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting Transportation");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

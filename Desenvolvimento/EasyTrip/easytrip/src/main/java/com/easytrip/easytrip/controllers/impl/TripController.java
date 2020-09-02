@@ -32,7 +32,7 @@ public class TripController implements Controller<Trip> {
         try{
         return new ResponseEntity<>(tripService.findByOrigin(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error finding Trip bye Origin");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -43,7 +43,7 @@ public class TripController implements Controller<Trip> {
         try{
         return new ResponseEntity<>(tripService.findByDestiny(pageable, searchText), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error finding Trip bye Destiny");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -60,7 +60,7 @@ public class TripController implements Controller<Trip> {
                 )
         ), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Trip pages");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -85,7 +85,7 @@ public class TripController implements Controller<Trip> {
         try{
         return new ResponseEntity<>(tripService.saveOrUpdate(user), HttpStatus.CREATED);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error saving Trip");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -98,7 +98,7 @@ public class TripController implements Controller<Trip> {
         try{
         return new ResponseEntity<>(tripService.saveOrUpdate(trip), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating Trip");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -109,7 +109,7 @@ public class TripController implements Controller<Trip> {
         try{
         return new ResponseEntity<>(tripService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting Trip");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }

@@ -41,7 +41,7 @@ public class CommentsController implements Controller<Comment> {
                             sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                     )
             ), HttpStatus.OK);}catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error getting Comment pages");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -52,7 +52,7 @@ public class CommentsController implements Controller<Comment> {
         try {
             return new ResponseEntity<>(commentService.findById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error finding Comment bye id");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
@@ -78,7 +78,7 @@ public class CommentsController implements Controller<Comment> {
         try {
         return new ResponseEntity<>(commentService.saveOrUpdate(comment), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error updating Comment");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -90,7 +90,7 @@ public class CommentsController implements Controller<Comment> {
         try {
         return new ResponseEntity<>(commentService.deleteById(id), HttpStatus.OK);
         }catch (Exception e){
-            System.out.println("Error");
+            System.out.println("Error deleting Comment");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
