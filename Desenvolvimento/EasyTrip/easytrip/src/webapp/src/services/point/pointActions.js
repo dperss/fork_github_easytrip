@@ -4,7 +4,7 @@ import axios from 'axios';
 export const savePoint = point => {
     return dispatch => {
         dispatch(savePointRequest());
-        axios.post("http://localhost:8080/api/test/point_of_interests", point)
+        axios.post("http://localhost:8080/api/test/point_of_interests   ", point)
             .then(response => {
                 dispatch(pointSuccess(response.data));
             })

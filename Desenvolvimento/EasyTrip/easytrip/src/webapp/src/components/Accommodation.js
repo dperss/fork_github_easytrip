@@ -59,7 +59,6 @@ function Accommodation() {
         axios("http://localhost:8080/api/test/accomodations/" + id)
             .then(({data}) =>{
                 let result = data;
-                console.log(result);
 
                 setState(prevState => {
                     return{...prevState, selected: result}
@@ -75,11 +74,13 @@ function Accommodation() {
 
     }
 
+
     return(
 
         <div className = "Accommodation">
             <header className = "header_acc">
                 <h1 className = "h1_header_acc"> Alojamentos</h1>
+
             </header>
             <main className = "main_accommodations">
                 <SearchArea handleInput = {handleInput} search = {search}/>

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
-import {deletePerson} from './../services/index';
+import {deletePerson} from './../services/indexperson';
 import './../assets/css/Style.css';
 import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward,
-    faFastForward, faSearch, faTimes
+    faFastForward, faSearch, faTimes, faPlus
 } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
@@ -57,6 +57,7 @@ class UserList extends Component {
 
     deletePerson = (personId) => {
     this.props.deletePerson(personId);
+    console.log(deletePerson)
         setTimeout(() => {
             if(this.props.personObject != null) {
                 this.setState({"show":true});
@@ -186,6 +187,7 @@ class UserList extends Component {
                                   <th>Email</th>
                                   <th>Password</th>
                                   <th>Descrição</th>
+
                                 </tr>
                               </thead>
                               <tbody>

@@ -1,16 +1,21 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faComment} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 function Popup({selected, closePopup}) {
 
     return(
 
         <section className = "popup">
             <header className = "content">
+
                     <h2>
                         {selected.name}
                         <span>
                         ({selected.location})
                     </span>
                     </h2>
+                <Link to={"addComment/"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faComment}/></Link>
             </header>
 
             <main className = "plot">
@@ -20,6 +25,7 @@ function Popup({selected, closePopup}) {
                 <p>Preço: {selected.price}€</p>
             </main>
             <button className = "close" onClick={closePopup}>Fechar</button>
+            <button className = "close" >Adicionar</button>
 
         </section>
     )
