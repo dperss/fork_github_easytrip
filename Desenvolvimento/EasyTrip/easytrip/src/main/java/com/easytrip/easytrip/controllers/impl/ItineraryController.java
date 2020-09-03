@@ -42,17 +42,20 @@ public class ItineraryController implements Controller<Itinerary> {
                             sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                     )
             ), HttpStatus.OK);}catch (Exception e){
-            System.out.println("PError");
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            System.out.println("Error getting Itinerary pages");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Itinerary> findById(Long id) {
-
+        try{
         return new ResponseEntity<>(itineraryService.findById(id), HttpStatus.OK);
-
+        }catch (Exception e){
+            System.out.println("Error finding Itinerary bye id");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
 
     }
 
@@ -61,23 +64,35 @@ public class ItineraryController implements Controller<Itinerary> {
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Itinerary> save(Itinerary itinerary) {
-        System.out.println("Itinerary created");
+        try{
         return new ResponseEntity<>(itineraryService.saveOrUpdate(itinerary), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println("Error saving Itinerary");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Itinerary> update(Itinerary itinerary) {
-        System.out.println("Itinerary Updated");
+        try{
         return new ResponseEntity<>(itineraryService.saveOrUpdate(itinerary), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error updating Itinerary");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
-        System.out.println("Itinerary deleted ID:" + id);
+        try{
         return new ResponseEntity<>(itineraryService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error deleting Itinerary");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

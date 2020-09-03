@@ -48,7 +48,12 @@ public class UserController implements Controller<User> {
     @GetMapping("/search/email/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findByEmail(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(userService.findByEmail(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error finding User bye Email");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @ApiOperation(value = "Finds contact bye Username"
@@ -56,7 +61,12 @@ public class UserController implements Controller<User> {
     @GetMapping("/search/username/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findByUsername(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(userService.findByUsername(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error finding User bye Username");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -64,12 +74,17 @@ public class UserController implements Controller<User> {
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
+        try{
         return new ResponseEntity<>(userService.findAll(
                 PageRequest.of(
                         pageNumber, pageSize,
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error getting User pages");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
@@ -79,42 +94,37 @@ public class UserController implements Controller<User> {
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
         catch (Exception e){
 
-            System.out.println("User does´t exist");
+            System.out.println("Error finding User bye id");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
     }
 
-   /* @PostMapping("/{userid}/roles")
-    public Role postRole(@PathVariable (value = "userid") Long userid,
-                                 @Valid @RequestBody Role role) {
-        return userRepository.findById(userid).map(post -> {
-            User.setRoles(role);
-            return roleServices.save(role);
-        }).orElseThrow(() -> new ResourceNotFoundException("User id " + userid + " not found"));
-    }*/
 
-
-
-    @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> save(User user) {
-        System.out.println("User created");
-        return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.CREATED);
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> update(User user) {
-        System.out.println("User Updated");
+        try{
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error updating User");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
-        System.out.println("User deleted ID:" + id);
+        try{
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error deleting User bye id");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 

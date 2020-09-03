@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Point_of_InterestRepository extends JpaRepository<Point_of_Interest, Long> {
 
-    @Query("FROM Point_of_Interest a WHERE a.location LIKE %:searchText% ")
+    @Query("FROM Point_of_Interest a WHERE LOWER(a.location_nome) LIKE %:searchText% ")
     Page<Point_of_Interest> findByLocation(Pageable pageable, @Param("searchText") String searchText);
 
-    @Query("FROM Point_of_Interest b WHERE b.name LIKE %:searchText% ")
+    @Query("FROM Point_of_Interest b WHERE LOWER(b.name) LIKE %:searchText% ")
     Page<Point_of_Interest> findByName(Pageable pageable, @Param("searchText") String searchText);
 }

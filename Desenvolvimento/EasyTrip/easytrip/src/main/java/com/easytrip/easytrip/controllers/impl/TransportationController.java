@@ -32,13 +32,17 @@ public class TransportationController implements Controller<Transportation> {
     public ResponseEntity<Page<Transportation>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
-
+        try{
         return new ResponseEntity<>(transportationService.findAll(
                 PageRequest.of(
                         pageNumber, pageSize,
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error getting Transportation pages");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
@@ -48,7 +52,7 @@ public class TransportationController implements Controller<Transportation> {
             return new ResponseEntity<>(transportationService.findById(id), HttpStatus.OK);}
         catch (Exception e){
 
-            System.out.println("Transportation does´t exist");
+            System.out.println("Error finding Transportation");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
@@ -58,8 +62,12 @@ public class TransportationController implements Controller<Transportation> {
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Transportation> save(Transportation transportation) {
-        System.out.println("Transportation created");
+        try{
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println("Error saving Transportation");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -67,14 +75,22 @@ public class TransportationController implements Controller<Transportation> {
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Transportation> update(Transportation transportation) {
-        System.out.println("Transportation Updated");
+        try{
         return new ResponseEntity<>(transportationService.saveOrUpdate(transportation), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error updating Transportation");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
-        System.out.println("Transportation deleted ID:" + id);
+        try{
         return new ResponseEntity<>(transportationService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error deleting Transportation");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 }

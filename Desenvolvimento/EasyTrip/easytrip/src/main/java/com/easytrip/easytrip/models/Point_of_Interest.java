@@ -14,7 +14,9 @@ public class Point_of_Interest {
 
     private String name;
 
-    private String location;
+    private String location_nome;
+
+    private String location_gps;
 
     private Float classification;
 
@@ -26,16 +28,22 @@ public class Point_of_Interest {
     @JoinColumn(name ="photos_fk",referencedColumnName = "id")
     private List<Image> images;
 
+    @OneToMany(targetEntity = Comment.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="comments_fk",referencedColumnName = "id")
+    private List<Comment> comments;
+
     public Point_of_Interest() {
     }
 
-    public Point_of_Interest(String name, String location, Float classification, String type_of_point, String description, List<Image> images) {
+    public Point_of_Interest(String name, String location_nome, String location_gps, Float classification, String type_of_point, String description, List<Image> images, List<Comment> comments) {
         this.name = name;
-        this.location = location;
+        this.location_nome = location_nome;
+        this.location_gps = location_gps;
         this.classification = classification;
         this.type_of_point = type_of_point;
         this.description = description;
         this.images = images;
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -54,12 +62,20 @@ public class Point_of_Interest {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocation_nome() {
+        return location_nome;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation_nome(String location_nome) {
+        this.location_nome = location_nome;
+    }
+
+    public String getLocation_gps() {
+        return location_gps;
+    }
+
+    public void setLocation_gps(String location_gps) {
+        this.location_gps = location_gps;
     }
 
     public Float getClassification() {
@@ -86,11 +102,19 @@ public class Point_of_Interest {
         this.description = description;
     }
 
-    public List<Image> getPhotos() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setPhotos(List<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

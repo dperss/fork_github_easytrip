@@ -30,13 +30,23 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     @GetMapping("/search/name/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findByName(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(point_of_interestService.findByName(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error getting Point of Interest Name");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/search/location/{searchText}")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findByLocation(Pageable pageable, String searchText) {
+        try{
         return new ResponseEntity<>(point_of_interestService.findByLocation(pageable, searchText), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error getting Point of Interest Location");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
@@ -51,7 +61,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
                         sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                 )
         ), HttpStatus.OK);}catch (Exception e){
-            System.out.println("PError");
+            System.out.println("Error getting Point of Interest pages");
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
@@ -59,8 +69,12 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Point_of_Interest> findById(Long id) {
-
+            try{
             return new ResponseEntity<>(point_of_interestService.findById(id), HttpStatus.OK);
+            }catch (Exception e){
+                System.out.println("Error finding Point of Interest bye id");
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            }
 
 
     }
@@ -68,22 +82,34 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> save(Point_of_Interest point_of_interest) {
-        System.out.println("Point_of_Interest created");
+        try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println("Error saving Point of Interest");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> update(Point_of_Interest point_of_interest) {
-        System.out.println("Point_of_Interest Updated");
+        try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error updating Point of Interest");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
-        System.out.println("Trip deleted ID:" + id);
+        try{
         return new ResponseEntity<>(point_of_interestService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error deleting Point of Interest");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

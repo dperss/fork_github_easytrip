@@ -12,10 +12,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccommodationRepository extends JpaRepository<Accommodation, Long> {
 
-    @Query("FROM Accommodation a WHERE a.Location LIKE %:searchText% ")
+    @Query("FROM Accommodation a WHERE LOWER(a.Location) LIKE %:searchText% ")
     Page<Accommodation> findByLocation(Pageable pageable, @Param("searchText") String searchText);
 
-    @Query("FROM Accommodation b WHERE b.name LIKE %:searchText% ")
+    @Query("FROM Accommodation b WHERE LOWER(b.name) LIKE %:searchText% ")
     Page<Accommodation> findByName(Pageable pageable, @Param("searchText") String searchText);
 
 

@@ -41,16 +41,20 @@ public class CommentsController implements Controller<Comment> {
                             sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending()
                     )
             ), HttpStatus.OK);}catch (Exception e){
-            System.out.println("PError");
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            System.out.println("Error getting Comment pages");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Comment> findById(Long id) {
-
-        return new ResponseEntity<>(commentService.findById(id), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(commentService.findById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error finding Comment bye id");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
 
 
     }
@@ -60,23 +64,35 @@ public class CommentsController implements Controller<Comment> {
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Comment> save(Comment comment) {
-        System.out.println("Trip created");
+        try {
         return new ResponseEntity<>(commentService.saveOrUpdate(comment), HttpStatus.CREATED);
+        }catch (Exception e){
+            System.out.println("Error saving comment");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Comment> update(Comment comment) {
-        System.out.println("Comment Updated");
+        try {
         return new ResponseEntity<>(commentService.saveOrUpdate(comment), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error updating Comment");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
-        System.out.println("Comment deleted ID:" + id);
+        try {
         return new ResponseEntity<>(commentService.deleteById(id), HttpStatus.OK);
+        }catch (Exception e){
+            System.out.println("Error deleting Comment");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
