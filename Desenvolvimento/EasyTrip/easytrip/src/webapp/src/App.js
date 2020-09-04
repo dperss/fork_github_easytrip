@@ -17,10 +17,14 @@ import {Itinerary} from "./components/Itinerary";
 import add from "./components/add";
 import addComment from "./components/addComment";
 import Trip from "./components/Trip";
-
+import authHeader from './services/auth/auth-header';
 
 const user = JSON.parse(localStorage.getItem('user'));
-axios.defaults.headers.common = {'Authorization': `Bearer ${user.accessToken}`}
+
+  if (user && user.accessToken) {
+    axios.defaults.headers.common = {'Authorization': `Bearer ${user.accessToken}`}
+
+  }
 
 
 class App extends Component {
