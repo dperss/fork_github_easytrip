@@ -36,7 +36,7 @@ public class UserController implements Controller<User> {
     @ApiOperation(value = "Finds contact bye Email"
     )
     @GetMapping("/search/email/{searchText}")
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findByEmail(Pageable pageable, String searchText) {
         try{
         return new ResponseEntity<>(userService.findByEmail(pageable, searchText), HttpStatus.OK);
@@ -49,7 +49,7 @@ public class UserController implements Controller<User> {
     @ApiOperation(value = "Finds contact bye Username"
     )
     @GetMapping("/search/username/{searchText}")
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findByUsername(Pageable pageable, String searchText) {
         try{
         return new ResponseEntity<>(userService.findByUsername(pageable, searchText), HttpStatus.OK);
@@ -62,7 +62,7 @@ public class UserController implements Controller<User> {
 
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<User>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
         try{
         return new ResponseEntity<>(userService.findAll(
@@ -78,7 +78,7 @@ public class UserController implements Controller<User> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<User> findById(Long id) {
         try{
             return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);}
@@ -96,7 +96,7 @@ public class UserController implements Controller<User> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> update(User user) {
         try{
         return new ResponseEntity<>(userService.saveOrUpdate(user), HttpStatus.OK);
@@ -107,7 +107,7 @@ public class UserController implements Controller<User> {
     }
 
     @Override
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         try{
         return new ResponseEntity<>(userService.deleteById(id), HttpStatus.OK);

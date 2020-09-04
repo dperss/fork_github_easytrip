@@ -21,6 +21,7 @@ class UserList extends Component {
             super(props);
             this.state = {
                 persons : [],
+                currentUser: { username: "" },
                 search : '',
                 currentPage : 1,
                 personsPerPage : 5,
