@@ -38,20 +38,22 @@ class addComment extends Component{
                     </Jumbotron>
                 </header>
 
-                <form className="comment-form form-group" >
-                    <div className="input-group">
-                        <span className="input-group-addon">Nome:</span>
-                        <input type="text" placeholder="Nome" className="form-control" />
-                    </div>
-                    <div className="input-group">
-                        <span className="input-group-addon">Comentário</span>
-                        <input
-                            type="text"
-                            placeholder="Diga algo..."
-                            className="form-control"
-                        />
-                    </div>
-                    <input type="submit" value="Adicionar" className="btn btn-info" />
+                <form className="form-add-comm" >
+                        <label className="input-group-addon">Nome:
+                            <input className = "input-add-comm" type="text" placeholder="Nome" />
+                        </label>
+
+                        <label className="input-group-addon">
+                            Comentário:
+                            <textarea className = "input-add-comm"
+                                      type="text"
+                                      placeholder="Diga algo..."
+
+                            />
+                        </label>
+
+                        <input type="submit" value="Adicionar" className="btn btn-info" />
+
                 </form>
 
 

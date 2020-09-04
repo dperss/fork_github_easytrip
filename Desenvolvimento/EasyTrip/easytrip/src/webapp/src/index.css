@@ -266,7 +266,6 @@
     border: none;
     outline: none;
     appearance: none;
-    cursor: pointer;
 
     transition: 0.4s ease-out;
 }
@@ -278,4 +277,34 @@
 .ul-prof {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
+}
+
+.input-add-comm {
+    text-align: center;
+    border: none;
+    outline: none;
+    background: none;
+    border-radius: 6px;
+    color: #53565A;
+
+    transition: 0.4s ease-out;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.input-add-comm:focus {
+    box-shadow: 0px 0px 8px 3px #50A99B;
+}
+
+
+.form-add-comm {
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 50px;
+
+    font-size: 20px;
+    font-weight: 300;
+
+
 }

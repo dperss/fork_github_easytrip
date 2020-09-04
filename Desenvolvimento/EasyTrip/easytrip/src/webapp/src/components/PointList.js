@@ -21,7 +21,7 @@ import {
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
-axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbHMiLCJpYXQiOjE1OTg5MDIwMDgsImV4cCI6MTU5OTQwMjAwOH0.pVIxFvnqSqybUsLjp_eTJ6U5BMrkYNNrILdWJqthkho"}`}
+
 
 class PointList extends Component {
 
@@ -45,6 +45,7 @@ class PointList extends Component {
 
     componentDidMount() {
         this.findAllPoints(this.state.currentPage);
+
     }
 
 
@@ -206,7 +207,7 @@ class PointList extends Component {
                                     points.map((point) => (
                                         <tr key={point.id}>
                                             <td>{point.name}</td>
-                                            <td>{point.location}</td>
+                                            <td>{point.location_nome}</td>
                                             <td>{point.description}</td>
                                             <td>{point.type_of_point}</td>
                                             <td>

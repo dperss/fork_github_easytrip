@@ -8,7 +8,7 @@ import PointPopup from "./PointPopup";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
+
 
 
 function Point() {

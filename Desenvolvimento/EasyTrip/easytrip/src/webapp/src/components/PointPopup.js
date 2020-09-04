@@ -9,7 +9,7 @@ function PointPopup({selected, closePopup}) {
                 <h2>
                     {selected.name}
                     <span>
-                        ({selected.location})
+                        ({selected.location_nome})
                     </span>
                 </h2>
             </header>

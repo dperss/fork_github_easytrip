@@ -5,7 +5,6 @@ import SearchArea from "./SearchArea"
 import ResultsAccommodation from "./ResultsAccommodation";
 import SearchLocation from "./SearchLocation";
 import Popup from "./Popup";
-axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjbGF1ZGlhMCIsImlhdCI6MTU5ODgxODQwNywiZXhwIjoxNTk5MzE4NDA3fQ.mQB61uitxo__XTo5a6NDBMgeYlxG70q5YoOsKUqZeQg"}`}
 
 
 function Accommodation() {
@@ -17,6 +16,7 @@ function Accommodation() {
     });
     const apiURL ="http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=";
     const apiURLLoc = "http://localhost:8080/api/test/accomodations/search/location/{searchText}?searchText=";
+
 
     const search = (e) => {
         if(e.key === "Enter"){
@@ -62,7 +62,7 @@ function Accommodation() {
 
                 setState(prevState => {
                     return{...prevState, selected: result}
-                });
+                })
             });
 
     }

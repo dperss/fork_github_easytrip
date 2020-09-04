@@ -12,8 +12,6 @@ import {
 import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
-axios.defaults.headers.common = {'Authorization': `Bearer ${"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbHMiLCJpYXQiOjE1OTg5MDIwMDgsImV4cCI6MTU5OTQwMjAwOH0.pVIxFvnqSqybUsLjp_eTJ6U5BMrkYNNrILdWJqthkho"}`}
-
 
 
 
@@ -39,6 +37,8 @@ class UserList extends Component {
 
     componentDidMount() {
             this.findAllPersons(this.state.currentPage);
+
+
         }
 
 
