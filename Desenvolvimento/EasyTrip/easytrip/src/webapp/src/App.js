@@ -12,10 +12,11 @@ import UserList from "./components/UserList";
 import Profile from "./components/Profile";
 import Info from "./components/Info";
 import PointList from "./components/PointList";
-import {Trip} from "./components/Trip";
 import Accommodation from "./components/Accommodation";
 import {Itinerary} from "./components/Itinerary";
 import add from "./components/add";
+import addComment from "./components/addComment";
+import Trip from "./components/Trip";
 
 
 
@@ -131,6 +132,7 @@ class App extends Component {
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
               <Route path = "/add" component={add}/>
+              <Route path = "/addComment" component={addComment}/>
 
             </Switch>
           </div>

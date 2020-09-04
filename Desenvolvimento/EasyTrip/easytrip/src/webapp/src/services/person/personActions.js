@@ -67,7 +67,7 @@ const deletePersonRequest = () => {
 export const deletePerson = personId => {
     return dispatch => {
         dispatch(deletePersonRequest());
-        axios.delete("http://localhost:8080/api/test/users/"+personId)
+        axios.delete("http://localhost:8080/api/test/users/" + personId)
             .then(response => {
                 dispatch(personSuccess(response.data));
             })
