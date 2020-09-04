@@ -24,6 +24,7 @@ import axios from 'axios';
 
 
 
+
 class PointList extends Component {
 
     constructor(props) {
@@ -160,6 +161,7 @@ class PointList extends Component {
     };
 
     render() {
+
         const {points, currentPage, totalPages, search} = this.state;
 
         return (

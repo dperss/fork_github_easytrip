@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AuthService from "./services/auth/auth.service";
-
+import axios from 'axios';
 
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -19,7 +19,8 @@ import addComment from "./components/addComment";
 import Trip from "./components/Trip";
 
 
-
+const user = JSON.parse(localStorage.getItem('user'));
+axios.defaults.headers.common = {'Authorization': `Bearer ${user.accessToken}`}
 
 
 class App extends Component {
