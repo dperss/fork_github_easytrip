@@ -23,6 +23,7 @@ import MyToast from './MyToast';
 import axios from 'axios';
 
 
+
 class PointList extends Component {
 
     constructor(props) {

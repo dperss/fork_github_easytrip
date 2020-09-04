@@ -2,6 +2,7 @@ package com.easytrip.easytrip.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class Point_of_Interest {
 
     private String type_of_point;
 
+    @Column(length = 5000)
     private String description;
 
     @OneToMany(targetEntity = Image.class,cascade = CascadeType.ALL)
