@@ -2,7 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComment} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-function Popup({selected, closePopup}) {
+function Popup({selected, closePopup, openPopup}) {
 
     return(
 
@@ -15,7 +15,7 @@ function Popup({selected, closePopup}) {
                         ({selected.location})
                     </span>
                     </h2>
-                <Link to={"addComment/"} className = "btn btn-sm btn-outline-info"> <FontAwesomeIcon icon={faComment}/></Link>
+                <Link to={"addComment/"} className = "btn btn-sm btn-outline-info" onClick={openPopup}> <FontAwesomeIcon icon={faComment}/></Link>
             </header>
 
             <main className = "plot">

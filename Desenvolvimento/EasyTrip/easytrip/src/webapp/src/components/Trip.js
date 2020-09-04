@@ -1,8 +1,15 @@
 import React, {Component} from "react";
+import axios from "axios"
+
+
 
 
 
 class Trip extends Component{
+
+    openInformation() {
+        axios()
+    }
 
     render() {
         return (
