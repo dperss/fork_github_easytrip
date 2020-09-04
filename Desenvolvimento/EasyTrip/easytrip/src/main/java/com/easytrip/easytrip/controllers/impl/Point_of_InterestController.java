@@ -28,7 +28,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
 
 
     @GetMapping("/search/name/{searchText}")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findByName(Pageable pageable, String searchText) {
         try{
         return new ResponseEntity<>(point_of_interestService.findByName(pageable, searchText), HttpStatus.OK);
@@ -39,7 +39,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @GetMapping("/search/location/{searchText}")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findByLocation(Pageable pageable, String searchText) {
         try{
         return new ResponseEntity<>(point_of_interestService.findByLocation(pageable, searchText), HttpStatus.OK);
@@ -50,7 +50,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Point_of_Interest>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
 
@@ -67,7 +67,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Point_of_Interest> findById(Long id) {
             try{
             return new ResponseEntity<>(point_of_interestService.findById(id), HttpStatus.OK);
@@ -80,7 +80,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> save(Point_of_Interest point_of_interest) {
         try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.CREATED);
@@ -91,7 +91,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<Point_of_Interest> update(Point_of_Interest point_of_interest) {
         try{
         return new ResponseEntity<>(point_of_interestService.saveOrUpdate(point_of_interest), HttpStatus.OK);
@@ -102,7 +102,7 @@ public class Point_of_InterestController implements Controller<Point_of_Interest
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
         try{
         return new ResponseEntity<>(point_of_interestService.deleteById(id), HttpStatus.OK);

@@ -29,7 +29,7 @@ public class AccommodationController implements Controller<Accommodation> {
     private MessageResponse messageResponse;
 
     @GetMapping("/search/location/{searchText}")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Accommodation>> findByLocation(Pageable pageable, String searchText) {
         try {
             return new ResponseEntity<>(accommodationService.findByLocation(pageable, searchText), HttpStatus.OK);
@@ -40,7 +40,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @GetMapping("/search/name/{searchText}")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Accommodation>> findByName(Pageable pageable, String searchText) {
         try {
             return new ResponseEntity<>(accommodationService.findByName(pageable, searchText), HttpStatus.OK);
@@ -52,7 +52,7 @@ public class AccommodationController implements Controller<Accommodation> {
 
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Accommodation>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
 
         try {
@@ -69,7 +69,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Accommodation> findById(Long id) {
         try{
         return new ResponseEntity<>(accommodationService.findById(id), HttpStatus.OK);
@@ -81,7 +81,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    @PreAuthorize(" hasRole('ROLE_ADMIN')")
+    //@PreAuthorize(" hasRole('ROLE_ADMIN')")
     public ResponseEntity<Accommodation> save(Accommodation accommodation) {
         try {
             return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.CREATED);
@@ -92,7 +92,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    @PreAuthorize("asRole('ROLE_ADMIN')")
+    //@PreAuthorize("asRole('ROLE_ADMIN')")
     public ResponseEntity<Accommodation> update(Accommodation accommodation) {
         try {
         return new ResponseEntity<>(accommodationService.saveOrUpdate(accommodation), HttpStatus.OK);
@@ -103,7 +103,7 @@ public class AccommodationController implements Controller<Accommodation> {
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<String> deleteById(Long id) {
 
         try{
