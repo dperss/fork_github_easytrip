@@ -45,7 +45,7 @@ class UserList extends Component {
 
     findAllPersons(currentPage) {
             currentPage -= 1;
-            axios.get("http://localhost:8080/api/test/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+            axios.get("http://easytrip-boot.herokuapp.com/api/test/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
                 .then(response => response.data)
                 .then((data) => {
                     this.setState({
@@ -141,7 +141,7 @@ class UserList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/users/search/username/{searchText}?searchText="+this.state.search)
+        axios.get("http://easytrip-boot.herokuapp.com/api/test/users/search/username/{searchText}?searchText="+this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
