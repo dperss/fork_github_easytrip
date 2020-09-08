@@ -4,7 +4,7 @@ import axios from 'axios';
 export const savePerson = person => {
     return dispatch => {
         dispatch(savePersonRequest());
-        axios.post("http://localhost:8080/api/test/users", person)
+        axios.post("http://easytrip-boot.herokuapp.com/api/test/users", person)
             .then(response => {
                 dispatch(personSuccess(response.data));
             })
@@ -29,7 +29,7 @@ const fetchPersonRequest = () => {
 export const fetchPerson = personId => {
     return dispatch => {
         dispatch(fetchPersonRequest());
-        axios.get("http://localhost:8080/api/test/users/"+personId)
+        axios.get("http://easytrip-boot.herokuapp.com/api/test/users/"+personId)
             .then(response => {
                 dispatch(personSuccess(response.data));
             })
@@ -48,7 +48,7 @@ const updatePersonRequest = () => {
 export const updatePerson = person => {
     return dispatch => {
         dispatch(updatePersonRequest());
-        axios.put("http://localhost:8080/api/test/users", person)
+        axios.put("http://easytrip-boot.herokuapp.com/api/test/users", person)
             .then(response => {
                 dispatch(personSuccess(response.data));
             })
@@ -67,7 +67,7 @@ const deletePersonRequest = () => {
 export const deletePerson = personId => {
     return dispatch => {
         dispatch(deletePersonRequest());
-        axios.delete("http://localhost:8080/api/test/users/" + personId)
+        axios.delete("http://easytrip-boot.herokuapp.com/api/test/users/" + personId)
             .then(response => {
                 dispatch(personSuccess(response.data));
             })

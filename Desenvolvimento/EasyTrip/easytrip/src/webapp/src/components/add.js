@@ -52,7 +52,7 @@ class add extends Component {
 
 
     postContent(){
-        axios.post("http://localhost:8080/api/test/point_of_interests", {
+        axios.post("http://easytrip-boot.herokuapp.com/api/test/point_of_interests", {
             name: this.state.name,
             type_of_point: this.state.type_of_point,
             location_nome: this.state.location_nome,

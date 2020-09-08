@@ -53,7 +53,7 @@ class PointList extends Component {
 
     findAllPoints(currentPage) {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.pointsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get("http://easytrip-boot.herokuapp.com/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.pointsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -148,7 +148,7 @@ class PointList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=" + this.state.search)
+        axios.get("http://easytrip-boot.herokuapp.com/api/test/point_of_interests/search/name/{searchText}?searchText=" + this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({

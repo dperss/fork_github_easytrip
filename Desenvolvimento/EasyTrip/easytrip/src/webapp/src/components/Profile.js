@@ -32,7 +32,7 @@ export default class Profile extends Component {
                 'content-type': 'multipart/form-data'
             }
         };
-        axios.post("http://localhost:8080/api/test/images/upload",formData,config)
+        axios.post("http://easytrip-boot.herokuapp.com/api/test/images/upload",formData,config)
             .then((response) => {
                 alert("The file is successfully uploaded");
             }).catch((error) => {

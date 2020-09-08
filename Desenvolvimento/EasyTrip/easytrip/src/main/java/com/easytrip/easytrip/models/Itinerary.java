@@ -15,9 +15,6 @@ public class Itinerary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "itinerary_point",
             joinColumns = @JoinColumn(name = "itinerary_id"),

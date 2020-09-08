@@ -76,6 +76,8 @@ http://localhost:8080/swagger-ui/index.html
 /v2/api-docs
 
 mvn spring-boot:run
+#Heroku
+http://easytrip-boot.herokuapp.com
 
 #Google api key
 AIzaSyCTlmafkvB17b5ZsF884AusohJ9CW1aReg

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const savePoint = point => {
     return dispatch => {
         dispatch(savePointRequest());
-        axios.post("http://localhost:8080/api/test/point_of_interests   ", point)
+        axios.post("http://easytrip-boot.herokuapp.com/api/test/point_of_interests   ", point)
             .then(response => {
                 dispatch(pointSuccess(response.data));
             })
@@ -29,7 +29,7 @@ const fetchPointRequest = () => {
 export const fetchPoint = pointId => {
     return dispatch => {
         dispatch(fetchPointRequest());
-        axios.get("http://localhost:8080/api/test/point_of_interests/"+pointId)
+        axios.get("http://easytrip-boot.herokuapp.com/api/test/point_of_interests/"+pointId)
             .then(response => {
                 dispatch(pointSuccess(response.data));
             })
@@ -48,7 +48,7 @@ const updatePointRequest = () => {
 export const updatePoint = point => {
     return dispatch => {
         dispatch(updatePointRequest());
-        axios.put("http://localhost:8080/api/test/point_of_interests", point)
+        axios.put("http://easytrip-boot.herokuapp.com/api/test/point_of_interests", point)
             .then(response => {
                 dispatch(pointSuccess(response.data));
             })
@@ -67,7 +67,7 @@ const deletePointRequest = () => {
 export const deletePoint = pointId => {
     return dispatch => {
         dispatch(deletePointRequest());
-        axios.delete("http://localhost:8080/api/test/point_of_interests/"+ pointId)
+        axios.delete("http://easytrip-boot.herokuapp.com/api/test/point_of_interests/"+ pointId)
             .then(response => {
                 dispatch(pointSuccess(response.data));
             })

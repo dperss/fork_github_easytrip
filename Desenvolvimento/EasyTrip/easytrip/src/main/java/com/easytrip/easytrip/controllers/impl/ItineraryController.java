@@ -18,23 +18,17 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("api/test/itinerarys")
 public class ItineraryController implements Controller<Itinerary> {
 
-
     @Autowired
     private ItineraryServiceImpl itineraryService;
-
-
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER_BLOCKED')")
     public ResponseEntity<Page<Itinerary>> findAll(int pageNumber, int pageSize, String sortBy, String sortDir) {
-
-
         try{
             return new ResponseEntity<>(itineraryService.findAll(
                     PageRequest.of(
@@ -58,8 +52,6 @@ public class ItineraryController implements Controller<Itinerary> {
         }
 
     }
-
-
 
     @Override
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

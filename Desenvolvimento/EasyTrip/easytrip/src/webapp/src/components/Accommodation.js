@@ -15,8 +15,8 @@ function Accommodation() {
         selected: {}
 
     });
-    const apiURL ="http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=";
-    const apiURLLoc = "http://localhost:8080/api/test/accomodations/search/location/{searchText}?searchText=";
+    const apiURL ="http://easytrip-boot.herokuapp.com/api/test/accomodations/search/name/{searchText}?searchText=";
+    const apiURLLoc = "http://easytrip-boot.herokuapp.com/api/test/accomodations/search/location/{searchText}?searchText=";
 
     const search = (e) => {
         if(e.key === "Enter"){
@@ -54,7 +54,7 @@ function Accommodation() {
 
     const openPopup = id => {
 
-        axios("http://localhost:8080/api/test/accomodations/" + id)
+        axios("http://easytrip-boot.herokuapp.com/api/test/accomodations/" + id)
             .then(({data}) =>{
                 let result = data;
 

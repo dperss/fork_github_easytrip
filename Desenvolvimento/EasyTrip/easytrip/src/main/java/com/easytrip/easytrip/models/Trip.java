@@ -1,7 +1,5 @@
 package com.easytrip.easytrip.models;
 
-
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
