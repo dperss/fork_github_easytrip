@@ -17,18 +17,18 @@ const required = value => {
 };
 
 
-class add extends Component {
+class addAccommodation extends Component {
 
 
 
     constructor(props) {
         super(props);
         this.state = {
-            point : [],
+            accommodation : [],
             name: "",
-            type_of_point: "",
+            price: "",
             description: "",
-            location_nome: "",
+            location: "",
             successful: false,
             message: ""
         };
@@ -39,11 +39,11 @@ class add extends Component {
     }
 
     handlePointChange(e){
-        this.setState({type_of_point: e.target.value})
+        this.setState({price: e.target.value})
     }
 
     handleLocationChange(e){
-        this.setState({location_nome: e.target.value})
+        this.setState({location: e.target.value})
     }
 
     handleDescriptionChange(e){
@@ -52,10 +52,10 @@ class add extends Component {
 
 
     postContent(){
-        axios.post("http://localhost:8080/api/test/point_of_interests", {
+        axios.post("http://localhost:8080/api/test/accomodations", {
             name: this.state.name,
-            type_of_point: this.state.type_of_point,
-            location_nome: this.state.location_nome,
+            price: this.state.price,
+            location: this.state.location,
             description: this.state.description
         })
 
@@ -71,17 +71,17 @@ class add extends Component {
 
                 <header>
                     <Jumbotron className = "jumbo-home">
-                        <h1>Adicionar Pontos de Interesse</h1>
+                        <h1>Adicionar Alojamentos</h1>
                     </Jumbotron>
                 </header>
                 <form className = "form-add">
                     <label>
                         Nome:
                         <input className = "input-add"
-                            placeholder = "Nome"
-                            type="text"
-                            value={this.state.name}
-                            onChange={this.handleNameChange.bind(this)}
+                               placeholder = "Nome"
+                               type="text"
+                               value={this.state.name}
+                               onChange={this.handleNameChange.bind(this)}
                                validations = {[required]}
                         />
 
@@ -90,10 +90,10 @@ class add extends Component {
                     <label>
                         Localização:
                         <input className = "input-add"
-                            placeholder = "Localização"
-                            type="text"
-                            value={this.state.location_nome}
-                            onChange={this.handleLocationChange.bind(this)}
+                               placeholder = "Localização"
+                               type="text"
+                               value={this.state.location}
+                               onChange={this.handleLocationChange.bind(this)}
                                validations = {[required]}
                         />
                     </label>
@@ -101,22 +101,22 @@ class add extends Component {
                     <label>
                         Descrição:
                         <input className = "input-add"
-                            placeholder = "Descrição"
-                            type="text"
-                            value={this.state.description}
-                            onChange={this.handleDescriptionChange.bind(this)}
+                               placeholder = "Descrição"
+                               type="text"
+                               value={this.state.description}
+                               onChange={this.handleDescriptionChange.bind(this)}
                                validations = {[required]}
                         />
                     </label>
 
 
                     <label>
-                        Tipo de Ponto:
+                        Preço:
                         <input className = "input-add"
-                            placeholder = "Tipo de Ponto"
-                            type="text"
-                            value={this.state.type_of_point}
-                            onChange={this.handlePointChange.bind(this)}
+                               placeholder = "Preço"
+                               type="text"
+                               value={this.state.price}
+                               onChange={this.handlePointChange.bind(this)}
                                validations = {[required]}
                         />
                     </label>
@@ -131,4 +131,4 @@ class add extends Component {
     }
 }
 
-export default add;
+export default addAccommodation;

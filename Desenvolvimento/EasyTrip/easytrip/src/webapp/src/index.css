@@ -79,22 +79,23 @@
 }
 
 .popup {
-    position: center;
-    margin-top: 20px;
-
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
 
     text-align: center;
-
+    overflow-y: scroll;
 }
 
 .popup .content {
     display: block;
     width: 100%;
-    margin: 0 auto;
-    padding: 30px;
+    max-width: 960%;
+
+    padding: 70px;
 
     color: cadetblue;
 }
@@ -107,14 +108,13 @@
 .popup .content h2 span {
     font-weight: 300;
     font-size: 20px;
-    margin-left: 5px;
 
 }
 
 .popup .content .plot {
-    display: block;
+    display: flex;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin: 0px -15px 30px;
 
 
 }
@@ -305,6 +305,16 @@
 
     font-size: 20px;
     font-weight: 300;
+}
 
+.com {
+    padding: 50px;
 
 }
+
+.com_no{
+    size: 20px;
+
+}
+
+

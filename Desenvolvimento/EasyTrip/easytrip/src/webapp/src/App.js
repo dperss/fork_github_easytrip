@@ -16,8 +16,10 @@ import Accommodation from "./components/Accommodation";
 import {Itinerary} from "./components/Itinerary";
 import add from "./components/add";
 import addComment from "./components/addComment";
+import addAccommodation from "./components/addAccommodation"
 import Trip from "./components/Trip";
-import authHeader from './services/auth/auth-header';
+import AccommodationList from "./components/AccommodationList";
+
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -80,6 +82,13 @@ class App extends Component {
                     </Link>
                   </li>
               )}
+              {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/AccommodationList"} className="nav-link">
+                      Lista de Alojamentos
+                    </Link>
+                  </li>
+              )}
 
               {currentUser && (
                 <li className="nav-item">
@@ -136,8 +145,11 @@ class App extends Component {
               <Route path = "/Trip" component={Trip}/>
               <Route path= "/Accommodation" component={Accommodation}/>
               <Route path = "/Itinerary" component={Itinerary}/>
-              <Route path = "/add" component={add}/>
+              <Route path= "/AccommodationList" component={AccommodationList}/>
               <Route path = "/addComment" component={addComment}/>
+              <Route path = "/add" component={add}/>
+              <Route path = "/addAccommodation" component={addAccommodation}/>
+
 
             </Switch>
           </div>

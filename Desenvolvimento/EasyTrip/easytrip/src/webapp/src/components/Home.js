@@ -7,16 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
     Jumbotron,
-    Form,
-    Row,
-    Button,
-    Col
 } from "react-bootstrap";
-import {DateRangePicker} from "react-dates";
 import Accommodation from "./Accommodation";
 import Point from "./Point";
-
-
 
 
 moment.locale("pt");

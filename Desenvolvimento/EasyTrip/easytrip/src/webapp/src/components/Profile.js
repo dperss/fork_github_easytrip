@@ -81,27 +81,7 @@ export default class Profile extends Component {
           <strong>Email:</strong>{" "}
           {currentUser.email}
         </p>
-        <p>
 
-         <strong>Foto:</strong>{" "}
-                <form onSubmit={this.onFormSubmit}>
-                <h1>File Upload</h1>
-                <input type="file" name="myImage" onChange= {this.onChange} />
-                <button type="submit">Upload</button>
-            </form>
-        </p>
-
-        <div >
-          <strong className = "ul-prof">Descrição:</strong>{" "}
-
-          <input
-          type="text"
-          placeholder="Insira uma descrição"
-          value={this.state.description}
-
-          />
-          {currentUser.description}
-        </div>
         <strong className = "ul-prof">Roles:</strong>
         <ul className = "ul-prof">
           {currentUser.roles &&

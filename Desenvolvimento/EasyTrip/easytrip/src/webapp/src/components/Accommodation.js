@@ -7,6 +7,7 @@ import SearchLocation from "./SearchLocation";
 import Popup from "./Popup";
 
 
+
 function Accommodation() {
     const  [state, setState] = useState({
         s: "",
@@ -17,7 +18,6 @@ function Accommodation() {
     const apiURL ="http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=";
     const apiURLLoc = "http://localhost:8080/api/test/accomodations/search/location/{searchText}?searchText=";
 
-
     const search = (e) => {
         if(e.key === "Enter"){
             axios(apiURL  + state.s)
@@ -27,10 +27,8 @@ function Accommodation() {
                         return {...prevState, results: results}
                     })
                 });
-
         }
     }
-
     const locations = (e) => {
         if(e.key === "Enter"){
             axios(apiURLLoc  + state.s)
@@ -91,7 +89,9 @@ function Accommodation() {
 
                 <ResultsAccommodation results={state.results} openPopup = {openPopup}/>
 
+
                 {(typeof state.selected.name != "undefined") ? <Popup selected={state.selected} closePopup={closePopup}/> : false}
+
             </main>
         </div>
     );
