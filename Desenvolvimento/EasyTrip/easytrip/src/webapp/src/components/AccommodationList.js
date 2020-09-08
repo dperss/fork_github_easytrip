@@ -53,7 +53,7 @@ class AccommodationList extends Component {
 
     findAllAccommodations(currentPage) {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/accomodations?pageNumber="+currentPage+"&pageSize="+this.state.accommodationsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get(" https://easytrip-boot.herokuapp.com/api/test/accomodations?pageNumber="+currentPage+"&pageSize="+this.state.accommodationsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -149,7 +149,7 @@ class AccommodationList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=" + this.state.search)
+        axios.get(" https://easytrip-boot.herokuapp.com/api/test/accomodations/search/name/{searchText}?searchText=" + this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({

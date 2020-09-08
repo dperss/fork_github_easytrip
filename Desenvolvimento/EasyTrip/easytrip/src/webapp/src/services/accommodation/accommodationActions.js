@@ -4,7 +4,7 @@ import axios from 'axios';
 export const saveAccommodation = accommodation => {
     return dispatch => {
         dispatch(saveAccommodationRequest());
-        axios.post("http://localhost:8080/api/test/accomodations", accommodation)
+        axios.post(" https://easytrip-boot.herokuapp.com/api/test/accomodations", accommodation)
             .then(response => {
                 dispatch(accommodationSuccess(response.data));
             })
@@ -29,7 +29,7 @@ const fetchAccommodationRequest = () => {
 export const fetchAccommodation = accommodationId => {
     return dispatch => {
         dispatch(fetchAccommodationRequest());
-        axios.get("http://localhost:8080/api/test/accomodations/"+accommodationId)
+        axios.get(" https://easytrip-boot.herokuapp.com/api/test/accomodations/"+accommodationId)
             .then(response => {
                 dispatch(accommodationSuccess(response.data));
             })
@@ -48,7 +48,7 @@ const updateAccommodationRequest = () => {
 export const updateAccommodation = accommodation => {
     return dispatch => {
         dispatch(updateAccommodationRequest());
-        axios.put("http://localhost:8080/api/test/accomodations", accommodation)
+        axios.put(" https://easytrip-boot.herokuapp.com/api/test/accomodations", accommodation)
             .then(response => {
                 dispatch(accommodationSuccess(response.data));
             })
@@ -67,7 +67,7 @@ const deleteAccommodationRequest = () => {
 export const deleteAccommodation = accommodationId => {
     return dispatch => {
         dispatch(deleteAccommodationRequest());
-        axios.delete("http://localhost:8080/api/test/accomodations/"+ accommodationId)
+        axios.delete(" https://easytrip-boot.herokuapp.com/api/test/accomodations/"+ accommodationId)
             .then(response => {
                 dispatch(accommodationSuccess(response.data));
             })

@@ -52,7 +52,7 @@ class addAccommodation extends Component {
 
 
     postContent(){
-        axios.post("http://localhost:8080/api/test/accomodations", {
+        axios.post(" https://easytrip-boot.herokuapp.com/api/test/accomodations", {
             name: this.state.name,
             price: this.state.price,
             location: this.state.location,

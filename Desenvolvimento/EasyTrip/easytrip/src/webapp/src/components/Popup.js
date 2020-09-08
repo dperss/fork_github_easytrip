@@ -12,7 +12,7 @@ function Popup ({selected, closePopup}) {
             location: selected.location,
             description: selected.description
         }]
-        axios.put("http://localhost:8080/api/test/trips",{
+        axios.put(" https://easytrip-boot.herokuapp.com/api/test/trips",{
             accommodations: accommodations
         })
     }

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const saveTrip = trip => {
     return dispatch => {
         dispatch(saveTripRequest());
-        axios.post("http://localhost:8080/api/test/trips", trip)
+        axios.post(" https://easytrip-boot.herokuapp.com/api/test/trips", trip)
             .then(response => {
                 dispatch(tripSuccess(response.data));
             })
@@ -29,7 +29,7 @@ const fetchTripRequest = () => {
 export const fetchTrip = tripId => {
     return dispatch => {
         dispatch(fetchTripRequest());
-        axios.get("http://localhost:8080/api/test/trips/"+tripId)
+        axios.get(" https://easytrip-boot.herokuapp.com/api/test/trips/"+tripId)
             .then(response => {
                 dispatch(tripSuccess(response.data));
             })
@@ -48,7 +48,7 @@ const updateTripRequest = () => {
 export const updateTrip = trip => {
     return dispatch => {
         dispatch(updateTripRequest());
-        axios.put("http://localhost:8080/api/test/trips", trip)
+        axios.put(" https://easytrip-boot.herokuapp.com/api/test/trips", trip)
             .then(response => {
                 dispatch(tripSuccess(response.data));
             })
@@ -67,7 +67,7 @@ const deleteTripRequest = () => {
 export const deleteTrip = tripId => {
     return dispatch => {
         dispatch(deleteTripRequest());
-        axios.delete("http://localhost:8080/api/test/trips/"+ tripId)
+        axios.delete(" https://easytrip-boot.herokuapp.com/api/test/trips/"+ tripId)
             .then(response => {
                 dispatch(tripSuccess(response.data));
             })
