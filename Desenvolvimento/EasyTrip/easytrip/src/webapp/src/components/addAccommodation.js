@@ -6,17 +6,6 @@ import {
 } from "react-bootstrap";
 
 
-const required = value => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
-
-
 class addAccommodation extends Component {
 
 
@@ -52,7 +41,7 @@ class addAccommodation extends Component {
 
 
     postContent(){
-        axios.post(" https://easytrip-boot.herokuapp.com/api/test/accomodations", {
+        axios.post(" http://localhost:8080/api/test/accomodations", {
             name: this.state.name,
             price: this.state.price,
             location: this.state.location,
@@ -82,7 +71,6 @@ class addAccommodation extends Component {
                                type="text"
                                value={this.state.name}
                                onChange={this.handleNameChange.bind(this)}
-                               validations = {[required]}
                         />
 
                     </label>
@@ -94,7 +82,6 @@ class addAccommodation extends Component {
                                type="text"
                                value={this.state.location}
                                onChange={this.handleLocationChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 
@@ -105,7 +92,6 @@ class addAccommodation extends Component {
                                type="text"
                                value={this.state.description}
                                onChange={this.handleDescriptionChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 
@@ -117,7 +103,6 @@ class addAccommodation extends Component {
                                type="text"
                                value={this.state.price}
                                onChange={this.handlePointChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 

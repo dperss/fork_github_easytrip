@@ -8,7 +8,6 @@ import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-b
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faList,
-    faEdit,
     faTrash,
     faStepBackward,
     faFastBackward,
@@ -53,7 +52,7 @@ class PointList extends Component {
 
     findAllPoints(currentPage) {
         currentPage -= 1;
-        axios.get("http://easytrip-boot.herokuapp.com/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.pointsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get("http://localhost:8080/api/test/point_of_interests?pageNumber="+currentPage+"&pageSize="+this.state.pointsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -74,7 +73,9 @@ class PointList extends Component {
                 setTimeout(() => this.setState({"show":false}), 3000);
                 this.findAllPoints(this.state.currentPage);
             } else {
-                this.setState({"show":false});
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show":false}), 3000);
+                this.findAllPoints(this.state.currentPage);
             }
         }, 1000);
 
@@ -148,7 +149,7 @@ class PointList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://easytrip-boot.herokuapp.com/api/test/point_of_interests/search/name/{searchText}?searchText=" + this.state.search)
+        axios.get("http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=" + this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -167,7 +168,7 @@ class PointList extends Component {
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Point of interest Deleted Successfully."} type = {"success"}/>
+                    <MyToast show = {this.state.show} message = {"Ponto de interesse eliminado com sucesso!"} type = {"success"}/>
                 </div>
                 <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
@@ -215,7 +216,6 @@ class PointList extends Component {
                                             <td>{point.type_of_point}</td>
                                             <td>
                                                 <ButtonGroup>
-                                                    <Link to={"edit/"+point.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                                                     <Button size="sm" variant="outline-danger" onClick={this.deletePoint.bind(this, point.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                                 </ButtonGroup>
                                             </td>

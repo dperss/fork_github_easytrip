@@ -6,10 +6,9 @@ import './../assets/css/Style.css';
 import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
-    faList, faEdit, faTrash, faStepBackward, faFastBackward, faStepForward,
-    faFastForward, faSearch, faTimes, faPlus
+    faList, faTrash, faStepBackward, faFastBackward, faStepForward,
+    faFastForward, faSearch, faTimes
 } from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom';
 import MyToast from './MyToast';
 import axios from 'axios';
 
@@ -45,7 +44,7 @@ class UserList extends Component {
 
     findAllPersons(currentPage) {
             currentPage -= 1;
-            axios.get("http://easytrip-boot.herokuapp.com/api/test/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+            axios.get("http://localhost:8080/api/test/users?pageNumber="+currentPage+"&pageSize="+this.state.personsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
                 .then(response => response.data)
                 .then((data) => {
                     this.setState({
@@ -60,7 +59,6 @@ class UserList extends Component {
 
     deletePerson = (personId) => {
     this.props.deletePerson(personId);
-    console.log(deletePerson)
         setTimeout(() => {
             if(this.props.personObject != null) {
                 this.setState({"show":true});
@@ -141,7 +139,7 @@ class UserList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get("http://easytrip-boot.herokuapp.com/api/test/users/search/username/{searchText}?searchText="+this.state.search)
+        axios.get("http://localhost:8080/api/test/users/search/username/{searchText}?searchText="+this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -159,7 +157,7 @@ class UserList extends Component {
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Person Deleted Successfully."} type = {"success"}/>
+                    <MyToast show = {this.state.show} message = {"Utilizador eliminado com sucesso!"} type = {"success"}/>
                 </div>
                 <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
@@ -189,7 +187,6 @@ class UserList extends Component {
                                   <th>Username</th>
                                   <th>Email</th>
                                   <th>Password</th>
-                                  <th>Descrição</th>
 
                                 </tr>
                               </thead>
@@ -204,11 +201,9 @@ class UserList extends Component {
                                         <td>{person.username}</td>
                                         <td>{person.email}</td>
                                         <td>{person.password}</td>
-                                        <td>{person.description}</td>
                                         <td>
                                             <ButtonGroup>
-                                                <Link to={"edit/"+person.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
-                                                <Button size="sm" variant="outline-danger" onClick={this.deletePerson.bind(this, person.id)}><FontAwesomeIcon icon={faTrash} /></Button>
+                                               <Button size="sm" variant="outline-danger" onClick={this.deletePerson.bind(this, person.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                             </ButtonGroup>
                                         </td>
                                     </tr>

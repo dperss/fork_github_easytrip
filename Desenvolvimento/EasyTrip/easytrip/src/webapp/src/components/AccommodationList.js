@@ -8,7 +8,6 @@ import {Card, Table, ButtonGroup, Button, InputGroup, FormControl} from 'react-b
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faList,
-    faEdit,
     faTrash,
     faStepBackward,
     faFastBackward,
@@ -53,7 +52,7 @@ class AccommodationList extends Component {
 
     findAllAccommodations(currentPage) {
         currentPage -= 1;
-        axios.get(" https://easytrip-boot.herokuapp.com/api/test/accomodations?pageNumber="+currentPage+"&pageSize="+this.state.accommodationsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
+        axios.get(" http://localhost:8080/api/test/accomodations?pageNumber="+currentPage+"&pageSize="+this.state.accommodationsPerPage+"&sortBy=id&sortDir="+this.state.sortDir)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -74,7 +73,9 @@ class AccommodationList extends Component {
                 setTimeout(() => this.setState({"show":false}), 3000);
                 this.findAllAccommodations(this.state.currentPage);
             } else {
-                this.setState({"show":false});
+                this.setState({"show":true});
+                setTimeout(() => this.setState({"show":false}), 3000);
+                this.findAllAccommodations(this.state.currentPage);
             }
         }, 1000);
 
@@ -149,7 +150,7 @@ class AccommodationList extends Component {
 
     searchData = (currentPage) => {
         currentPage -= 1;
-        axios.get(" https://easytrip-boot.herokuapp.com/api/test/accomodations/search/name/{searchText}?searchText=" + this.state.search)
+        axios.get(" http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=" + this.state.search)
             .then(response => response.data)
             .then((data) => {
                 this.setState({
@@ -168,7 +169,7 @@ class AccommodationList extends Component {
         return (
             <div>
                 <div style={{"display":this.state.show ? "block" : "none"}}>
-                    <MyToast show = {this.state.show} message = {"Accommodation Deleted Successfully."} type = {"success"}/>
+                    <MyToast show = {this.state.show} message = {"Ajomamento eliminado com sucesso!"} type = {"success"}/>
                 </div>
                 <Card className={"border border-light bg-light text-dark"}>
                     <Card.Header>
@@ -216,7 +217,6 @@ class AccommodationList extends Component {
                                             <td>{accommodation.price}</td>
                                             <td>
                                                 <ButtonGroup>
-                                                    <Link to={"edit/"+accommodation.id} className="btn btn-sm btn-outline-info"><FontAwesomeIcon icon={faEdit} /></Link>{' '}
                                                     <Button size="sm" variant="outline-danger" onClick={this.deleteAccommodation.bind(this, accommodation.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                                                 </ButtonGroup>
                                             </td>

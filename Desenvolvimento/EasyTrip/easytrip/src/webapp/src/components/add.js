@@ -6,17 +6,6 @@ import {
 } from "react-bootstrap";
 
 
-const required = value => {
-    if (!value) {
-        return (
-            <div className="alert alert-danger" role="alert">
-                This field is required!
-            </div>
-        );
-    }
-};
-
-
 class add extends Component {
 
 
@@ -52,7 +41,7 @@ class add extends Component {
 
 
     postContent(){
-        axios.post("http://easytrip-boot.herokuapp.com/api/test/point_of_interests", {
+        axios.post("http://localhost:8080/api/test/point_of_interests", {
             name: this.state.name,
             type_of_point: this.state.type_of_point,
             location_nome: this.state.location_nome,
@@ -82,7 +71,6 @@ class add extends Component {
                             type="text"
                             value={this.state.name}
                             onChange={this.handleNameChange.bind(this)}
-                               validations = {[required]}
                         />
 
                     </label>
@@ -94,7 +82,6 @@ class add extends Component {
                             type="text"
                             value={this.state.location_nome}
                             onChange={this.handleLocationChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 
@@ -105,7 +92,6 @@ class add extends Component {
                             type="text"
                             value={this.state.description}
                             onChange={this.handleDescriptionChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 
@@ -117,7 +103,6 @@ class add extends Component {
                             type="text"
                             value={this.state.type_of_point}
                             onChange={this.handlePointChange.bind(this)}
-                               validations = {[required]}
                         />
                     </label>
 

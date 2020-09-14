@@ -1,21 +1,10 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React from "react";
+
 
 
 
 function Popup ({selected, closePopup}) {
 
-    const postContent = () =>{
-        let accommodations;
-        accommodations = [{
-            name: selected.name,
-            location: selected.location,
-            description: selected.description
-        }]
-        axios.put(" https://easytrip-boot.herokuapp.com/api/test/trips",{
-            accommodations: accommodations
-        })
-    }
     return(
         <section className = "popup">
             <header className = "content">

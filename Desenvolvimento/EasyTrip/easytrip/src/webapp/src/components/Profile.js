@@ -1,4 +1,4 @@
-import React, { Component,Image } from "react";
+import React, { Component} from "react";
 import { Redirect } from "react-router-dom";
 import AuthService from "../services/auth/auth.service";
 import axios from "axios";
@@ -32,11 +32,11 @@ export default class Profile extends Component {
                 'content-type': 'multipart/form-data'
             }
         };
-        axios.post("http://easytrip-boot.herokuapp.com/api/test/images/upload",formData,config)
-            .then((response) => {
+        axios.post("http://localhost:8080/api/test/images/upload",formData,config)
+            .then(response => {
                 alert("The file is successfully uploaded");
-            }).catch((error) => {
-        });
+            }
+        );
     }
     onChange(e) {
         this.setState({file:e.target.files[0]});
@@ -56,7 +56,7 @@ export default class Profile extends Component {
 
 
 
-    const { currentUser,file } = this.state;
+    const { currentUser} = this.state;
 
 
     return (
@@ -65,18 +65,18 @@ export default class Profile extends Component {
         <div>
         <header className="jumbotron-prof">
           <h3>
-            <strong>{currentUser.username}</strong> Profile
+             Perfil
           </h3>
         </header>
-            <h1 className = "h1-prof"> As minhas informações</h1>
-        <p>
-          {currentUser.accessToken.substring(0, 20)} ...{" "}
-          {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-        </p>
-        <p>
-          <strong>Id:</strong>{" "}
-          {currentUser.id}
-        </p>
+            <h1 className = "h1-prof">
+                <p>{currentUser.username}</p>
+                 informações
+            </h1>
+
+            <p>
+                <strong>Username:</strong>{" "}
+                {currentUser.username}
+            </p>
         <p>
           <strong>Email:</strong>{" "}
           {currentUser.email}

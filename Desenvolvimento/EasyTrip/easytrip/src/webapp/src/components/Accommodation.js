@@ -15,8 +15,8 @@ function Accommodation() {
         selected: {}
 
     });
-    const apiURL ="http://easytrip-boot.herokuapp.com/api/test/accomodations/search/name/{searchText}?searchText=";
-    const apiURLLoc = "http://easytrip-boot.herokuapp.com/api/test/accomodations/search/location/{searchText}?searchText=";
+    const apiURL ="http://localhost:8080/api/test/accomodations/search/name/{searchText}?searchText=";
+    const apiURLLoc = "http://localhost:8080/api/test/accomodations/search/location/{searchText}?searchText=";
 
     const search = (e) => {
         if(e.key === "Enter"){
@@ -28,7 +28,7 @@ function Accommodation() {
                     })
                 });
         }
-    }
+    };
     const locations = (e) => {
         if(e.key === "Enter"){
             axios(apiURLLoc  + state.s)
@@ -40,7 +40,7 @@ function Accommodation() {
                 });
 
         }
-    }
+    };
 
 
     const handleInput = (e) => {
@@ -50,11 +50,11 @@ function Accommodation() {
         setState(prevState => {
             return{...prevState, s: s}
         });
-    }
+    };
 
     const openPopup = id => {
 
-        axios("http://easytrip-boot.herokuapp.com/api/test/accomodations/" + id)
+        axios("http://localhost:8080/api/test/accomodations/" + id)
             .then(({data}) =>{
                 let result = data;
 
@@ -63,14 +63,14 @@ function Accommodation() {
                 })
             });
 
-    }
+    };
 
     const  closePopup = () =>{
         setState(prevState => {
             return{...prevState, selected: {}}
         });
 
-    }
+    };
 
 
 

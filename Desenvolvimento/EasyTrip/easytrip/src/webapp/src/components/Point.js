@@ -18,8 +18,8 @@ function Point() {
         selected: {}
 
     });
-    const apiURL ="http://easytrip-boot.herokuapp.com/api/test/point_of_interests/search/name/{searchText}?searchText=";
-    const apiURLLoc = "http://easytrip-boot.herokuapp.com/api/test/point_of_interests/search/location/{searchText}?searchText=";
+    const apiURL ="http://localhost:8080/api/test/point_of_interests/search/name/{searchText}?searchText=";
+    const apiURLLoc = "http://localhost:8080/api/test/point_of_interests/search/location/{searchText}?searchText=";
 
     const searchpoint = (e) => {
         if(e.key === "Enter"){
@@ -32,7 +32,7 @@ function Point() {
                 });
 
         }
-    }
+    };
 
     const locationpoint = (e) => {
         if(e.key === "Enter"){
@@ -45,7 +45,7 @@ function Point() {
                 });
 
         }
-    }
+    };
 
 
     const handleInput = (e) => {
@@ -55,28 +55,27 @@ function Point() {
         setState(prevState => {
             return{...prevState, s: s}
         });
-    }
+    };
 
     const openPopup = id => {
 
-        axios("http://easytrip-boot.herokuapp.com/api/test/point_of_interests/" + id)
+        axios("http://localhost:8080/api/test/point_of_interests/" + id)
             .then(({data}) =>{
                 let result = data;
-                console.log(result);
 
                 setState(prevState => {
                     return{...prevState, selected: result}
                 });
             });
 
-    }
+    };
 
     const  closePopup = () =>{
         setState(prevState => {
             return{...prevState, selected: {}}
         });
 
-    }
+    };
 
     return(
 
